@@ -1,0 +1,52 @@
+{
+  "name": "Team05-Entrega4",
+  "version": "1.0.0",
+  "main": "./server/server.js",
+  "engines": {
+    "node": "12.x",
+    "yarn": ">1.17.x"
+  },
+  "scripts": {
+    "prestart": "cd client && yarn install && yarn build",
+    "start": "cd server  && yarn install && node server.js",
+    "test": "cd server && yarn install && node test.js",
+    "build": "yarn install",
+    "heroku-postbuild": "cd client && yarn install && yarn build"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express",
+    "react",
+    "app"
+  ],
+  "license": "MIT",
+  "author": "Grupo 5",
+  "contributors": [
+    {
+      "name": "Sebastian Garcia",
+      "email": "js.garcial1@uniandes.edu.co",
+      "url": "https://seebgar.herokuapp.com"
+    },
+    {
+      "name": "Andres Felipe Losada",
+      "email": "other@example.com",
+      "url": "http://other-website.com"
+    },
+    {
+      "name": "Juan Camilo Pulido",
+      "email": "other@example.com",
+      "url": "http://other-website.com"
+    },
+    {
+      "name": "Santiago Salazar",
+      "email": "other@example.com",
+      "url": "http://other-website.com"
+    },
+    {
+      "name": "Luis Ernesto Viana",
+      "email": "le.viana@uniandes.edu.co",
+      "url": "https://vianaernesto.github.io/"
+    }
+  ]
+}
