@@ -11,8 +11,9 @@ const { Connection } = require("./mongo_config/Connection");
  * Routers
  */
 
- // const usuarios_route = require("./routes/usuarios");
+
  const login_route = require("../server/routes/index.js");
+ const espacios_route = require("../server/routes/espacios.js");
 
 var app = express();
 const PORT = normalizePort(process.env.PORT || "5000");
@@ -27,9 +28,10 @@ app
  * Routes
  */
 
-// app.use("/api/usuarios", usuarios_route);
-app.use("/login", login_route);
+
+ app.use("/login", login_route);
 app.use("/registrar", login_route);
+app.use("/api/espacios", espacios_route);
 
 
 /**

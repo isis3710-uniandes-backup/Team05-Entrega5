@@ -48,8 +48,5 @@
       "email": "le.viana@uniandes.edu.co",
       "url": "https://vianaernesto.github.io/"
     }
-  ],
-  "dependencies": {
-    "jsonwebtoken": "^8.5.1"
-  }
+  ]
 }

@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from '../../assets/logo.svg';
-import './normalize.css'
-import './App.css';
+import React from "react";
+
+import "./normalize.css";
+import "./App.css";
+/**
+ * React - Boostrap
+ * https://react-bootstrap.github.io/getting-started/introduction 
+ * */ 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
+
+import { Switch, Route } from "react-router-dom";
+import Home from "../Home/Home";
+import NotFound from "../404/NotFound";
+import Espacios from "../Espacios/Espacios";
+import PostEspacios from "../Espacios/PostEspacios";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/inicio" component={Home} />
+        <Route exact path="/espacios" component={Espacios} />
+        <Route exact path="/espacios/post" component={PostEspacios} />
+        <Route path="*" component={NotFound} />
+      </Switch>
     </div>
   );
 }
