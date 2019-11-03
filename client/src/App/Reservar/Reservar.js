@@ -8,6 +8,7 @@ import { SingleDatePicker } from 'react-dates';
 import TimePicker from 'react-time-picker'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 import './Reservar.css'
 
@@ -32,7 +33,7 @@ export default class Reservar extends React.Component {
                             <Form className="card-label">
                                 <Form.Group controlId="sectorForm">
                                     <Form.Label>¿En qué sector te gustaría?</Form.Label>
-                                    <Form.Control type="email" placeholder="Empieza a escribir algún sector"></Form.Control>
+                                    <Form.Control type="text" placeholder="Empieza a escribir algún sector"></Form.Control>
                                 </Form.Group>
                                 <FormGroup>
                                     <Row>
@@ -70,14 +71,19 @@ export default class Reservar extends React.Component {
                                             />
                                         </Col>
                                         <Col>
+                                            <div className="time-picker">
                                                 <TimePicker
-                                                required={true}
-                                                disableClock={true}
-                                                clearIcon={null}
+                                                    required={true}
+                                                    disableClock={true}
+                                                    clearIcon={null}
                                                 />
+                                            </div>
                                         </Col>
                                     </Row>
                                 </FormGroup>
+                                <div className="search-button">
+                                    <Button variant="danger">Buscar</Button>
+                                </div>
                             </Form>
                         </Card.Body>
                     </Card>

@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from '../NavBar/NavBar.js';
 
 import "./normalize.css";
 import "./App.css";
@@ -20,7 +19,6 @@ import Login from "../Login/Login.js";
 function App() {
   return (
     <div className="App">
-      <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/inicio" component={Home} />

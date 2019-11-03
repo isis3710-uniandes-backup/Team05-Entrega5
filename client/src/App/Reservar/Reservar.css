@@ -15,3 +15,11 @@
 .datePicker {
     width: 50%;
 }
+
+.time-picker {
+    width: 100%;
+}
+
+.search-button {
+    text-align: right;
+}
