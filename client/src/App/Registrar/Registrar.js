@@ -3,13 +3,19 @@ import NavBar from '../NavBar/NavBar';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Cookies from 'universal-cookie';
 
 import './Registrar.css';
 
+const cookies = new Cookies();
 
 export default class Registrar extends React.Component {
     constructor(props) {
         super(props);
+    }
+
+    handleSubmit(event) {
+        console.log(cookies.get("user"));
     }
 
     render() {
@@ -36,7 +42,7 @@ export default class Registrar extends React.Component {
                                         <Form.Label>Contraseña *</Form.Label>
                                         <Form.Control type="password"></Form.Control>
                                     </Form.Group>
-                                    <Button variant="success" size="md" block>Registrarse</Button>
+                                    <Button variant="success" size="md" block onClick={this.handleSubmit}>Registrarse</Button>
                                 </Form>
                             </Container>
                         </div>
