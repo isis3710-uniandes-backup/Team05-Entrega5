@@ -16,6 +16,7 @@ import Espacios from "../Espacios/Espacios";
 import PostEspacios from "../Espacios/PostEspacios";
 import Login from "../Login/Login.js";
 import Registrar from '../Registrar/Registrar.js';
+import Reservas from '../Reservas/Reservas.js';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/Registrar" component={Registrar} />
         <Route exact path="/espacios" component={Espacios} />
         <Route exact path="/espacios/post" component={PostEspacios} />
+        <Route exact path="/reservas" component={Reservas} />
         <Route path="*" component={NotFound} />
       </Switch>
     </div>

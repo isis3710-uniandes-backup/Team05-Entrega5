@@ -61,7 +61,7 @@ export default class Reservar extends React.Component {
                                                 block={false}
                                                 numberOfMonths={1}
                                                 date={this.state.date}
-                                                onDateChange={date => this.handleDateChange(date)}
+                                                onDateChange={date => this.handleDateChange.bind(date)}
                                                 focused={this.state.focused}
                                                 onFocusChange={({ focused }) =>
                                                     this.setState({ focused })
@@ -91,4 +91,9 @@ export default class Reservar extends React.Component {
             </div>
         );
     }
+
+    handleDateChange(date){
+        
+    }
+
 }
