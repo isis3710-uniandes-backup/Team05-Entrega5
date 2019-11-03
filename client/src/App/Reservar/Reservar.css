@@ -1,0 +1,17 @@
+.card-container {
+    padding-top: 5%;
+    padding-left: 8%;
+}
+
+.card-title {
+    font-size: 20pt;
+    text-align: left;
+}
+
+.card-label {
+    text-align: left;
+}
+
+.datePicker {
+    width: 50%;
+}
