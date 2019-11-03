@@ -19,33 +19,35 @@ export default class Login extends React.Component {
         return (
             <div>
                 <NavBar />
-                <Container className="prueba">
-                    <h1 className="titulo">
-                        Iniciar sesión
-                </h1>
-                    <div className="border-container">
-                        <Container className="login-container">
-                            <Form className="text-left">
-                                <Form.Group>
-                                    <Form.Label>Nombre de usuario</Form.Label>
-                                    <Form.Control type="text" placeholder="Escribe tu correo"></Form.Control>
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>Contraseña</Form.Label>
-                                    <Form.Control type="password"></Form.Control>
-                                </Form.Group>
-                                <Button variant="success" size="md" block>Ingresar</Button>
-                            </Form>
-                        </Container>
-                    </div>
-                </Container>
-                <Container>
-                    <Row>
-                        <Col>
-                            ¿No tienes cuenta? <Nav.Link href="/Registrar">Regístrate</Nav.Link>
-                        </Col>
-                    </Row>
-                </Container>
+                <div className="login-body">
+                    <Container className="prueba">
+                        <h1 className="titulo">
+                            Iniciar sesión
+                        </h1>
+                        <div className="border-container">
+                            <Container className="login-container">
+                                <Form className="text-left">
+                                    <Form.Group>
+                                        <Form.Label>Nombre de usuario</Form.Label>
+                                        <Form.Control type="text" placeholder="Escribe tu correo"></Form.Control>
+                                    </Form.Group>
+                                    <Form.Group>
+                                        <Form.Label>Contraseña</Form.Label>
+                                        <Form.Control type="password"></Form.Control>
+                                    </Form.Group>
+                                    <Button variant="success" size="md" block>Ingresar</Button>
+                                </Form>
+                            </Container>
+                        </div>
+                    </Container>
+                    <Container>
+                        <Row>
+                            <Col>
+                                ¿No tienes cuenta? <Nav.Link href="/Registrar">Regístrate</Nav.Link>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
             </div>
         );
     }
