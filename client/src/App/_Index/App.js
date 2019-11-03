@@ -1,13 +1,12 @@
 import React from "react";
 import NavBar from '../NavBar/NavBar.js';
-import Reservar from '../Reservar/Reservar.js';
 
 import "./normalize.css";
 import "./App.css";
 /**
  * React - Boostrap
  * https://react-bootstrap.github.io/getting-started/introduction 
- * */ 
+ * */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
@@ -20,7 +19,8 @@ import Login from "../Login/Login.js";
 
 function App() {
   return (
-    <div>
+    <div className="App">
+      <NavBar />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/inicio" component={Home} />

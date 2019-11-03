@@ -4,7 +4,6 @@ import React from "react";
  * React - Boostrap
  * https://react-bootstrap.github.io/getting-started/introduction 
  * */
-import NavBar from '../NavBar/NavBar.js';
 import Reservar from '../Reservar/Reservar.js';
 import "./Home.css";
 
@@ -17,7 +16,6 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home">
-        <NavBar />
         <div className="reservar">
           <Reservar />
         </div>
