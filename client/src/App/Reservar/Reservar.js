@@ -5,7 +5,9 @@ import FormGroup from 'react-bootstrap/FormGroup'
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { SingleDatePicker } from 'react-dates';
-import Row from 'react-bootstrap/Row'
+import TimePicker from 'react-time-picker'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import './Reservar.css'
 
@@ -33,33 +35,48 @@ export default class Reservar extends React.Component {
                                     <Form.Control type="email" placeholder="Empieza a escribir algún sector"></Form.Control>
                                 </Form.Group>
                                 <FormGroup>
-                                    <Form.Label>¿Para qué fecha?</Form.Label>
                                     <Row>
-
+                                        <Col>
+                                            <Form.Label>¿Para qué fecha?</Form.Label>
+                                        </Col>
+                                        <Col>
+                                            <Form.Label>¿Para qué hora?</Form.Label>
+                                        </Col>
                                     </Row>
-                                    <SingleDatePicker
-                                        showClearDate={true}
-                                        // customInputIcon={
-                                        //     <svg className="icon icon-small">
-                                        //         <Icon
-                                        //             icon="ICON_CALENDER"
-                                        //             className="icon icon-large"
-                                        //         />
-                                        //     </svg>
-                                        // }
-                                        inputIconPosition="after"
-                                        small={true}
-                                        block={false}
-                                        numberOfMonths={1}
-                                        date={this.state.date}
-                                        onDateChange={date => this.handleDateChange(date)}
-                                        focused={this.state.focused}
-                                        onFocusChange={({ focused }) =>
-                                            this.setState({ focused })
-                                        }
-                                        openDirection="up"
-                                        hideKeyboardShortcutsPanel={true}
-                                    />
+                                    <Row>
+                                        <Col>
+                                            <SingleDatePicker
+                                                showClearDate={true}
+                                                // customInputIcon={
+                                                //     <svg className="icon icon-small">
+                                                //         <Icon
+                                                //             icon="ICON_CALENDER"
+                                                //             className="icon icon-large"
+                                                //         />
+                                                //     </svg>
+                                                // }
+                                                inputIconPosition="after"
+                                                small={true}
+                                                block={false}
+                                                numberOfMonths={1}
+                                                date={this.state.date}
+                                                onDateChange={date => this.handleDateChange(date)}
+                                                focused={this.state.focused}
+                                                onFocusChange={({ focused }) =>
+                                                    this.setState({ focused })
+                                                }
+                                                openDirection="up"
+                                                hideKeyboardShortcutsPanel={true}
+                                            />
+                                        </Col>
+                                        <Col>
+                                                <TimePicker
+                                                required={true}
+                                                disableClock={true}
+                                                clearIcon={null}
+                                                />
+                                        </Col>
+                                    </Row>
                                 </FormGroup>
                             </Form>
                         </Card.Body>
