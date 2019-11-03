@@ -1,0 +1,10 @@
+.registrar-container {
+    padding: 5%;
+}
+
+.border-container{
+    border: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: lightgray;
+}

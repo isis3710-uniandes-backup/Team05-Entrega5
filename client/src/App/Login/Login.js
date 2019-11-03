@@ -19,7 +19,7 @@ export default class Login extends React.Component {
         return (
             <div>
                 <NavBar />
-                <div className="login-body">
+                <div className="content-body">
                     <Container className="prueba">
                         <h1 className="titulo">
                             Iniciar sesión
