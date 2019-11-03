@@ -1,11 +1,5 @@
 .App {
   text-align: center;
-  background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../../assets/backgroundImage.jpeg");
-  height: 100vh;
-  width: 100vw;
-  background-attachment: scroll;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 .App-logo {
@@ -25,16 +19,4 @@
 
 .App-link {
   color: #09d3ac;
-}
-
-.Container{
-  background-image: url("../../assets/backgroundImage.jpeg");
-  background-attachment: fixed;
-}
-
-.reservar {
-  padding-top: 2%;
-  padding-left: 5%;
-  width: 35%;
-  height: 40%;
 }

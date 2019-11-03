@@ -8,11 +8,11 @@ export default class NavBar extends React.Component {
     render() {
         return (
             <Navbar bg="transparent" variant="dark" expand="lg">
-                <Navbar.Brand href="#home">Logo</Navbar.Brand>
+                <Navbar.Brand href="#home">ParkIn</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <Nav.Link href="#home">Login</Nav.Link>
+                        <Nav.Link href="/Login">Login</Nav.Link>
                         <Nav.Link href="#link">Registrarse</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

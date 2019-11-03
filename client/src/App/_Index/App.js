@@ -1,4 +1,6 @@
 import React from "react";
+import NavBar from '../NavBar/NavBar.js';
+import Reservar from '../Reservar/Reservar.js';
 
 import "./normalize.css";
 import "./App.css";
@@ -14,6 +16,7 @@ import Home from "../Home/Home";
 import NotFound from "../404/NotFound";
 import Espacios from "../Espacios/Espacios";
 import PostEspacios from "../Espacios/PostEspacios";
+import Login from "../Login/Login.js";
 
 function App() {
   return (
@@ -21,6 +24,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/inicio" component={Home} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/espacios" component={Espacios} />
         <Route exact path="/espacios/post" component={PostEspacios} />
         <Route path="*" component={NotFound} />
