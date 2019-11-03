@@ -39,12 +39,8 @@ export default class Login extends React.Component {
             }
         )
 
-        let user = {
-            username: username,
-            token: response.data.token
-        }
-        cookies.set('user', user);
-        console.log(cookies.get('user'));
+        cookies.set('token', response.data.token);
+        console.log(cookies.get('token'));
     }
 
     handleUserChange(event) {

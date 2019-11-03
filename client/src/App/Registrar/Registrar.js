@@ -35,6 +35,10 @@ export default class Registrar extends React.Component {
                                         <Form.Control type="text"></Form.Control>
                                     </Form.Group>
                                     <Form.Group>
+                                        <Form.Label>Nombre completo *</Form.Label>
+                                        <Form.Control type="name"></Form.Control>
+                                    </Form.Group>
+                                    <Form.Group>
                                         <Form.Label>Correo *</Form.Label>
                                         <Form.Control type="email"></Form.Control>
                                     </Form.Group>

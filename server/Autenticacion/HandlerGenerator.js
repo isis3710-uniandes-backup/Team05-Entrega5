@@ -30,7 +30,7 @@ class HandlerGenerator {
               else {
   
                   // Se genera un nuevo token para el nombre de usuario el cuál expira en 24 horas
-                  let token = jwt.sign( { username: doc.username, rol: doc.rol },
+                  let token = jwt.sign( { username: doc.username, rol: doc.rol, nombre: doc.nombre, correo: doc.correo },
                   config.secret, { expiresIn: '24h' } );
                   
                   // Retorna el token el cuál debe ser usado durante las siguientes solicitudes
@@ -42,11 +42,11 @@ class HandlerGenerator {
               } 
           })
           .catch( err => {
-              throw err;
               res.status( 500 ).json({
                   success: false,
                   message: `Authentication failed! There was an error during the process: ${err}`
               });
+              throw err;
           });
       } else {
   
@@ -71,15 +71,17 @@ class HandlerGenerator {
       let username = req.body.username;
       let password = req.body.password;
       let rol = req.body.rol;
+      let nombre = req.body.nombre;
+      let correo = req.body.correo;
   
-      if( username && password && rol) {
+      if( username && password && rol && nombre && correo) {
           password = seguridad.encriptar(password);
           seguridad.verificarUsuario(username, password)
           .then( doc => {
               if(!doc) {
                   conn.then( client => {
                       client.db().collection(config.USUARIOS).insertOne(
-                          { username: username, password: password, rol: rol },
+                          { username: username, password: password, rol: rol, nombre: nombre, correo: correo },
                           (err, r) => {
                               if (err) {
                                   res.status(500).json({
