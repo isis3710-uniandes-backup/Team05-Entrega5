@@ -1,17 +1,30 @@
-import React from 'react';
-import './normalize.css'
-import './App.css';
+import React from "react";
+
+import "./normalize.css";
+import "./App.css";
+/**
+ * React - Boostrap
+ * https://react-bootstrap.github.io/getting-started/introduction 
+ * */ 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavBar from '../NavBar/NavBar.js';
-import Reservar from '../Reservar/Reservar.js'
+import 'bootstrap/dist/js/bootstrap.min.js';
+
+import { Switch, Route } from "react-router-dom";
+import Home from "../Home/Home";
+import NotFound from "../404/NotFound";
+import Espacios from "../Espacios/Espacios";
+import PostEspacios from "../Espacios/PostEspacios";
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-      <div className="reservar">
-        <Reservar />
-      </div>
+    <div>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/inicio" component={Home} />
+        <Route exact path="/espacios" component={Espacios} />
+        <Route exact path="/espacios/post" component={PostEspacios} />
+        <Route path="*" component={NotFound} />
+      </Switch>
     </div>
   );
 }
