@@ -43,8 +43,8 @@ export default class Login extends React.Component {
                     headers: { 'Content-Type': 'application/json' }
                 }
             )
-            cookies.set('user', jwt.decode(response.data.token));
-            console.log(cookies.get('user'));
+            cookies.set('token', response.data.token);
+            console.log(cookies.get('token'));
             this.props.history.push('/')
         } catch (err) {
             this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true })
