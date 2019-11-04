@@ -1,11 +1,11 @@
 /* GENERALES */
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   color: #00171F;
   overflow-x: hidden;
 }
 .title, .place, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Exo 2', Roboto, sans-serif;
+  font-family: 'Karla', sans-serif;
 }
 .host {
   min-height: 90vh;
@@ -16,7 +16,7 @@ body {
   margin-top: 8vh;
 }
 .customBody {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 500;
 }
 
