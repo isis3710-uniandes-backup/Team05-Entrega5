@@ -1,6 +1,6 @@
 import React from "react";
 
-import Container from "react-bootstrap/Container";
+import './Espacios.css'
 
 export default class Espacios extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class Espacios extends React.Component {
   }
 
   get_espacios() {
-    fetch("http://localhost:5000/api/espacios", {
+    fetch("/api/espacios", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -43,15 +43,24 @@ export default class Espacios extends React.Component {
   render() {
     return (
       <div>
-        <div className="row">
+
+        <div style={{height: '10vh'}}>
+          &nbsp;
+        </div>
+
+        <h1>
+          Espacios disponibles
+        </h1>
+
+        <div className="row" id="CardsContainer">
           {this.state.espacios.map((x, i) => {
             return (
               <div key={i} className="col-md-4" style={{ marginTop: "2em" }}>
-                <div className="card">
+                <div className="card" style={{ textAlign: 'left' }}>
                   <div className="card-body">
                     <h5 className="card-title">{x.parqueadero}</h5>
                     <p className="card-text">{x.descripcion}</p>
-                    <a href="#" className="btn btn-primary">
+                    <a href="#" className="btn btn-primary" style={{ float: 'right' }}>
                       Reservar
                     </a>
                   </div>
