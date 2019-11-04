@@ -16,8 +16,10 @@ export default class Reservar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            date: null,
-            focused: null
+            fechaInicio: null,
+            fechaFin: null,
+            motivo: null,
+            estado: null
         }
     }
 
@@ -82,7 +84,7 @@ export default class Reservar extends React.Component {
                                     </Row>
                                 </FormGroup>
                                 <div className="search-button">
-                                    <Button variant="danger">Buscar</Button>
+                                    <Button variant="danger" onSubmit={this.handle_post}>Buscar</Button>
                                 </div>
                             </Form>
                         </Card.Body>
@@ -92,8 +94,36 @@ export default class Reservar extends React.Component {
         );
     }
 
-    handleDateChange(date){
-        
+    handleDateChange(data) {
+        this.setState({ fechaInicio: data });
+    }
+
+
+    handle_onPost(event) {
+        event.preventDefault();
+        const reserva = {
+            fechaInicio: this.state.fechaInicio,
+            fechaFin: null,
+            motivo: event.target.motivo.value,
+            estado: event.target.estado.value,
+        };
+        this.post_reserva(reserva);
+    }
+
+    post_reserva(reserva) {
+        fetch('http://localhost:5000/api/reservas', {
+            method: "post",
+            body: JSON.stringify(reserva),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(_ => {
+                this.props.history.push('/reservas')
+            })
+            .catch(err => {
+                console.log(err.message);
+            });
     }
 
 }
