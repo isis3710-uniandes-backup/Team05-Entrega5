@@ -29,3 +29,9 @@
 .content-body {
     padding-top: 5%;
 }
+
+.error-container {
+    background-color: lightpink;
+    border-radius: 5px;
+    padding: 2%;
+}
