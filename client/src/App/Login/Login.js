@@ -4,10 +4,10 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Nav from 'react-bootstrap/Nav';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-import { ToastContainer, toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import "./Login.css";
 
@@ -84,22 +84,22 @@ export default class Login extends React.Component {
         }
 
         return (
-            <div className="content-body">
+            <div className="content-body host">
                 <Container className="prueba">
-                    <h1 className="titulo">
-                        Iniciar sesión
-                    </h1>
-                    {incorrectMessage}
                     <div className="border-container">
+                        <h2 className="title">
+                            Ingresar
+                        </h2>
+                        {incorrectMessage}
                         <Container className="login-container">
                             <Form className="text-left">
                                 <Form.Group>
                                     <Form.Label>Nombre de usuario</Form.Label>
-                                    <Form.Control required type="text" onChange={this.handleUserChange}></Form.Control>
+                                    <Form.Control required type="text" placeholder="Ingrese su nombre de usuario" onChange={this.handleUserChange}></Form.Control>
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label>Contraseña</Form.Label>
-                                    <Form.Control type="password" onChange={this.handlePassChange}></Form.Control>
+                                    <Form.Control type="password" placeholder="Ingrese su contraseña" onChange={this.handlePassChange}></Form.Control>
                                 </Form.Group>
                                 <Button variant="success" size="md" block onClick={this.handleSubmit}>Ingresar</Button>
                             </Form>
@@ -109,7 +109,7 @@ export default class Login extends React.Component {
                 <Container className="cuenta-inexistente">
                     <Row>
                         <Col>
-                            ¿No tienes cuenta? <Nav.Link href="/registrar">Regístrate</Nav.Link>
+                            <Link href="/registrar">¿No tienes cuenta? Regístrate</Link>
                         </Col>
                     </Row>
                 </Container>
