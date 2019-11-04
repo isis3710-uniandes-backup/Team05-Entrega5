@@ -3,7 +3,6 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form';
-import NavBar from '../NavBar/NavBar.js';
 import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import axios from 'axios';
@@ -36,7 +35,7 @@ export default class Login extends React.Component {
     async login(username, pass) {
         try {
             const response = await axios.post(
-                'http://localhost:5000/login/login',
+                'http://localhost:5000/api/login',
                 {
                     "username": username,
                     "password": pass
@@ -94,38 +93,35 @@ export default class Login extends React.Component {
         }
 
         return (
-            <div>
-                <NavBar />
-                <div className="content-body">
-                    <Container className="prueba">
-                        <h1 className="titulo">
-                            Iniciar sesión
-                        </h1>
-                        {incorrectMessage}
-                        <div className="border-container">
-                            <Container className="login-container">
-                                <Form className="text-left">
-                                    <Form.Group>
-                                        <Form.Label>Nombre de usuario</Form.Label>
-                                        <Form.Control required type="text" placeholder="Escribe tu correo" onChange={this.handleUserChange}></Form.Control>
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label>Contraseña</Form.Label>
-                                        <Form.Control type="password" onChange={this.handlePassChange}></Form.Control>
-                                    </Form.Group>
-                                    <Button variant="success" size="md" block onClick={this.handleSubmit}>Ingresar</Button>
-                                </Form>
-                            </Container>
-                        </div>
-                    </Container>
-                    <Container className="cuenta-inexistente">
-                        <Row>
-                            <Col>
-                                ¿No tienes cuenta? <Nav.Link href="/Registrar">Regístrate</Nav.Link>
-                            </Col>
-                        </Row>
-                    </Container>
-                </div>
+            <div className="content-body">
+                <Container className="prueba">
+                    <h1 className="titulo">
+                        Iniciar sesión
+                    </h1>
+                    {incorrectMessage}
+                    <div className="border-container">
+                        <Container className="login-container">
+                            <Form className="text-left">
+                                <Form.Group>
+                                    <Form.Label>Nombre de usuario</Form.Label>
+                                    <Form.Control required type="text" placeholder="Escribe tu correo" onChange={this.handleUserChange}></Form.Control>
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label>Contraseña</Form.Label>
+                                    <Form.Control type="password" onChange={this.handlePassChange}></Form.Control>
+                                </Form.Group>
+                                <Button variant="success" size="md" block onClick={this.handleSubmit}>Ingresar</Button>
+                            </Form>
+                        </Container>
+                    </div>
+                </Container>
+                <Container className="cuenta-inexistente">
+                    <Row>
+                        <Col>
+                            ¿No tienes cuenta? <Nav.Link href="/Registrar">Regístrate</Nav.Link>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
         );
     }
