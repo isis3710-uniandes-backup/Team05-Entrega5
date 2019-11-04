@@ -8,17 +8,17 @@ class HandlerGenerator {
 
     login( req, res ) {
       // Extrae el usuario y la contraseña especificados en el cuerpo de la solicitud
-      let username = req.body.username;
-      let password = req.body.password;
+      let nombreUsuario = req.body.nombreUsuario;
+      let contrasenia = req.body.contrasenia;
       
       // Si se especifico un usuario y contraseña, proceda con la validación
       // de lo contrario, un mensaje de error es retornado
-      if( username && password ) {
+      if( nombreUsuario && contrasenia ) {
           // Se actualiza el password a como está en la base de datos
-          password = seguridad.encriptar(password);
-          
+          contrasenia = seguridad.encriptar(contrasenia);
+          console.log(contrasenia)
           // Se verifica que existan en la base de datos
-          seguridad.verificarUsuario(username, password)
+          seguridad.verificarUsuario(nombreUsuario, contrasenia)
           .then( doc => {
               if(!doc) {
                   res.status( 403 ).json({
@@ -30,7 +30,7 @@ class HandlerGenerator {
               else {
   
                   // Se genera un nuevo token para el nombre de usuario el cuál expira en 24 horas
-                  let token = jwt.sign( { username: doc.username, rol: doc.rol, nombre: doc.nombre, correo: doc.correo },
+                  let token = jwt.sign( { nombreUsuario: doc.nombreUsuario, rol: doc.rol, nombre: doc.nombre, correo: doc.correo },
                   config.secret, { expiresIn: '24h' } );
                   
                   // Retorna el token el cuál debe ser usado durante las siguientes solicitudes
@@ -46,7 +46,6 @@ class HandlerGenerator {
                   success: false,
                   message: `Authentication failed! There was an error during the process: ${err}`
               });
-              throw err;
           });
       } else {
   
@@ -68,20 +67,20 @@ class HandlerGenerator {
   
     registro( req, res ) {
       // Extrae el usuario y la contraseña especificados en el cuerpo de la solicitud
-      let username = req.body.username;
-      let password = req.body.password;
+      let nombreUsuario = req.body.nombreUsuario;
+      let contrasenia = req.body.contrasenia;
       let rol = req.body.rol;
       let nombre = req.body.nombre;
       let correo = req.body.correo;
   
-      if( username && password && rol && nombre && correo) {
-          password = seguridad.encriptar(password);
-          seguridad.verificarUsuario(username, password)
+      if( nombreUsuario && contrasenia && rol && nombre && correo) {
+          contrasenia = seguridad.encriptar(contrasenia);
+          seguridad.verificarUsuario(nombreUsuario, contrasenia)
           .then( doc => {
               if(!doc) {
                   conn.then( client => {
                       client.db().collection(config.USUARIOS).insertOne(
-                          { username: username, password: password, rol: rol, nombre: nombre, correo: correo },
+                          { nombreUsuario: nombreUsuario, contrasenia: contrasenia, rol: rol, nombre: nombre, correo: correo },
                           (err, r) => {
                               if (err) {
                                   res.status(500).json({
@@ -94,7 +93,7 @@ class HandlerGenerator {
                                       success: true,
                                       message: 'Successfully created new user',
                                       data: {
-                                          username: username,
+                                          nombreUsuario: nombreUsuario,
                                           rol: rol
                                       }
                                   });
@@ -115,6 +114,7 @@ class HandlerGenerator {
                   success: false,
                   message: `Authentication failed! There was an error during the process: ${err}`
               });
+              throw err;
           });
       }
       else {

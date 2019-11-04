@@ -35,10 +35,10 @@ export default class Login extends React.Component {
     async login(username, pass) {
         try {
             const response = await axios.post(
-                'http://localhost:5000/api/login',
+                'http://localhost:5000/api/usuarios/login',
                 {
-                    "username": username,
-                    "password": pass
+                    "nombreUsuario": username,
+                    "contrasenia": pass
                 },
                 {
                     headers: { 'Content-Type': 'application/json' }

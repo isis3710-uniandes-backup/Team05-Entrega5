@@ -1,0 +1,38 @@
+#
+# Usuarios API
+#
+
+### GET all usuarios
+
+GET http://localhost:5000/api/usuarios
+
+### GET one usuario by ID
+
+GET http://localhost:5000/api/usuarios/5dc0981b640dde38d123016b
+
+### LOGIN 
+
+POST http://localhost:5000/api/usuarios/login
+Content-Type: application/json
+
+{
+	"nombreUsuario" : "juanca8520",
+	"contrasenia" :"12345678"
+}
+
+### POST de un usuario
+
+POST http://localhost:5000/api/usuarios
+Content-Type: application/json
+
+{
+	"nombre" : "Juan Camilo Pulido",
+	"contrasenia" :"12345678",
+	"nombreUsuario" : "juanca8520",
+	"correo" : "jc.pulido@uniandes.edu.co",
+	"rol": "OFERTOR"
+}
+
+### DELETE de un usuario
+
+DELETE http://localhost:5000/api/usuarios/5dc0a19da05e043c2853d56d
