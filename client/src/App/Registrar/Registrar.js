@@ -28,6 +28,7 @@ export default class Registrar extends React.Component {
             nombre: '',
             correo: '',
             contrasenha: '',
+            error: false,
             errors: {
                 username: '',
                 nombre: '',
@@ -59,12 +60,12 @@ export default class Registrar extends React.Component {
                 errors.email =
                     validEmailRegex.test(value)
                         ? ''
-                        : 'Email is not valid!';
+                        : 'El correo ingresado no es válido';
                 break;
             case 'password':
                 errors.password =
                     value.length < 8
-                        ? 'Password must be 8 characters long!'
+                        ? 'La contraseña debe tener por lo menos 8 caracteres'
                         : '';
                 break;
             case 'nombre':
@@ -83,7 +84,8 @@ export default class Registrar extends React.Component {
             username: event.target.value,
             nombre: this.state.nombre,
             correo: this.state.correo,
-            contrasenha: this.state.contrasenha
+            contrasenha: this.state.contrasenha,
+            error: false
         })
     }
 
@@ -93,7 +95,8 @@ export default class Registrar extends React.Component {
             username: this.state.username,
             nombre: event.target.value,
             correo: this.state.correo,
-            contrasenha: this.state.contrasenha
+            contrasenha: this.state.contrasenha,
+            error: false
         })
     }
 
@@ -103,7 +106,8 @@ export default class Registrar extends React.Component {
             username: this.state.username,
             nombre: this.state.nombre,
             correo: event.target.value,
-            contrasenha: this.state.contrasenha
+            contrasenha: this.state.contrasenha,
+            error: false
         })
     }
 
@@ -113,7 +117,8 @@ export default class Registrar extends React.Component {
             username: this.state.username,
             nombre: this.state.nombre,
             correo: this.state.correo,
-            contrasenha: event.target.value
+            contrasenha: event.target.value,
+            error: false
         })
     }
 
@@ -143,7 +148,15 @@ export default class Registrar extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        if (validateForm(this.state.errors)) {
+        this.setState({
+            username: this.state.username,
+            nombre: this.state.nombre,
+            correo: this.state.correo,
+            contrasenha: this.state.contrasenha,
+            error: validateForm(this.state.errors)
+        })
+     
+        if(this.state.error) {
             this.registrar(this.state.username, this.state.contrasenha, this.state.nombre, this.state.correo);
         }
     }
@@ -153,10 +166,10 @@ export default class Registrar extends React.Component {
 
         let incorrectMessage;
 
-        if (!validateForm(this.state.errors)) {
+        if (this.state.error) {
             incorrectMessage =
-                <Container className="error-container">
-                    Hay campos incorrectos o vacíos
+                <Container className="error">
+                    Hay campos vacíos
                 </Container>
         }
 
@@ -174,7 +187,7 @@ export default class Registrar extends React.Component {
                                 <Form className="text-left">
                                     <Form.Group>
                                         <Form.Label>Nombre de usuario *</Form.Label>
-                                        <Form.Control type="text" name="username" onChange={this.handleUsername}></Form.Control>
+                                        <Form.Control type="text" autoComplete="new-password" name="username" onChange={this.handleUsername}></Form.Control>
                                         {errors.username.length > 0 &&
                                             <span className='error'>{errors.username}</span>}
                                     </Form.Group>
@@ -192,7 +205,7 @@ export default class Registrar extends React.Component {
                                     </Form.Group>
                                     <Form.Group>
                                         <Form.Label>Contraseña *</Form.Label>
-                                        <Form.Control type="password" name="password" onChange={this.handleContrasenha}></Form.Control>
+                                        <Form.Control type="password" autoComplete="new-password" name="password" onChange={this.handleContrasenha}></Form.Control>
                                         {errors.contrasenha.length > 0 &&
                                             <span className='error'>{errors.contrasenha}</span>}
                                     </Form.Group>
