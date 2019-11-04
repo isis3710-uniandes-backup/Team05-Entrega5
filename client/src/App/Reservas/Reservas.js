@@ -9,11 +9,15 @@ class Reservas extends Component {
 
     }
 
+    renderReservas(callback){
+
+    }
+
     render() {
         return (
             <div>
                 <NavBar />
-                {this.props.params.reserva.map((e,i) => <Reserva key= {i} reserva = {e}/>)}
+                {this.props.params.reservas.map((e,i) => <Reserva key= {i} reserva = {e}/>)}
             </div>
         );
     }
