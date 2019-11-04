@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { Link } from "react-router-dom";
 
 
 import "./Home.css";
+import parking from '../../assets/parking.png';
 
 let jwt = require('jsonwebtoken');
 const cookies = new Cookies();
@@ -22,7 +24,7 @@ class Home extends Component {
     revisarUsuario() {
       // La dirección a donde lo manda dependiendo de si está logueado o no 
       // Se mira si está logueado y se cambia la dirección a donde lo manda
-      let direccion = this.token? '/reservar' : '/login' ;
+      let direccion = this.token? '/reservar' : '/login';
 
       return (
           <Link to={direccion}>
@@ -38,14 +40,14 @@ class Home extends Component {
             <div className="col-12 col-md-6 text-left my-5 my-md-0">
               <h2 className="font-weight-bold">¡Reserva un parqueadero fácil y rápido!</h2>
               <p className="py-4 text-muted">
-                La mejor forma de encontrar el espacio perfecto para parquear tu vehículo.
+                La mejor forma de encontrar el espacio perfecto para parquear tu vehículo desde donde quieras.
               </p>
               <div className="d-flex justify-content-end">
                 {this.revisarUsuario()}
               </div>                        
             </div>
             <div className="col-12 col-md-6 d-flex justify-content-center">
-              <img className="banner my-5 my-md-0" src="https://i.postimg.cc/85VcV8yM/plant.png" alt="Imagen de una planta pequeña" />
+              <img className="banner my-5 my-md-0" src={parking} alt="Imagen de auto parqueado" />
             </div>
         </div>
       </div>
