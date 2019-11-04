@@ -45,9 +45,7 @@ export default class Login extends React.Component {
                 }
             )
             cookies.set('token', response.data.token);
-            console.log(cookies.get('token'));
             this.props.history.push('/');
-            // toast();
             toast.success(`Bienvenido ${jwt.decode(cookies.get('token')).nombre}`);
 
         } catch (err) {
@@ -61,7 +59,6 @@ export default class Login extends React.Component {
             username: event.target.value,
             password: this.state.password
         });
-        console.log(this.state)
     }
 
     handlePassChange(event) {
@@ -69,7 +66,6 @@ export default class Login extends React.Component {
             username: this.state.username,
             password: event.target.value
         });
-        console.log(this.state)
     }
 
     handleSubmit(event) {

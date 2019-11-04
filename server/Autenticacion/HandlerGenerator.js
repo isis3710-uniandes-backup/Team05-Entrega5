@@ -16,7 +16,6 @@ class HandlerGenerator {
       if( nombreUsuario && contrasenia ) {
           // Se actualiza el password a como está en la base de datos
           contrasenia = seguridad.encriptar(contrasenia);
-          console.log(contrasenia)
           // Se verifica que existan en la base de datos
           seguridad.verificarUsuario(nombreUsuario, contrasenia)
           .then( doc => {
