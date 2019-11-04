@@ -89,7 +89,7 @@ export default class Navbar extends Component {
         // }
         return (
             <nav className="fixed-top navbar navbar-expand-md bg-white shadow navbar-light">
-                <Link className="navbar-brand d-flex align-items-center ml-3" to="/" title="Inicio">
+                <Link className="navbar-brand d-flex align-items-center ml-3 font-weight-bold" to="/" title="Inicio">
                     <img src={logo} className="d-inline-block mr-2" width="45" height="45" alt="ParkIn logo" />
                     <span className="prefix">Park</span>In
                 </Link>

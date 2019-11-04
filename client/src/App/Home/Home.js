@@ -17,18 +17,18 @@ class Home extends Component {
   }
 
   /**
-     * Revisa si el usuario está registrado para llevarlo a calcular la huella o a loguearse
-     */
-    revisarUsuario() {
-      // La dirección a donde lo manda dependiendo de si está logueado o no 
-      // Se mira si está logueado y se cambia la dirección a donde lo manda
-      let direccion = this.token? '/reservar' : '/login';
+   * Revisa si el usuario está registrado para llevarlo a calcular la huella o a loguearse
+   */
+  revisarUsuario() {
+    // La dirección a donde lo manda dependiendo de si está logueado o no 
+    // Se mira si está logueado y se cambia la dirección a donde lo manda
+    let direccion = this.token? '/reservar' : '/login';
 
-      return (
-          <Link to={direccion}>
-              <button className="but-outline">Inicia Ahora</button>
-          </Link>
-      );
+    return (
+        <Link to={direccion}>
+            <button className="but-outline">Inicia Ahora</button>
+        </Link>
+    );
   }
 
   render() {
