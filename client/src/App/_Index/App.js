@@ -19,14 +19,14 @@ import PostEspacios from "../Espacios/PostEspacios";
 import Login from "../Login/Login.js";
 import Registrar from '../Registrar/Registrar.js';
 import Reservas from '../Reservas/Reservas.js';
-import Navbar from "../NavBar/Navbar";
+import Navbar from "../Navbar/Navbar";
 
 toast.configure()
 
 function App() {
   return (
     <div className="App">
-      <div className="">
+      <div>
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />

@@ -1,0 +1,9 @@
+#CardsContainer {
+    margin: 0 5em;
+}
+
+@media only screen and (max-width: 600px) {
+    #CardsContainer {
+        margin: 0 1em;
+    }
+  }
