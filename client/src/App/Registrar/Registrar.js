@@ -140,7 +140,7 @@ export default class Registrar extends React.Component {
                     headers: { 'Content-Type': 'application/json' }
                 }
             )
-            this.props.history.push('/Login')
+            this.props.history.push('/login')
         }
         catch (err) {
             throw err;

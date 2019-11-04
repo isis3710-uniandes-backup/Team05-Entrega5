@@ -19,13 +19,15 @@ import PostEspacios from "../Espacios/PostEspacios";
 import Login from "../Login/Login.js";
 import Registrar from '../Registrar/Registrar.js';
 import Reservas from '../Reservas/Reservas.js';
+import Navbar from "../NavBar/Navbar";
 
 toast.configure()
 
 function App() {
   return (
     <div className="App">
-      <div className="container-fluid">
+      <div className="">
+        <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/inicio" component={Home} />
