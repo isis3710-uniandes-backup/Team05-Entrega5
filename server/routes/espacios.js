@@ -59,14 +59,14 @@ router.get("/:id", (req, res) => {
 /**
  * GET ALL POR LOCALIDAD
  */
-router.get("/:localidad", (req, res) => {
+router.get("/localidad", (req, res) => {
     try {
       Connection.connectToMongo()
         .then(database => {
           const client = database.db(db).collection(collection);
   
           client
-            .find({ localidad: req.params.localidad })
+            .find({ localidad: req.query.localidad })
             .toArray()
             .then(x => res.status(200).json(x))
             .catch(err => res.status(404).json({ message: err.message }));

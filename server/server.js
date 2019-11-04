@@ -43,7 +43,7 @@ app.use("/api/reservas", reservas_route);
  */
 app
   .use(express.static(path.join(__dirname, "../client/build")))
-  .get("/", (req, res) => res.sendFile(path.join(__dirname,'../client/build/index.html')));
+  .get("*", (req, res) => res.sendFile(path.join(__dirname,'../client/build/index.html')));
 
 
 
