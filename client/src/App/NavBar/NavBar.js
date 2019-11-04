@@ -42,7 +42,6 @@ export default class Navbar extends Component {
         else {
             return (
                 <ul className="navbar-nav ml-0 align-items-end">
-                    <li className="nav-item mx-md-2"><Link to="/tips" className="nav-link">Tips Ambientales</Link></li>
                     {this.revisarLogin()}
                 </ul>
             );
@@ -71,7 +70,7 @@ export default class Navbar extends Component {
                     </div>
                     <div className="dropdown-menu dropdown-menu-sm-right" aria-labelledby="drop">
                         <Link className="dropdown-item" to="/login">Ingresar</Link>
-                        <Link className="dropdown-item" to="/registrarse">Registrarse</Link>
+                        <Link className="dropdown-item" to="/registrar">Registrarse</Link>
                     </div>
                 </li>
             );

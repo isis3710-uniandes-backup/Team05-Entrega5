@@ -20,7 +20,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="home host">
+      <div className="home host-special">
         <div className="reservar">
           <Reservar />
         </div>
