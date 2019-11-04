@@ -128,11 +128,11 @@ export default class Registrar extends React.Component {
     async registrar(username, password, nombre, correo) {
         try {
             const response = await axios.post(
-                'http://localhost:5000/api/registrar',
+                'http://localhost:5000/api/usuarios',
                 {
-                    "username": username,
-                    "password": password,
-                    "rol": "cliente",
+                    "nombreUsuario": username,
+                    "contrasenia": password,
+                    "rol": "OFERTOR",
                     "nombre": nombre,
                     "correo": correo
                 },

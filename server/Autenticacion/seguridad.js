@@ -1,6 +1,8 @@
 const crypto = require('crypto');
 const config = require('../Autenticacion/config.js');
-let conn = require("./usersDbConn.js");
+//let conn = require("./usersDbConn.js");
+const { Connection } = require("../mongo_config/Connection");
+
 
 module.exports = {
     encriptar: (data) => {
@@ -11,9 +13,9 @@ module.exports = {
     },
     verificarUsuario: (username, password) => {
         return new Promise((resolve, reject) => {
-            conn.then(client => {
+            Connection.connectToMongo().then(client => {
                 client.db().collection(config.USUARIOS).findOne(
-                    { username: username, password: password },
+                    { nombreUsuario: username, contrasenia: password },
                     (err, document) => {
                         if (err) reject(err);
                         else if (!document) resolve(document);

@@ -5,7 +5,9 @@ const { Connection } = require("../mongo_config/Connection");
 
 const db = "entrega4";
 const collection = "usuarios";
+var HandlerGenerator = require("../Autenticacion/HandlerGenerator.js");
 
+HandlerGenerator = new HandlerGenerator();
 /**
  * GET ALL-
  */
@@ -53,47 +55,25 @@ router.get("/:idUsuario", (req, res) => {
 });
 
 /**
+ * LOGIN
+ */
+router.post("/login", HandlerGenerator.login)
+
+/**
  * POST
  */
-router.post("/", (req, res) => {
-  const new_user = {
-    nombre: req.body.nombre,
-    nombreUsuario: req.body.nombreUsuario,
-    email: req.body.email,
-    contrasenia: req.body.contrasenia,
-    tipo: req.body.tipo
-  };
 
-  try {
-    Connection.connectToMongo()
-      .then(database => {
-        const client = database.db(db).collection(collection);
-
-        client.insertOne(new_user, (err, result) => {
-          if (err) {
-            res.status(400).json({ message: err.message });
-            return;
-          }
-          res.status(201).send(result.ops);
-        });
-      })
-      .catch(err => {
-        res.status(500).json({ message: err.message });
-      });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
+ router.post("/", HandlerGenerator.registro);
 
 /**
  * PATCH
  */
 router.patch("/:idUsuario", (req, res) => {
   let updating = {};
-  if (req.body.email) {
-    updating.email = req.body.email;
-  }
   if (req.body.nombre) {
+    updating.nombre = req.body.nombre;
+  }
+  if (req.body.constrasenia) {
     updating.nombre = req.body.nombre;
   }
   if (req.body.nombreUsuario) {
