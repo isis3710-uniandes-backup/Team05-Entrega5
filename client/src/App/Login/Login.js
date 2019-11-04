@@ -12,6 +12,8 @@ import "./Login.css";
 
 const cookies = new Cookies();
 
+let jwt = require('jsonwebtoken');
+
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -19,32 +21,34 @@ export default class Login extends React.Component {
 
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            incorrectLogin: false
         }
 
         this.handleUserChange = this.handleUserChange.bind(this);
         this.handlePassChange = this.handlePassChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.login = this.login.bind(this);
     }
 
     async login(username, pass) {
-        const response = await axios.post(
-            'http://localhost:5000/login/login',
-            {
-                "username": username,
-                "password": pass
-            },
-            {
-                headers: { 'Content-Type': 'application/json' }
-            }
-        )
-
-        let user = {
-            username: username,
-            token: response.data.token
+        try {
+            const response = await axios.post(
+                'http://localhost:5000/login/login',
+                {
+                    "username": username,
+                    "password": pass
+                },
+                {
+                    headers: { 'Content-Type': 'application/json' }
+                }
+            )
+            cookies.set('token', response.data.token);
+            console.log(cookies.get('token'));
+            this.props.history.push('/')
+        } catch (err) {
+            this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true })
         }
-        cookies.set('user', user);
-        console.log(cookies.get('user'));
     }
 
     handleUserChange(event) {
@@ -68,6 +72,16 @@ export default class Login extends React.Component {
     }
 
     render() {
+
+        let incorrectMessage;
+
+        if (this.state.incorrectLogin) {
+            incorrectMessage =
+                <Container className="error-container">
+                    Usuario o contraseña incorrectos
+                </Container>
+        }
+
         return (
             <div>
                 <NavBar />
@@ -76,6 +90,7 @@ export default class Login extends React.Component {
                         <h1 className="titulo">
                             Iniciar sesión
                         </h1>
+                        {incorrectMessage}
                         <div className="border-container">
                             <Container className="login-container">
                                 <Form className="text-left">
