@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import { toast } from 'react-toastify';
-import Cookies from 'universal-cookie';
+import React, { Component } from './node_modules/react';
+import { Link } from "./node_modules/react-router-dom";
+import { toast } from './node_modules/react-toastify';
+import Cookies from './node_modules/universal-cookie';
 
 import './Navbar.css'
 import logo from '../../assets/logo.svg';
 import imagen from '../../assets/user.png';
 
-let jwt = require('jsonwebtoken');
+let jwt = require('./node_modules/jsonwebtoken');
 const cookies = new Cookies();
 
 export default class Navbar extends Component {

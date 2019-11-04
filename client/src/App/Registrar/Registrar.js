@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '../Navbar/Navbar';
+import NavBar from '../Navbar/NavBar';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
