@@ -6,6 +6,9 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
 import './Registrar.css';
+import Nav from 'react-bootstrap/Nav';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
@@ -155,8 +158,8 @@ export default class Registrar extends React.Component {
             contrasenha: this.state.contrasenha,
             error: validateForm(this.state.errors)
         })
-     
-        if(this.state.error) {
+
+        if (this.state.error) {
             this.registrar(this.state.username, this.state.contrasenha, this.state.nombre, this.state.correo);
         }
     }
@@ -213,6 +216,13 @@ export default class Registrar extends React.Component {
                                 </Form>
                             </Container>
                         </div>
+                        <Container className="cuenta-existente">
+                            <Row>
+                                <Col>
+                                    ¿Ya tienes una cuenta? <Nav.Link href="/Login">Inicia sesión</Nav.Link>
+                                </Col>
+                            </Row>
+                        </Container>
                     </Container>
                 </div>
             </div>
