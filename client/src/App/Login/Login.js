@@ -115,7 +115,7 @@ export default class Login extends React.Component {
                         </Container>
                     </div>
                 </Container>
-                <Container>
+                <Container className="cuenta-inexistente">
                     <Row>
                         <Col>
                             ¿No tienes cuenta? <Nav.Link href="/Registrar">Regístrate</Nav.Link>
