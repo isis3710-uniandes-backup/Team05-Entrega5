@@ -17,6 +17,10 @@ import PostEspacios from "../Espacios/PostEspacios";
 import Login from "../Login/Login.js";
 import Registrar from '../Registrar/Registrar.js';
 import Reservas from '../Reservas/Reservas.js';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
 
 function App() {
   return (
