@@ -99,7 +99,7 @@ export default class Login extends React.Component {
                             <Form className="text-left">
                                 <Form.Group>
                                     <Form.Label>Nombre de usuario</Form.Label>
-                                    <Form.Control required type="text" placeholder="Escribe tu correo" onChange={this.handleUserChange}></Form.Control>
+                                    <Form.Control required type="text" onChange={this.handleUserChange}></Form.Control>
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label>Contraseña</Form.Label>
