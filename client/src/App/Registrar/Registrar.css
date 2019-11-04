@@ -8,3 +8,12 @@
     border-radius: 5px;
     border-color: lightgray;
 }
+
+.error {
+    font-size: 8pt;
+    color: red;
+}
+
+.cuenta-existente {
+    padding-top: 5%;
+}

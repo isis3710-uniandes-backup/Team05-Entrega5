@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -8,6 +8,8 @@ import Button from 'react-bootstrap/Button';
 import Nav from 'react-bootstrap/Nav';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import { ToastContainer, toast } from 'react-toastify';
+
 import "./Login.css";
 
 const cookies = new Cookies();
@@ -45,9 +47,18 @@ export default class Login extends React.Component {
             )
             cookies.set('token', response.data.token);
             console.log(cookies.get('token'));
-            this.props.history.push('/')
+            this.props.history.push('/');
+            toast();
+            toast.success("Bienvenido " + jwt.decode(cookies.get('token')).nombre, {
+                position: toast.POSITION.BOTTOM_RIGHT
+            });
+
         } catch (err) {
             this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true })
+            toast.error("Hubo un error en el inicio de sesión!", {
+                position: toast.POSITION.BOTTOM_RIGHT
+            }
+            )
         }
     }
 
@@ -107,7 +118,7 @@ export default class Login extends React.Component {
                             </Container>
                         </div>
                     </Container>
-                    <Container>
+                    <Container className="cuenta-inexistente">
                         <Row>
                             <Col>
                                 ¿No tienes cuenta? <Nav.Link href="/Registrar">Regístrate</Nav.Link>
