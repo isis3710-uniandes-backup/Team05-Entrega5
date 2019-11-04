@@ -2,7 +2,8 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Cookies from 'universal-cookie';
-import Row from 'react-bootstrap/Row'
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 import './NavBar.css'
 let jwt = require('jsonwebtoken');
 const cookies = new Cookies();
@@ -14,6 +15,13 @@ export default class NavBar extends React.Component {
         this.state = {
             user: jwt.decode(cookies.get("token"))
         }
+        this.logout = this.logout.bind(this);
+    }
+
+    logout(){
+        cookies.remove('token');
+        this.setState = {}
+        window.location.reload();
     }
 
     render() {
@@ -21,7 +29,7 @@ export default class NavBar extends React.Component {
 
         if (this.state.user) {
             username =
-                <Nav.Link href="/Perfil">{this.state.user.nombre}</Nav.Link>
+                <Row><Nav.Link href="/Perfil">{this.state.user.nombre}</Nav.Link><Button variant="link" onClick={this.logout}>Cerrar sesión</Button></Row>
         }
         else {
             username =<Row><Nav.Link href="/Login">Login</Nav.Link><Nav.Link href="/Registrar">Registrarse</Nav.Link></Row>
