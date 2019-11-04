@@ -50,10 +50,14 @@ export default class Login extends React.Component {
             toast();
             toast.success("Bienvenido " + jwt.decode(cookies.get('token')).nombre, {
                 position: toast.POSITION.BOTTOM_RIGHT
-              });
+            });
 
         } catch (err) {
             this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true })
+            toast.error("Hubo un error en el inicio de sesión!", {
+                position: toast.POSITION.BOTTOM_RIGHT
+            }
+            )
         }
     }
 
