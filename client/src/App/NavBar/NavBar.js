@@ -1,14 +1,13 @@
-import React from 'react';
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import Cookies from 'universal-cookie';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import { toast } from 'react-toastify';
+
 import './NavBar.css'
+
 let jwt = require('jsonwebtoken');
 const cookies = new Cookies();
 
-export default class NavBar extends React.Component {
+export default class Navbar extends Component {
     constructor(props) {
         super(props);
 
@@ -20,8 +19,9 @@ export default class NavBar extends React.Component {
 
     logout(){
         cookies.remove('token');
-        this.setState = {}
-        window.location.reload();
+        this.setState({user: undefined});
+        // window.location.reload();
+        this.forceUpdate();
     }
 
     render() {

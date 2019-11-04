@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from '../NavBar/NavBar';
+import NavBar from '../NavBar/Navbar';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -120,7 +120,7 @@ export default class Registrar extends React.Component {
     async registrar(username, password, nombre, correo) {
         try {
             const response = await axios.post(
-                'http://localhost:5000/registrar/registrar',
+                'http://localhost:5000/api/registrar',
                 {
                     "username": username,
                     "password": password,
@@ -161,47 +161,44 @@ export default class Registrar extends React.Component {
         }
 
         return (
-            <div>
-                <NavBar />
-                <div className="content-body">
-                    <Container className="prueba">
-                        <h1 className="title">
-                            Registrarse
-                        </h1>
-                        {incorrectMessage}
-                        <div className="border-container">
-                            <Container className="registrar-container">
-                                <Form className="text-left">
-                                    <Form.Group>
-                                        <Form.Label>Nombre de usuario *</Form.Label>
-                                        <Form.Control type="text" name="username" onChange={this.handleUsername}></Form.Control>
-                                        {errors.username.length > 0 &&
-                                            <span className='error'>{errors.username}</span>}
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label>Nombre completo *</Form.Label>
-                                        <Form.Control type="name" name="nombre" onChange={this.handleNombre}></Form.Control>
-                                        {errors.nombre.length > 0 &&
-                                            <span className='error'>{errors.nombre}</span>}
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label>Correo *</Form.Label>
-                                        <Form.Control type="email" name="email" onChange={this.handleCorreo}></Form.Control>
-                                        {errors.email.length > 0 &&
-                                            <span className='error'>{errors.email}</span>}
-                                    </Form.Group>
-                                    <Form.Group>
-                                        <Form.Label>Contraseña *</Form.Label>
-                                        <Form.Control type="password" name="password" onChange={this.handleContrasenha}></Form.Control>
-                                        {errors.contrasenha.length > 0 &&
-                                            <span className='error'>{errors.contrasenha}</span>}
-                                    </Form.Group>
-                                    <Button variant="success" size="md" block onClick={this.handleSubmit}>Registrarse</Button>
-                                </Form>
-                            </Container>
-                        </div>
-                    </Container>
-                </div>
+            <div className="content-body">
+                <Container className="prueba">
+                    <h1 className="title">
+                        Registrarse
+                    </h1>
+                    {incorrectMessage}
+                    <div className="border-container">
+                        <Container className="registrar-container">
+                            <Form className="text-left">
+                                <Form.Group>
+                                    <Form.Label>Nombre de usuario *</Form.Label>
+                                    <Form.Control type="text" name="username" onChange={this.handleUsername}></Form.Control>
+                                    {errors.username.length > 0 &&
+                                        <span className='error'>{errors.username}</span>}
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label>Nombre completo *</Form.Label>
+                                    <Form.Control type="name" name="nombre" onChange={this.handleNombre}></Form.Control>
+                                    {errors.nombre.length > 0 &&
+                                        <span className='error'>{errors.nombre}</span>}
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label>Correo *</Form.Label>
+                                    <Form.Control type="email" name="email" onChange={this.handleCorreo}></Form.Control>
+                                    {errors.email.length > 0 &&
+                                        <span className='error'>{errors.email}</span>}
+                                </Form.Group>
+                                <Form.Group>
+                                    <Form.Label>Contraseña *</Form.Label>
+                                    <Form.Control type="password" name="password" onChange={this.handleContrasenha}></Form.Control>
+                                    {errors.contrasenha.length > 0 &&
+                                        <span className='error'>{errors.contrasenha}</span>}
+                                </Form.Group>
+                                <Button variant="success" size="md" block onClick={this.handleSubmit}>Registrarse</Button>
+                            </Form>
+                        </Container>
+                    </div>
+                </Container>
             </div>
         )
     }

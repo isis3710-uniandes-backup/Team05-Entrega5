@@ -5,7 +5,6 @@ import Cookies from 'universal-cookie';
  * https://react-bootstrap.github.io/getting-started/introduction 
  * */
 import Reservar from '../Reservar/Reservar.js';
-import NavBar from '../NavBar/NavBar.js';
 import "./Home.css";
 let jwt = require('jsonwebtoken');
 const cookies = new Cookies();
@@ -22,7 +21,6 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home">
-        <NavBar />
         <div className="reservar">
           <Reservar />
         </div>

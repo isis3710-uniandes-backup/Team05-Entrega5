@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavBar from '../NavBar/NavBar';
 import Reserva from '../Reservas/Reserva';
 import Button from 'react-bootstrap/Button';
 
@@ -43,7 +42,6 @@ class Reservas extends Component {
         
         return (
             <div>
-                <NavBar />
                 {this.state.reservas}
             </div>
         );
