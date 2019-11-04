@@ -15,7 +15,7 @@ export default class Navbar extends Component {
         super(props);
 
         this.state = {
-            user: jwt.decode(cookies.get("token"));
+            user: jwt.decode(cookies.get("token"))
         }
         this.logout = this.logout.bind(this);
     }
