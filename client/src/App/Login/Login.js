@@ -12,6 +12,8 @@ import "./Login.css";
 
 const cookies = new Cookies();
 
+let jwt = require('jsonwebtoken');
+
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -41,8 +43,8 @@ export default class Login extends React.Component {
                     headers: { 'Content-Type': 'application/json' }
                 }
             )
-            cookies.set('token', response.data.token);
-            console.log(cookies.get('token'));
+            cookies.set('user', jwt.decode(response.data.token));
+            console.log(cookies.get('user'));
             this.props.history.push('/')
         } catch (err) {
             this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true })

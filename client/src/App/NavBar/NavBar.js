@@ -12,7 +12,7 @@ export default class NavBar extends React.Component {
         super(props);
 
         this.state = {
-            user: jwt.decode(cookies.get("token"))
+            user: cookies.get("user")
         }
     }
 
