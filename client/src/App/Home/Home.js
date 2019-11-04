@@ -1,16 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
 import Cookies from 'universal-cookie';
-/**
- * React - Boostrap
- * https://react-bootstrap.github.io/getting-started/introduction 
- * */
-import Reservar from '../Reservar/Reservar.js';
+
 import "./Home.css";
+
 let jwt = require('jsonwebtoken');
 const cookies = new Cookies();
 
-
-class Home extends React.Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,11 +14,37 @@ class Home extends React.Component {
     };
   }
 
+  /**
+     * Revisa si el usuario está registrado para llevarlo a calcular la huella o a loguearse
+     */
+    revisarUsuario() {
+      // La dirección a donde lo manda dependiendo de si está logueado o no 
+      // Se mira si está logueado y se cambia la dirección a donde lo manda
+      let direccion = this.token? '/reservar' : '/login' ;
+
+      return (
+          <Link to={direccion}>
+              <button className="but-outline">Inicia Ahora</button>
+          </Link>
+      );
+  }
+
   render() {
     return (
-      <div className="home host-special">
-        <div className="reservar">
-          <Reservar />
+      <div className="container host d-flex align-items-center">
+        <div className="row align-items-center justify-content-center">
+            <div className="col-12 col-md-6 text-left my-5 my-md-0">
+              <h2 className="font-weight-bold">¡Reserva un parqueadero fácil y rápido!</h2>
+              <p className="py-4 text-muted">
+                La mejor forma de encontrar el espacio perfecto para parquear tu vehículo.
+              </p>
+              <div className="d-flex justify-content-end">
+                {this.revisarUsuario()}
+              </div>                        
+            </div>
+            <div className="col-12 col-md-6 d-flex justify-content-center">
+              <img className="banner my-5 my-md-0" src="https://i.postimg.cc/85VcV8yM/plant.png" alt="Imagen de una planta pequeña" />
+            </div>
         </div>
       </div>
     );
