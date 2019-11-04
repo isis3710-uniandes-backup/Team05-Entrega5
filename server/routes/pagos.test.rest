@@ -1,0 +1,40 @@
+#
+#  Pagos API
+#
+
+
+### GET ID
+
+GET http://localhost:5000/api/pagos/5dbf7b2d324629127c8ba381
+
+### GET por IdReserva
+
+GET http://localhost:5000/api/pagos/reserva/507f191e810c19729de860ea
+
+
+### POST
+
+POST http://localhost:5000/api/pagos
+Content-Type: application/json
+
+{
+	"cantidad" : 25,
+	"metodoPago" :	"Tarjeta de Credito",
+	"fecha" : "December 17, 1995 03:24:00",
+	"_idReserva" : "507f191e810c19729de860ea"
+}
+
+### PATCH
+
+PATCH http://localhost:5000/api/pagos/
+Content-Type: application/json
+
+{
+	"metodoPago" :	"Efectivo",
+	"fecha" : "December 17, 1998 03:24:00"
+}
+
+
+### DELETE
+
+DELETE http://localhost:5000/api/espacios/5dbf7af4324629127c8ba380
