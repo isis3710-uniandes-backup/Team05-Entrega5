@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import { toast } from 'react-toastify';
 
 const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
 
@@ -126,32 +126,30 @@ export default class Registrar extends Component {
     }
 
     async registrar(username, password, nombre, correo) {
-        try {
-            const response = await axios.post(
-                'http://localhost:5000/api/usuarios',
-                {
-                    "nombreUsuario": username,
-                    "contrasenia": password,
-                    "rol": "USUARIO",
-                    "nombre": nombre,
-                    "correo": correo
-                },
-                {
-                    headers: { 'Content-Type': 'application/json' }
-                }
-            )
+        const response = await axios.post(
+            'http://localhost:5000/api/usuarios',
+            {
+                "nombreUsuario": username,
+                "contrasenia": password,
+                "rol": "USUARIO",
+                "nombre": nombre,
+                "correo": correo
+            },
+            {
+                headers: { 'Content-Type': 'application/json' }
+            }
+        ).then(() => {
             this.props.history.push('/login')
-        }
-        catch (err) {
+        }).catch(err => {
             this.setState({
                 username: this.state.username,
                 nombre: this.state.nombre,
                 correo: this.state.correo,
                 contrasenha: this.state.contrasenha,
                 error: true
-            })
-        }
-
+            });
+            toast.error("¡Hubo un error en el registro!");
+        })
     }
 
 
@@ -182,7 +180,7 @@ export default class Registrar extends Component {
                         <Col xs="12" sm="12" md="6" large="6" xl="6">
                             <h2 className="title font-weight-bold">
                                 Registrarse
-                        </h2>
+                            </h2>
                         </Col>
                         <Col xs="0" sm="0" md="3" large="3" xl="3"></Col>
                     </Row>
