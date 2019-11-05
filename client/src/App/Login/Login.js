@@ -3,7 +3,6 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { Link } from 'react-router-dom';
@@ -81,7 +80,9 @@ export default class Login extends React.Component {
                 "contrasenia": pass
             },
             {
-                headers: { 'Content-Type': 'application/json' }
+                headers: { 
+                    'Content-Type': 'application/json'
+                }
             }
         ).then(response => {
             if(response.data.success){
@@ -141,9 +142,9 @@ export default class Login extends React.Component {
                     <Row className="justify-content-lg-center">
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
                         <Col xs="12" sm="10" md="4" large="4" xl="4">
-                            <h2 className="title font-weight-bold">
+                            <h1 className="title font-weight-bold display-1">
                                 Ingresar
-                            </h2>
+                            </h1>
                         </Col>
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
                     </Row>
@@ -155,14 +156,16 @@ export default class Login extends React.Component {
                                 <div className="login-container">
                                     <Form className="text-left">
                                         <Form.Group>
-                                            <Form.Label>Nombre de usuario</Form.Label>
-                                            <Form.Control name="nombreUsuario" required type="text" onChange={this.handleUserChange}></Form.Control>
+                                            <Form.Label htmlFor="nombreUsuario">Nombre de usuario</Form.Label>
+                                            <Form.Control name="nombreUsuario" required type="text" placeholder="Ingresa tu nombre de usuario" title="Ingresa tu nombre de usuario" onChange={this.handleUserChange}></Form.Control>
                                         </Form.Group>
                                         <Form.Group>
-                                            <Form.Label>Contraseña</Form.Label>
-                                            <Form.Control name="contrasenia" type="password" onChange={this.handlePassChange}></Form.Control>
+                                            <Form.Label htmlFor="contrasenia">Contraseña</Form.Label>
+                                            <Form.Control name="contrasenia" type="password" placeholder="Ingresa tu contraseña" title="Ingresa tu contraseña" onChange={this.handlePassChange}></Form.Control>
                                         </Form.Group>
-                                        <Button variant="success" size="md" block onClick={this.handleSubmit}>Ingresar</Button>
+                                        <div className="d-flex justify-content-center">
+                                            <button type="button" className="but-solid" onClick={this.handleSubmit}>Ingresar</button>
+                                        </div>
                                     </Form>
                                 </div>
                             </div>

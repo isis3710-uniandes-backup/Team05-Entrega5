@@ -58,15 +58,15 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="container-fluid">
+        <div role="main" className="container-fluid">
           <Menu getUsuario={this.getUsuario} removeUsuario={this.removeUsuario}  />
           <Switch>
             <Route exact path="/" component={(props) => <Home {...props} getUsuario={this.getUsuario}/>} />
             <Route exact path="/login" component={(props) => <Login {...props} setUsuario={this.setUsuario} />} />
             <Route exact path="/registrar" component={Registrar} />
-            <Route exact path="/pagar" component={Pagar}/>
-            <Route exact path="/espacios" component={ (props) => <Espacios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
-            <Route exact path="/espacios/post" component={(props) => <PostEspacios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
+            <PrivateRoute exact path="/pagar" component={Pagar} getUsuario={this.getUsuario} />
+            <PrivateRoute exact path="/espacios" component={ (props) => <Espacios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
+            <PrivateRoute exact path="/espacios/post" component={(props) => <PostEspacios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
             <PrivateRoute exact path="/reservas" component={(props) => <Reservas {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
             <PrivateRoute exact path="/perfil" component={(props) => <Perfil {...props} getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />} getUsuario={this.getUsuario} />
             <Route path="*" component={NotFound} />

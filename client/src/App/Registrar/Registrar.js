@@ -6,7 +6,6 @@ import './Registrar.css';
 
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { toast } from 'react-toastify';
@@ -145,7 +144,7 @@ export default class Registrar extends Component {
         ).then(response => {
             if(response.data.success){
                 this.props.history.push('/login');
-                toast.success("¡Registro exitoso!");
+                toast.success("¡Registro exitoso! Ahora inicia sesión");
             }
             else {
                 this.setState({
@@ -211,30 +210,32 @@ export default class Registrar extends Component {
                                 <Container className="registrar-container">
                                     <Form className="text-left">
                                         <Form.Group>
-                                            <Form.Label>Nombre de usuario *</Form.Label>
+                                            <Form.Label htmlFor="username">Nombre de usuario *</Form.Label>
                                             <Form.Control type="text" autoComplete="new-password" name="username" onChange={this.handleUsername}></Form.Control>
                                             {errors.username.length > 0 &&
                                                 <span className='error'>{errors.username}</span>}
                                         </Form.Group>
                                         <Form.Group>
-                                            <Form.Label>Nombre completo *</Form.Label>
+                                            <Form.Label htmlFor="nombre">Nombre completo *</Form.Label>
                                             <Form.Control type="name" name="nombre" onChange={this.handleNombre}></Form.Control>
                                             {errors.nombre.length > 0 &&
                                                 <span className='error'>{errors.nombre}</span>}
                                         </Form.Group>
                                         <Form.Group>
-                                            <Form.Label>Correo *</Form.Label>
+                                            <Form.Label htmlFor="email">Correo *</Form.Label>
                                             <Form.Control type="email" name="email" onChange={this.handleCorreo}></Form.Control>
                                             {errors.email.length > 0 &&
                                                 <span className='error'>{errors.email}</span>}
                                         </Form.Group>
                                         <Form.Group>
-                                            <Form.Label>Contraseña *</Form.Label>
+                                            <Form.Label htmlFor="password">Contraseña *</Form.Label>
                                             <Form.Control type="password" autoComplete="new-password" name="password" onChange={this.handleContrasenha}></Form.Control>
                                             {errors.contrasenha.length > 0 &&
                                                 <span className='error'>{errors.contrasenha}</span>}
                                         </Form.Group>
-                                        <Button variant="success" size="md" block onClick={this.handleSubmit}>Registrarse</Button>
+                                        <div className="d-flex justify-content-center">
+                                            <button type="button" className="but-solid" onClick={this.handleSubmit}>Registrarse</button>
+                                        </div>
                                     </Form>
                                 </Container>
                             </div>

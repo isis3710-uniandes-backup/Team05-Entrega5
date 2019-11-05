@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const ObjectId = require("mongodb").ObjectID;
 const { Connection } = require("../mongo_config/Connection");
+const middleware = require("../Autenticacion/middleware");
 
 const db = "entrega4";
 const collection = "usuarios";
@@ -12,7 +13,7 @@ HandlerGenerator = new HandlerGenerator();
 /**
  * GET ALL-
  */
-router.get("/", (req, res) => {
+router.get("/", middleware.checkToken,  (req, res) => {
   try {
     Connection.connectToMongo()
       .then(async database => {
@@ -35,7 +36,7 @@ router.get("/", (req, res) => {
 /**
  * GET ONE
  */
-router.get("/:idUsuario", (req, res) => {
+router.get("/:idUsuario", middleware.checkToken, (req, res) => {
   try {
     Connection.connectToMongo()
       .then(database => {
@@ -69,7 +70,7 @@ router.post("/login", HandlerGenerator.login)
 /**
  * PATCH
  */
-router.patch("/:idUsuario", (req, res) => {
+router.patch("/:idUsuario", middleware.checkToken, (req, res) => {
   let updating = {};
   if (req.body.nombre) {
     updating.nombre = req.body.nombre;
@@ -116,7 +117,7 @@ router.patch("/:idUsuario", (req, res) => {
 /**
  * DELETE
  */
-router.delete("/:idUsuario", (req, res) => {
+router.delete("/:idUsuario", middleware.checkToken, (req, res) => {
   try {
     Connection.connectToMongo()
       .then(database => {
@@ -175,7 +176,7 @@ router.delete("/:idUsuario", (req, res) => {
 //       res.status(500).json({ message: err.message });
 //   }
 // });
-router.get("/:idUsuario/pagos", (req,res) => {
+router.get("/:idUsuario/pagos", middleware.checkToken, (req,res) => {
   try {
       Connection.connectToMongo()
           .then(database => {

@@ -6,14 +6,13 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
 const { Connection } = require("./mongo_config/Connection");
+const middleware = require("./Autenticacion/middleware");
 
 /**
  * Routers
  */
 
 
-//  const login_route = require("../server/routes/index.js");
- const index_route = require("../server/routes/index.js");
  const espacios_route = require("../server/routes/espacios.js");
  const pagos_route = require("../server/routes/pagos.js");
  const reservas_route = require("../server/routes/reservas.js");
@@ -32,13 +31,9 @@ app
  * Routes
  */
 
-
-app.use("/api", index_route);
-// app.use("/login", login_route);
-// app.use("/registrar", login_route);
-app.use("/api/espacios", espacios_route);
-app.use("/api/pagos", pagos_route);
-app.use("/api/reservas", reservas_route);
+app.use("/api/espacios", middleware.checkToken, espacios_route);
+app.use("/api/pagos", middleware.checkToken, pagos_route);
+app.use("/api/reservas", middleware.checkToken, reservas_route);
 app.use("/api/usuarios", usuarios_route);
 
 
