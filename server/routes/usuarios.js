@@ -157,7 +157,11 @@ router.get("/:idUsuario/pagos", (req,res) => {
                       let respuesta = [];
                       let client2 = database.db(db).collection(pagos_collection);
                       x.forEach(r => {
-                        respuesta.concat(client2.find({ _idReserva: ObjectId(r._id) }).toArray());
+                        client2
+                          .find({ _idReserva: ObjectId(r._id) })
+                          .toArray()
+                          .then(ans => respuesta.concat(ans))
+                          .catch(err => res.status(500).json({ message: err.message }));
                       });
                       res.status(200).json(respuesta);
                     }
