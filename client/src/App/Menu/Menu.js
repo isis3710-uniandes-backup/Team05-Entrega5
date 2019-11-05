@@ -1,35 +1,27 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { toast } from 'react-toastify';
-import Cookies from 'universal-cookie';
 
 import './Menu.css'
 import logo from '../../assets/logo.svg';
 import imagen from '../../assets/user.png';
 
-let jwt = require('jsonwebtoken');
-const cookies = new Cookies();
 
 export default class Navbar extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            user: jwt.decode(cookies.get("token"))
-        }
         this.logout = this.logout.bind(this);
     }
 
     logout(){
-        cookies.remove('token');
-        this.setState({user: undefined});
+        this.props.removeUsuario();
         // window.location.reload();
         toast.success('¡Vuelve pronto 😊!');
-        this.forceUpdate();
     }
 
     listarEnlaces() {
-        if(this.state.user) {
+        if(this.props.getUsuario()) {
             return (
                 <ul className="navbar-nav ml-0 align-items-end">
                     <li className="nav-item mx-md-2"><Link to="/espacios" className="nav-link">Espacios</Link></li>
@@ -49,7 +41,7 @@ export default class Navbar extends Component {
     }
 
     revisarLogin() {
-        if(this.state.user) {
+        if(this.props.getUsuario()) {
             return (
                 <li className="nav-item dropdown ml-5">
                     <div id="drop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

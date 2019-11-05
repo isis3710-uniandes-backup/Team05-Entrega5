@@ -19,31 +19,61 @@ import Reservas from '../Reservas/Reservas.js';
 import Menu from "../Menu/Menu";
 import Footer from '../Footer/Footer';
 import Perfil from "../Perfil/Perfil";
-import { PrivateRoute } from './SpecialRoutes';
+import Cookies from 'universal-cookie';
 
 toast.configure()
 
-function App() {
-  return (
-    <div className="App">
+let jwt = require('jsonwebtoken');
+const cookies = new Cookies();
 
-      <div className="container-fluid">
-        <Menu />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/registrar" component={Registrar} />
-          <Route exact path="/espacios" component={Espacios} />
-          <Route exact path="/espacios/post" component={PostEspacios} />
-          <Route exact path="/reservas" component={Reservas} />
-          <Route exact path="/perfil" component={Perfil} />
-          <Route path="*" component={NotFound} />
-        </Switch>
+export default class App extends React.Component {
+
+  constructor(){
+    super();
+    this.state = {
+      user: jwt.decode(cookies.get('token'))
+    }
+
+    this.setUsuario = this.setUsuario.bind(this);
+    this.getUsuario = this.getUsuario.bind(this);
+    this.removeUsuario = this.removeUsuario.bind(this);
+  }
+
+  setUsuario(token){
+    cookies.set('token', token);
+    this.setState({user: jwt.decode(cookies.get('token'))});
+  }
+
+  getUsuario() {
+    return this.state.user;
+  }
+
+  removeUsuario() {
+    this.setState({user: undefined});
+    cookies.remove('token');
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className="container-fluid">
+          <Menu getUsuario={this.getUsuario} removeUsuario={this.removeUsuario}  />
+          <Switch>
+            <Route exact path="/" component={(props) => <Home {...props} getUsuario={this.getUsuario}/>} />
+            <Route exact path="/login" component={(props) => <Login {...props} setUsuario={this.setUsuario} />} />
+            <Route exact path="/registrar" component={Registrar} />
+            <Route exact path="/espacios" component={ (props) => <Espacios {...props} getUsuario={this.getUsuario} />} />
+            <Route exact path="/espacios/post" component={(props) => <PostEspacios {...props} getUsuario={this.getUsuario} />} />
+            <Route exact path="/reservas" component={(props) => <Reservas {...props} getUsuario={this.getUsuario} />} />
+            <Route exact path="/perfil" component={(props) => <Perfil {...props} getUsuario={this.getUsuario} />} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </div>
+        <ToastContainer autoClose={5000} position={toast.POSITION.BOTTOM_RIGHT} bodyClassName="customBody" />
+        <Footer />
       </div>
-      <ToastContainer autoClose={5000} position={toast.POSITION.BOTTOM_RIGHT} bodyClassName="customBody" />
-      <Footer />
-    </div>
-  );
+    );
+  }
 }
 
-export default App;
+// export default App;
