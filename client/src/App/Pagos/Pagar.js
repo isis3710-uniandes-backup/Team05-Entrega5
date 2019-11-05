@@ -36,7 +36,6 @@ export default class Pagar extends Component {
     }
 
     handleSubmit(){
-        console.log(this.state);
         const pago = {
             cantidad : this.state.costo,
             metodoPago : this.state.metodo,
@@ -47,6 +46,7 @@ export default class Pagar extends Component {
     async postPago(pago) {
         await axios.post('http://localhost:5000/api/pagos', pago).then((p) => {
           this.props.history.push('perfil');
+          toast.success(`Pagaste correctamente con : ${this.state.metodo}`)
         });
     }
 
@@ -82,7 +82,7 @@ export default class Pagar extends Component {
                                                 <img className="rounded float-left" src="https://i.ibb.co/DpfD4wP/money-1.png" alt="Icono método de pago" width="55" height="55"/>
                                                     <h4>Efectivo</h4>
                                                     </Button>
-                                                <Button variant="success" className=" justify-content-between align-items-center" onClick={() => {this.setState({metodo: "Otro" })}}>
+                                                <Button variant="success" className=" justify-content-between align-items-center" onClick={() => {this.setState({metodo: "Transacción Bancaria" })}}>
                                                 <img className="rounded float-left" src="https://i.ibb.co/YkCHJmV/leather-wallet.png" alt="Icono método de pago" width="55" height="55"/>
                                                     <h4>Cuenta</h4>
                                                     </Button>

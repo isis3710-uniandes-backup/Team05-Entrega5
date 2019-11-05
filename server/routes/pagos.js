@@ -39,20 +39,20 @@ router.post("/", (req,res)=>{
     let imagenMetodoPago = "";
 
     if(req.body.metodoPago === "Tarjeta de Credito"){
-        imagenMetodoPago = "https://i.ibb.co/k55F3Hq/credit-card.png";
+        imagenMetodoPago = "http://i.ibb.co/k55F3Hq/credit-card.png";
 
     } else if(req.body.metodoPago === "Efectivo"){
-        imagenMetodoPago ="https://i.ibb.co/DpfD4wP/money-1.png";
+        imagenMetodoPago ="http://i.ibb.co/DpfD4wP/money-1.png";
 
     }else{
-        imagenMetodoPago ="https://i.ibb.co/YkCHJmV/leather-wallet.png";
+        imagenMetodoPago ="http://i.ibb.co/YkCHJmV/leather-wallet.png";
     }
     const newPago = {
         cantidad : req.body.cantidad,
         metodoPago : req.body.metodoPago,
         fecha : new Date(),
         _idReserva: ObjectId(req.body._idReserva),
-        imagen : imagenMetodoPago,
+        imagenMetodoPago : imagenMetodoPago,
     };
 
     try{
