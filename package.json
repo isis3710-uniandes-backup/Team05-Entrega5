@@ -1,5 +1,5 @@
 {
-  "name": "Parkin",
+  "name": "ParkIn",
   "version": "1.0.0",
   "main": "./server/server.js",
   "engines": {
@@ -7,11 +7,11 @@
     "yarn": ">1.17.x"
   },
   "scripts": {
-    "prestart": "cd client && yarn install && yarn build",
-    "start": "cd server  && yarn install && node server.js",
-    "test": "cd server && yarn install && node test.js",
-    "build": "yarn install",
-    "heroku-postbuild": "cd client && yarn install && yarn build"
+    "prestart": "cd client && npm install && npm run build",
+    "start": "cd server  && npm install && node server.js",
+    "test": "cd server && npm install && node test.js",
+    "build": "npm install",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "keywords": [
     "node",

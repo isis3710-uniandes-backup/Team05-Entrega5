@@ -142,7 +142,7 @@ export default class Login extends React.Component {
                     <Row className="justify-content-lg-center">
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
                         <Col xs="12" sm="10" md="4" large="4" xl="4">
-                            <h1 className="title font-weight-bold display-1">
+                            <h1 className="title font-weight-bold med">
                                 Ingresar
                             </h1>
                         </Col>

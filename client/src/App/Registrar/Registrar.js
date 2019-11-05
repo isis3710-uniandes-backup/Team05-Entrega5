@@ -196,9 +196,9 @@ export default class Registrar extends Component {
                     <Row className="justify-content-lg-center">
                         <Col xs="0" sm="0" md="3" large="3" xl="3"></Col>
                         <Col xs="12" sm="12" md="6" large="6" xl="6">
-                            <h2 className="title font-weight-bold">
+                            <h1 className="title font-weight-bold med">
                                 Registrarse
-                            </h2>
+                            </h1>
                         </Col>
                         <Col xs="0" sm="0" md="3" large="3" xl="3"></Col>
                     </Row>
@@ -211,25 +211,25 @@ export default class Registrar extends Component {
                                     <Form className="text-left">
                                         <Form.Group>
                                             <Form.Label htmlFor="username">Nombre de usuario *</Form.Label>
-                                            <Form.Control type="text" autoComplete="new-password" name="username" onChange={this.handleUsername}></Form.Control>
+                                            <Form.Control type="text" autoComplete="new-password" name="username" placeholder="(Ejemplo: userio)" title="Nombre usuario" onChange={this.handleUsername}></Form.Control>
                                             {errors.username.length > 0 &&
                                                 <span className='error'>{errors.username}</span>}
                                         </Form.Group>
                                         <Form.Group>
                                             <Form.Label htmlFor="nombre">Nombre completo *</Form.Label>
-                                            <Form.Control type="name" name="nombre" onChange={this.handleNombre}></Form.Control>
+                                            <Form.Control type="name" name="nombre" placeholder="(Ejemplo: Pepito Pérez)" title="Nombre" onChange={this.handleNombre}></Form.Control>
                                             {errors.nombre.length > 0 &&
                                                 <span className='error'>{errors.nombre}</span>}
                                         </Form.Group>
                                         <Form.Group>
                                             <Form.Label htmlFor="email">Correo *</Form.Label>
-                                            <Form.Control type="email" name="email" onChange={this.handleCorreo}></Form.Control>
+                                            <Form.Control type="email" name="email" placeholder="(Ejemplo: correo@gmail.com)" title="Correo" onChange={this.handleCorreo}></Form.Control>
                                             {errors.email.length > 0 &&
                                                 <span className='error'>{errors.email}</span>}
                                         </Form.Group>
                                         <Form.Group>
                                             <Form.Label htmlFor="password">Contraseña *</Form.Label>
-                                            <Form.Control type="password" autoComplete="new-password" name="password" onChange={this.handleContrasenha}></Form.Control>
+                                            <Form.Control type="password" autoComplete="new-password" name="password" placeholder="(Ejemplo: contra$enia)" title="Contraseña" onChange={this.handleContrasenha}></Form.Control>
                                             {errors.contrasenha.length > 0 &&
                                                 <span className='error'>{errors.contrasenha}</span>}
                                         </Form.Group>

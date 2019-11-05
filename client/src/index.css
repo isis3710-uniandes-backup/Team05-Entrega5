@@ -7,6 +7,9 @@ body {
 .title, .place, h1, h2, h3, h4, h5, h6 {
   font-family: 'Karla', sans-serif;
 }
+.med {
+  font-size: 2.5rem;
+}
 .host {
   min-height: 90vh;
   margin-top: 12vh;
