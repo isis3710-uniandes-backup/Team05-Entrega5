@@ -3,7 +3,6 @@ import Cookies from 'universal-cookie';
 
 import './Perfil.css';
 import imagen from '../../assets/user.png';
-import { ToastContainer, toast } from 'react-toastify';
 
 import ListarPagos from './ListarPagos';
 import { toast } from 'react-toastify';
