@@ -177,13 +177,13 @@ export default class Registrar extends Component {
         }
 
         return (
-            <div className="content-body">
+            <div className="content-body host">
                 <Container className="prueba">
-                    <h1 className="title">
-                        Registrarse
-                    </h1>
-                    {incorrectMessage}
                     <div className="border-container">
+                        <h2 className="title font-weight-bold">
+                            Registrarse
+                        </h2>
+                        {incorrectMessage}
                         <Container className="registrar-container">
                             <Form className="text-left">
                                 <Form.Group>
