@@ -4,6 +4,9 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
+import axios from "axios";
+const url_espacios = "http://localhost:5000/api/espacios";
+
 export default class PostEspacios extends React.Component {
   constructor(props) {
     super(props);
@@ -25,25 +28,14 @@ export default class PostEspacios extends React.Component {
     this.post_espacio(espacio);
   }
 
-  post_espacio(espacio) {
-    fetch("/api/espacios", {
-      method: "post",
-      body: JSON.stringify(espacio),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(_ => {
-        this.props.history.push("/espacios");
-      })
-      .catch(err => {
-        console.log(err.message);
-      });
+  async post_espacio(espacio) {
+    const prom = await axios.post(url_espacios, espacio)
+    this.props.history.push("/espacios");
   }
 
   render() {
     return (
-      <div style={{marginTop: '10vh'}}>
+      <div style={{marginTop: '10vh', minHeight: '85vh'}}>
         <Container className="prueba" style={{minWidth: '500px'}}>
           <h1 className="title" >Nueva oferta</h1>
           <div className="border-container">
