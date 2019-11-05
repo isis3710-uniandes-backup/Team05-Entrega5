@@ -13,6 +13,7 @@ export default class Pagar extends Component {
 
     constructor(props){
         super(props);
+        console.log(cookies.get('_idReserva'));
         this.state = {
             idReserva :cookies.get('_idReserva'),
             idEspacio : cookies.get('_idEspacio'),
