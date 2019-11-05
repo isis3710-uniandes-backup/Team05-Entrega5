@@ -55,7 +55,7 @@ class Reservas extends Component {
                 return (
                   <div
                     key={i}
-                    className="col-md-4"
+                    className="col"
                     style={{ marginTop: "2em" }}
                   >
                     <div className="card" style={{ textAlign: "left" }}>

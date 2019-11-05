@@ -64,9 +64,9 @@ export default class Espacios extends React.Component {
     console.log(reserva);
     await axios.post('http://localhost:5000/api/reservas', reserva).then((p) => {
       this.setState({ _idReserva: p.data[0]._id });
-      this.props.history.push('pagar');
       cookies.set('_idReserva', p.data[0]._id);
       cookies.set('_idEspacio', reserva._idEspacio);
+      this.props.history.push('pagar');
     });
 
     /*
@@ -93,12 +93,11 @@ export default class Espacios extends React.Component {
           <h1>Espacios disponibles</h1>
           <div className="row">
             <div className="col-4">
-              <div>
-                <div className="card-container ReservaCard" style={{ padding: '1em' }}>
-                  <Card>
-                    <h5 style={{ padding: '1em' }} className="card-title">Reserva parqueaderos de acuerdo con tus necesidades.</h5>
+              <div className="d-flex align-items-stretch align-center">
+                <div className="card-container ReservaCard d-flex align-items-stretch-center" style={{ padding: '1em' }}>
+                  <Card className = "d-flex align-items-stretch">
+                    <h3 style={{ padding: '1em' }} className="card-title">Fecha y Hora</h3>
                     <Card.Body className="d-flex justify-content-center w-100" style={{ width: '100%' }}>
-                      <br />
                       <DateTimePicker onChange={this.onChange} value={this.state.fechaInicio} />
                     </Card.Body>
                   </Card>
