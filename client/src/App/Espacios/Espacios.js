@@ -20,11 +20,12 @@ export default class Espacios extends React.Component {
 
     this.state = {
       espacios: [],
-      fechaInicio: null,
+      fechaInicio: Date.now(),
       fechaFin: null,
       _idUsuario: null,
       _idEspacio: null
     };
+    this.handleDate = this.handleDate.bind(this);
     this.get_espacios = this.get_espacios.bind(this);
   }
 
@@ -43,6 +44,11 @@ export default class Espacios extends React.Component {
     }
   }
 
+  handleDate(date) {
+    console.log(date);
+    this.setState({ fechaInicio: DateTime(date._d) });
+  };
+
   handleDateChange(data) {
     this.setState({ fechaInicio: data });
     console.log(this.fechaInicio);
@@ -60,7 +66,7 @@ export default class Espacios extends React.Component {
 
   async post_reserva(reserva) {
     console.log(reserva);
-    let p = await axios.post('http://localhost:5000/api/espacio', reserva);
+    let p = await axios.post('http://localhost:5000/api/reservas', reserva);
     console.log(p.data);
 
     /*
@@ -94,7 +100,7 @@ export default class Espacios extends React.Component {
                       Reserva parqueaderos de acuerdo con tus necesidades.
                       </Card.Title>
                     <Card.Body>
-                      <DateTime />
+                      <DateTime onChange={this.state.handleDate} defaultValue={Date.now()} />
                     </Card.Body>
                   </Card>
                 </div>
@@ -119,8 +125,7 @@ export default class Espacios extends React.Component {
                                 className="btn btn-primary"
                                 style={{ float: "right" }}
                                 onClick={() => {
-                                  this.setState({ _idEspacio: x._id });
-                                  this.handle_onPost()
+                                  this.setState({ _idEspacio: x._id }, this.handle_onPost);
                                 }}
                               >
                                 Reservar
