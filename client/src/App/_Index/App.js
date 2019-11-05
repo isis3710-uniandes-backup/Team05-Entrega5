@@ -66,7 +66,7 @@ export default class App extends React.Component {
             <Route exact path="/espacios" component={ (props) => <Espacios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
             <Route exact path="/espacios/post" component={(props) => <PostEspacios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
             <PrivateRoute exact path="/reservas" component={(props) => <Reservas {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
-            <PrivateRoute exact path="/perfil" component={(props) => <Perfil {...props} getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />} getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />
+            <PrivateRoute exact path="/perfil" component={(props) => <Perfil {...props} getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />} getUsuario={this.getUsuario} />
             <Route path="*" component={NotFound} />
           </Switch>
         </div>
@@ -76,5 +76,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-// export default App;
