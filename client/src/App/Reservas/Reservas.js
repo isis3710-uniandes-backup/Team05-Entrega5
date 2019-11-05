@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import Cookies from 'universal-cookie';
 const url_reservas = "http://localhost:5000/api/reservas";
-let jwt = require('jsonwebtoken');
-const cookies = new Cookies();
 
 class Reservas extends Component {
 
@@ -12,7 +9,7 @@ class Reservas extends Component {
 
         this.state = {
             reservas: [],
-            _idUsuario: jwt.decode(cookies.get('token')).correo,
+            _idUsuario: this.props.getUsuario()._id,
         }
 
         this.get_reservas = this.get_reservas.bind(this);
