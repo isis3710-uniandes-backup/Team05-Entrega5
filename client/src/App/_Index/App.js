@@ -19,6 +19,7 @@ import Reservas from '../Reservas/Reservas.js';
 import Menu from "../Menu/Menu";
 import Footer from '../Footer/Footer';
 import Perfil from "../Perfil/Perfil";
+import { PrivateRoute } from './SpecialRoutes';
 
 toast.configure()
 
