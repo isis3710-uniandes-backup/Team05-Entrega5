@@ -4,7 +4,7 @@ export default class Pago extends Component {
 
     constructor(props){
         super(props);
-        
+
         this.state = {
             i : this.props.i,
             cantidad : this.props.pago.cantidad,
