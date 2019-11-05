@@ -6,6 +6,7 @@ import imagen from '../../assets/user.png';
 import { ToastContainer, toast } from 'react-toastify';
 
 import ListarPagos from './ListarPagos';
+import { toast } from 'react-toastify';
 
 let jwt = require('jsonwebtoken');
 const cookies = new Cookies();

@@ -16,7 +16,7 @@ class ListarPagos extends Component {
 
     componentDidMount() {
         axios.get(`http://localhost:5000/api/usuarios/${this.props.usuario._id}/pagos`)
-            .then(x => this.setState({ pagos: x }))
+            .then(x => this.setState({ pagos: JSON.parse(x) }))
             .catch(err => toast.error(`Hubo un error al traer los pagos :( -> ${err}`));
     }
 
