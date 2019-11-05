@@ -17,7 +17,12 @@ const validateForm = (errors) => {
     let valid = true;
     Object.values(errors).forEach(
         // if we have an error string set valid to false
-        (val) => val.length > 0 && (valid = false)
+        (val) => {
+            console.log(val.length);
+            if (val.length > 0) {
+                valid = false
+            }
+        }
     );
     return valid;
 }
@@ -139,8 +144,18 @@ export default class Registrar extends Component {
                 headers: { 'Content-Type': 'application/json' }
             }
         ).then(() => {
-            this.props.history.push('/login')
-        }).catch(err => {
+            this.props.history.push('/login');
+            toast.success("¡Registro exitoso!");
+        });
+    }
+
+
+    handleSubmit(event) {
+        event.preventDefault();
+        if (!this.state.username === "" && !this.state.nombre === "" && !this.state.correo === "" && !this.state.contrasenha === "" && validateForm(this.state.errors)) {
+            this.registrar(this.state.username, this.state.contrasenha, this.state.nombre, this.state.correo);
+        }
+        else {
             this.setState({
                 username: this.state.username,
                 nombre: this.state.nombre,
@@ -149,15 +164,7 @@ export default class Registrar extends Component {
                 error: true
             });
             toast.error("¡Hubo un error en el registro!");
-        })
-    }
-
-
-    handleSubmit(event) {
-        event.preventDefault();
-
-        this.registrar(this.state.username, this.state.contrasenha, this.state.nombre, this.state.correo);
-
+        }
     }
 
     render() {
