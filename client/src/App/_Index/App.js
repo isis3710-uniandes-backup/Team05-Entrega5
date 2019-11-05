@@ -20,6 +20,7 @@ import Login from "../Login/Login.js";
 import Registrar from '../Registrar/Registrar.js';
 import Reservas from '../Reservas/Reservas.js';
 import Menu from "../Menu/Menu";
+import Reservar from "../Reservar/Reservar";
 
 // NAVBAR
 import Footer from '../Footer/Footer';
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/espacios" component={Espacios} />
           <Route exact path="/espacios/post" component={PostEspacios} />
           <Route exact path="/reservas" component={Reservas} />
+          <Route exact path="/reservar" component={Reservar} />
           <Route path="*" component={NotFound} />
         </Switch>
       </div>
