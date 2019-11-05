@@ -3,7 +3,6 @@ import Card from 'react-bootstrap/Card';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css'
 import DateTimePicker from 'react-datetime-picker';
-import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 
 import "./Espacios.css";
@@ -11,7 +10,6 @@ import axios from "axios";
 import DateTime from 'react-datetime';
 const url_espacios = "http://localhost:5000/api/espacios";
 
-let jwt = require('jsonwebtoken');
 const cookies = new Cookies();
 
 export default class Espacios extends React.Component {
@@ -22,7 +20,7 @@ export default class Espacios extends React.Component {
       espacios: [],
       fechaInicio: new Date(),
       fechaFin: null,
-      _idUsuario: jwt.decode(cookies.get('token')).correo,
+      _idUsuario: this.props.getUsuario().correo,
       _idEspacio: null,
       _idReserva: null
     };
@@ -36,6 +34,7 @@ export default class Espacios extends React.Component {
 
   async get_espacios() {
     const prom = await axios.get(url_espacios);
+    console.log(this.props.getUsuario());
     if (prom.status < 300 && prom.status > 199) {
       this.setState({
         espacios: prom.data
@@ -92,7 +91,7 @@ export default class Espacios extends React.Component {
         <div className="host">
           <h1>Espacios disponibles</h1>
           <div className="row">
-            <div className="col-4">
+            <div className="col-4 col-12-md col-12-sd" textalign="center">
               <div className="d-flex align-items-stretch align-center">
                 <div className="card-container ReservaCard d-flex align-items-stretch-center" style={{ padding: '1em' }}>
                   <Card className = "d-flex align-items-stretch">
@@ -104,7 +103,7 @@ export default class Espacios extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col-8">
+            <div className="col-8 col-12-md col-12-sd">
               <div className="row" id="CardsContainer">
                 {this.state.espacios.length > 0 ? (
                   <React.Fragment>
@@ -112,7 +111,7 @@ export default class Espacios extends React.Component {
                       return (
                         <div
                           key={i}
-                          className="col-md-4"
+                          className="col-lg-4 col-md-8 col-sd-12"
                           style={{ marginTop: "2em" }}
                         >
                           <div className="card" style={{ textAlign: "left" }}>
