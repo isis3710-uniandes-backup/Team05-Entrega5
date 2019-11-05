@@ -50,7 +50,7 @@ export default class Espacios extends React.Component {
 
   handle_onPost() {
     const reserva = {
-      fechaInicio: this.state.fechaInicio,
+      fechaInicio: this.state.fechaInicio.toUTCString(),
       fechaFin: this.state.fechaFin,
       _idEspacio: this.state._idEspacio,
       _idUsuario: this.state._idUsuario

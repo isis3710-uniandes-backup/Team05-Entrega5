@@ -36,13 +36,14 @@ class Reservas extends Component {
 
     estaFinalizado(prop){
         console.log(prop);
-        if(prop.fechaFin == null){
+        if(prop.fechaFin != null){
             return <button className="btn btn-danger" onClick={()=>{this.updateFinalizado(prop._id)}}>Finalizar Reserva</button>
         }
     }
 
     async updateFinalizado(id){
-        await axios.put(url_reservas + "/" + id, {fechaFin: Date()}).then((r) => {
+        let d = Date();
+        await axios.put(url_reservas + "/" + id, {fechaFin: d}).then((r) => {
             console.log(r);
         })
     }
