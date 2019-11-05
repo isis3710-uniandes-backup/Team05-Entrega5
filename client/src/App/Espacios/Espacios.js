@@ -64,8 +64,9 @@ export default class Espacios extends React.Component {
     console.log(reserva);
     let p = await axios.post('http://localhost:5000/api/reservas', reserva).then((p) => {
       this.setState({ _idReserva: p.data[0]._id });
-      this.props.history.push('pagar/' + p.data[0]._id + '/' + reserva._idEspacio);
-      console.log(this.props.history);
+      this.props.history.push('pagar');
+      cookies.set('_idReserva', p.data[0]._id);
+      cookies.set('_idEspacio', reserva._idEspacio);
     });
 
     /*
