@@ -74,14 +74,14 @@ router.patch("/:idUsuario", (req, res) => {
   if (req.body.nombre) {
     updating.nombre = req.body.nombre;
   }
-  if (req.body.constrasenia) {
-    updating.nombre = req.body.nombre;
-  }
   if (req.body.nombreUsuario) {
     updating.nombreUsuario = req.body.nombreUsuario;
   }
   if (req.body.contrasenia) {
     updating.contrasenia = req.body.contrasenia;
+  }
+  if (req.body.correo) {
+    updating.correo = req.body.correo;
   }
   if (req.body.rol) {
     updating.rol = req.body.rol;
