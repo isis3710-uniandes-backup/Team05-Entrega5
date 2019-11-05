@@ -53,7 +53,9 @@ export default class Espacios extends React.Component {
         </h1>
 
         <div className="row" id="CardsContainer">
-          {this.state.espacios.map((x, i) => {
+          {this.state.espacios.length > 0 ? (
+            <React.Fragment>
+              {this.state.espacios.map((x, i) => {
             return (
               <div key={i} className="col-md-4" style={{ marginTop: "2em" }}>
                 <div className="card" style={{ textAlign: 'left' }}>
@@ -68,6 +70,16 @@ export default class Espacios extends React.Component {
               </div>
             );
           })}
+            </React.Fragment>
+          ) : (
+            <div className="col-md-12" style={{ marginTop: "2em", width: '100%' }}>
+                <div className="card" style={{ textAlign: 'center' }}>
+                  <div className="card-body">
+                    <p className="card-text">En este momento no hay espacios de parqueo disponibles</p>
+                  </div>
+                </div>
+              </div>
+          )}
         </div>
       </div>
     );
