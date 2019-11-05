@@ -47,7 +47,6 @@ class HandlerGenerator {
               });
           });
       } else {
-  
         // El error 400 corresponde a Bad Request de acuerdo al estándar HTTP
         res.status( 400 ).json({
           success: false,
@@ -113,7 +112,6 @@ class HandlerGenerator {
                   success: false,
                   message: `Authentication failed! There was an error during the process: ${err}`
               });
-              throw err;
           });
       }
       else {
@@ -121,6 +119,7 @@ class HandlerGenerator {
               success: false,
               message: 'Authentication failed! Please check the request'
           });
+          throw err;
       }
     }
   }

@@ -85,26 +85,40 @@ export default class Login extends React.Component {
 
         return (
             <div className="content-body host">
-                <Container className="prueba">
-                    <div className="border-container">
-                        <h2 className="title font-weight-bold">
-                            Ingresar
+                <Container>
+                    <Row className="justify-content-lg-center">
+                        <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
+                        <Col xs="12" sm="10" md="4" large="4" xl="4">
+                            <h2 className="title font-weight-bold">
+                                Ingresar
                         </h2>
-                        {incorrectMessage}
-                        <Container className="login-container">
-                            <Form className="text-left">
-                                <Form.Group>
-                                    <Form.Label>Nombre de usuario</Form.Label>
-                                    <Form.Control required type="text" placeholder="Ingrese su nombre de usuario" onChange={this.handleUserChange}></Form.Control>
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>Contraseña</Form.Label>
-                                    <Form.Control type="password" placeholder="Ingrese su contraseña" onChange={this.handlePassChange}></Form.Control>
-                                </Form.Group>
-                                <Button variant="success" size="md" block onClick={this.handleSubmit}>Ingresar</Button>
-                            </Form>
-                        </Container>
-                    </div>
+                        </Col>
+                        <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
+                    </Row>
+                    {incorrectMessage}
+                    <Row className="justify-content-lg-center">
+                        <Col xs="0" sm="1" md="3" large="4" xl="4"></Col>
+                        <Col xs="12" sm="10" md="6" large="4" xl="4">
+                            <div className="border-container">
+                                <div className="login-container">
+                                    <Form className="text-left">
+                                        <Form.Group>
+                                            <Form.Label>Nombre de usuario</Form.Label>
+                                            <Form.Control required type="text" onChange={this.handleUserChange}></Form.Control>
+                                        </Form.Group>
+                                        <Form.Group>
+                                            <Form.Label>Contraseña</Form.Label>
+                                            <Form.Control type="password" onChange={this.handlePassChange}></Form.Control>
+                                        </Form.Group>
+                                        <Button variant="success" size="md" block onClick={this.handleSubmit}>Ingresar</Button>
+                                    </Form>
+                                </div>
+                            </div>
+
+                        </Col>
+                        <Col xs="0" sm="1" md="3" large="4" xl="4"></Col>
+                    </Row>
+
                 </Container>
                 <Container className="cuenta-inexistente">
                     <Row>
