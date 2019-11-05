@@ -87,7 +87,7 @@ export default class Login extends React.Component {
             <div className="content-body host">
                 <Container className="prueba">
                     <div className="border-container">
-                        <h2 className="title">
+                        <h2 className="title font-weight-bold">
                             Ingresar
                         </h2>
                         {incorrectMessage}
