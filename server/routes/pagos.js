@@ -39,10 +39,10 @@ router.post("/", (req,res)=>{
     let imagenMetodoPago = "";
 
     if(req.body.metodoPago === "Tarjeta de Credito"){
-        imagenMetodoPago = "https://i.ibb.co/DpfD4wP/money-1.png";
+        imagenMetodoPago = "https://i.ibb.co/k55F3Hq/credit-card.png";
 
     } else if(req.body.metodoPago === "Efectivo"){
-        imagenMetodoPago ="https://i.ibb.co/k55F3Hq/credit-card.png";
+        imagenMetodoPago ="https://i.ibb.co/DpfD4wP/money-1.png";
 
     }else{
         imagenMetodoPago ="https://i.ibb.co/YkCHJmV/leather-wallet.png";

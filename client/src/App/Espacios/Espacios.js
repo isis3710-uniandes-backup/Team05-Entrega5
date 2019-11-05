@@ -20,7 +20,7 @@ export default class Espacios extends React.Component {
       espacios: [],
       fechaInicio: new Date(),
       fechaFin: null,
-      _idUsuario: this.props.getUsuario().correo,
+      _idUsuario: this.props.getUsuario()._id,
       _idEspacio: null,
       _idReserva: null
     };
@@ -34,7 +34,6 @@ export default class Espacios extends React.Component {
 
   async get_espacios() {
     const prom = await axios.get(url_espacios);
-    console.log(this.props.getUsuario());
     if (prom.status < 300 && prom.status > 199) {
       this.setState({
         espacios: prom.data
@@ -60,7 +59,6 @@ export default class Espacios extends React.Component {
   }
 
   async post_reserva(reserva) {
-    console.log(reserva);
     await axios.post('http://localhost:5000/api/reservas', reserva).then((p) => {
       this.setState({ _idReserva: p.data[0]._id });
       cookies.set('_idReserva', p.data[0]._id);
