@@ -22,7 +22,11 @@ import Perfil from "../Perfil/Perfil";
 
 toast.configure()
 
-function App() {
+
+export default class App extends React.Component{
+
+
+
   return (
     <div className="App">
 
