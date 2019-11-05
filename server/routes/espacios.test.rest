@@ -21,6 +21,7 @@ Content-Type: application/json
 	"costo" : 26000.00
 }
 
+
 ### PATCH
 PATCH http://localhost:5000/api/espacios/5dbc7d374254b50938efd264
 Content-Type: application/json
