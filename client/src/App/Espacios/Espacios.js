@@ -4,11 +4,15 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css'
 import DateTimePicker from 'react-datetime-picker';
 import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie';
 
 import "./Espacios.css";
 import axios from "axios";
 import DateTime from 'react-datetime';
 const url_espacios = "http://localhost:5000/api/espacios";
+
+let jwt = require('jsonwebtoken');
+const cookies = new Cookies();
 
 export default class Espacios extends React.Component {
   constructor(props) {
@@ -18,7 +22,7 @@ export default class Espacios extends React.Component {
       espacios: [],
       fechaInicio: new Date(),
       fechaFin: null,
-      _idUsuario: null,
+      _idUsuario: jwt.decode(cookies.get('token')).correo,
       _idEspacio: null,
       _idReserva: null
     };
@@ -60,7 +64,7 @@ export default class Espacios extends React.Component {
     console.log(reserva);
     let p = await axios.post('http://localhost:5000/api/reservas', reserva);
     console.log(p.data);
-    this.setState({_idReserva: p.data})
+    this.setState({ _idReserva: p.data })
 
     /*
     fetch('http://localhost:5000/api/reservas', {
@@ -113,20 +117,25 @@ export default class Espacios extends React.Component {
                             <div className="card-body">
                               <h5 className="card-title">{x.parqueadero}</h5>
                               <p className="card-text">{x.descripcion}</p>
+                              <button
+                                className="btn btn-primary"
+                                style={{ float: "right" }}
+                                onClick={() => {
+                                  this.setState({ _idEspacio: x._id }, this.handle_onPost);
+                                }}>
+                                
                               <Link to={{
-                                pathname: "/pagar", state: {
-                                  _idReserva: this.state._idReserva
-                                }
-                              }}>
-                                <button
-                                  className="btn btn-primary"
-                                  style={{ float: "right" }}
+                                  pathname: "/pagos", state: {
+                                    _idReserva: this.state._idReserva
+                                  },
+                                }}
                                   onClick={() => {
                                     this.setState({ _idEspacio: x._id }, this.handle_onPost);
-                                  }}>
+                                  }}
+                                >
                                   Reservar
+                                </Link>
                               </button>
-                              </Link>
                             </div>
                           </div>
                         </div>

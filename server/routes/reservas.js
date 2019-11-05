@@ -61,12 +61,6 @@ router.get("/:id", (req, res) => {
  */
 router.patch("/:id", (req,res) =>{
     let update = {};
-    if(req.body.motivo){
-        update.motivo = req.body.motivo;
-    }
-    if(req.body.estado){
-        update.estado = req.body.estado;
-    }
     if(req.body.fechaInicio){
         update.fechaInicio = req.body.fechaInicio;
     }
@@ -131,6 +125,7 @@ router.post("/", (req, res)=>{
         res.status(500).json({message : err.message});
     }
 });
+
 
 /**
  * DELETE ONE
