@@ -125,10 +125,6 @@ export default class Espacios extends React.Component {
                                 onClick={() => {
                                   this.setState({ _idEspacio: x._id }, this.handle_onPost);
                                 }}>
-                                onClick={() => {
-                                  this.setState({ _idEspacio: x._id }, this.handle_onPost);
-                                }}
-                                >
                                   Reservar
                               </button>
                             </div>
