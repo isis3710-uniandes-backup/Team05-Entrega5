@@ -5,6 +5,7 @@ import './Perfil.css';
 import imagen from '../../assets/user.png';
 
 import ListarPagos from './ListarPagos';
+import { toast } from 'react-toastify';
 
 let jwt = require('jsonwebtoken');
 const cookies = new Cookies();
