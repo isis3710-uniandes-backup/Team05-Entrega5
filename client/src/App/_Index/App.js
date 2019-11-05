@@ -4,10 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 import "./normalize.css";
 import "./App.css";
-/**
- * React - Boostrap
- * https://react-bootstrap.github.io/getting-started/introduction 
- * */
+
 import 'react-toastify/dist/ReactToastify.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
@@ -20,9 +17,8 @@ import Login from "../Login/Login.js";
 import Registrar from '../Registrar/Registrar.js';
 import Reservas from '../Reservas/Reservas.js';
 import Menu from "../Menu/Menu";
-
-// NAVBAR
 import Footer from '../Footer/Footer';
+import Perfil from "../Perfil/Perfil";
 
 toast.configure()
 
@@ -39,6 +35,7 @@ function App() {
           <Route exact path="/espacios" component={Espacios} />
           <Route exact path="/espacios/post" component={PostEspacios} />
           <Route exact path="/reservas" component={Reservas} />
+          <Route exact path="/perfil" component={Perfil} />
           <Route path="*" component={NotFound} />
         </Switch>
       </div>

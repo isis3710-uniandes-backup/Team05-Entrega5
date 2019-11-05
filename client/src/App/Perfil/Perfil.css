@@ -1,0 +1,23 @@
+.place {
+    color: #2B6D29;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.perf {
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
+.img-perfil {
+    max-width: 60vw;
+}
+@media(min-width:576px) {
+    .img-perfil {
+        max-width: 15vw;
+    }
+    .fijo {
+        position: fixed;
+        top: 14vh;
+        left: 0;
+    }
+}
