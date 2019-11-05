@@ -62,10 +62,10 @@ export default class App extends React.Component {
             <Route exact path="/" component={(props) => <Home {...props} getUsuario={this.getUsuario}/>} />
             <Route exact path="/login" component={(props) => <Login {...props} setUsuario={this.setUsuario} />} />
             <Route exact path="/registrar" component={Registrar} />
-            <Route exact path="/espacios" component={Espacios} />
-            <Route exact path="/espacios/post" component={PostEspacios} />
-            <Route exact path="/reservas" component={Reservas} />
-            <Route exact path="/perfil" component={Perfil} />
+            <Route exact path="/espacios" component={ (props) => <Espacios {...props} getUsuario={this.getUsuario} />} />
+            <Route exact path="/espacios/post" component={(props) => <PostEspacios {...props} getUsuario={this.getUsuario} />} />
+            <Route exact path="/reservas" component={(props) => <Reservas {...props} getUsuario={this.getUsuario} />} />
+            <Route exact path="/perfil" component={(props) => <Perfil {...props} getUsuario={this.getUsuario} />} />
             <Route path="*" component={NotFound} />
           </Switch>
         </div>
