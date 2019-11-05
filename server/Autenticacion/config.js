@@ -4,7 +4,7 @@ module.exports = {
     salt: '$al$3cr3t4P4r4Clav3s',
     USUARIOS: 'usuarios',
     roles: {
-        OFERTOR: 'OFERTOR',
-        OFERENTE: 'OFERENTE'
+        USUARIO: 'USUARIO',
+        ADMIN: 'ADMIN'
     }
   };
