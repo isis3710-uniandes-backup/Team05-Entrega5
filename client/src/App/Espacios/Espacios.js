@@ -105,7 +105,7 @@ export default class Espacios extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col-8">
               <div className="row" id="CardsContainer">
                 {this.state.espacios.length > 0 ? (
                   <React.Fragment>
@@ -126,18 +126,11 @@ export default class Espacios extends React.Component {
                                 onClick={() => {
                                   this.setState({ _idEspacio: x._id }, this.handle_onPost);
                                 }}>
-
-                                <Link to={{
-                                  pathname: "/pagos", state: {
-                                    _idReserva: this.state._idReserva
-                                  },
+                                onClick={() => {
+                                  this.setState({ _idEspacio: x._id }, this.handle_onPost);
                                 }}
-                                  onClick={() => {
-                                    this.setState({ _idEspacio: x._id }, this.handle_onPost);
-                                  }}
                                 >
                                   Reservar
-                                </Link>
                               </button>
                             </div>
                           </div>
