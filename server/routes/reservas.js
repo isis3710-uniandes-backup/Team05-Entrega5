@@ -104,11 +104,11 @@ router.patch("/:id", (req,res) =>{
  * POST ONE
  */
 router.post("/", (req, res)=>{
-    const new_parqueadero = {
-      motivo: props.params.motivo,
-      estado: props.params.estado,
-      fechaInicio: props.params.fechaInicio,
-      fechaFin: props.params.fechaFin
+    const new_reserva = {
+      _idUsuario: req.body._idUsuario,
+      _idEspacio: req.body._idEspacio,
+      fechaInicio: req.body.fechaInicio,
+      fechaFin: req.body.fechaFin
     };
 
     try {
@@ -116,7 +116,7 @@ router.post("/", (req, res)=>{
         .then(database => {
             const client = database.db(db).collection(collection);
 
-            client.insertOne(new_parqueadero, (err, result) =>{
+            client.insertOne(new_reserva, (err, result) =>{
                 if(err){
                     res.status(400).json({message : err.message});
                     return;

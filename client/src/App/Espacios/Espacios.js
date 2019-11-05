@@ -11,7 +11,8 @@ import Col from 'react-bootstrap/Col';
 
 import "./Espacios.css";
 import axios from "axios";
-const url_espacios = "/api/espacios";
+import DateTime from 'react-datetime';
+const url_espacios = "http://localhost:5000/api/espacios";
 
 export default class Espacios extends React.Component {
   constructor(props) {
@@ -21,8 +22,8 @@ export default class Espacios extends React.Component {
       espacios: [],
       fechaInicio: null,
       fechaFin: null,
-      motivo: null,
-      estado: null
+      _idUsuario: null,
+      _idEspacio: null
     };
     this.get_espacios = this.get_espacios.bind(this);
   }
@@ -47,17 +48,22 @@ export default class Espacios extends React.Component {
     console.log(this.fechaInicio);
   }
 
-  handle_onPost(_idEspacio, _idUsuario) {
+  handle_onPost() {
     const reserva = {
       fechaInicio: this.state.fechaInicio,
-      fechaFin: null,
-      _idEspacio: _idEspacio,
-      _idUsuario: _idUsuario
+      fechaFin: this.state.fechaFin,
+      _idEspacio: this.state._idEspacio,
+      _idUsuario: this.state._idUsuario
     };
     this.post_reserva(reserva);
   }
 
-  post_reserva(reserva) {
+  async post_reserva(reserva) {
+    console.log(reserva);
+    let p = await axios.post('http://localhost:5000/api/espacio', reserva);
+    console.log(p.data);
+
+    /*
     fetch('http://localhost:5000/api/reservas', {
       method: "post",
       body: JSON.stringify(reserva),
@@ -71,6 +77,7 @@ export default class Espacios extends React.Component {
       .catch(err => {
         console.log(err.message);
       });
+      */
   }
 
   render() {
@@ -83,62 +90,11 @@ export default class Espacios extends React.Component {
               <div>
                 <div className="card-container">
                   <Card>
+                    <Card.Title className="card-title">
+                      Reserva parqueaderos de acuerdo con tus necesidades.
+                      </Card.Title>
                     <Card.Body>
-                      <Card.Title className="card-title">
-                        Reserva parqueaderos de acuerdo con tus necesidades.
-                            </Card.Title>
-                      <Form className="card-label">
-                        <Form.Group controlId="sectorForm">
-                          <Form.Label>¿En qué sector te gustaría?</Form.Label>
-                          <Form.Control type="text" placeholder="Empieza a escribir algún sector"></Form.Control>
-                        </Form.Group>
-                        <FormGroup>
-                          <Row>
-                            <Col>
-                              <Form.Label>¿Para qué fecha?</Form.Label>
-                            </Col>
-                            <Col>
-                              <Form.Label>¿Para qué hora?</Form.Label>
-                            </Col>
-                          </Row>
-                          <Row>
-                            <Col>
-                              <SingleDatePicker
-                                showClearDate={true}
-                                // customInputIcon={
-                                //     <svg className="icon icon-small">
-                                //         <Icon
-                                //             icon="ICON_CALENDER"
-                                //             className="icon icon-large"
-                                //         />
-                                //     </svg>
-                                // }
-                                inputIconPosition="after"
-                                small={true}
-                                block={false}
-                                numberOfMonths={1}
-                                date={this.state.date}
-                                onDateChange={date => this.handleDateChange.bind(date)}
-                                focused={this.state.focused}
-                                onFocusChange={({ focused }) =>
-                                  this.setState({ focused })
-                                }
-                                openDirection="up"
-                                hideKeyboardShortcutsPanel={true}
-                              />
-                            </Col>
-                            <Col>
-                              <div className="time-picker">
-                                <TimePicker
-                                  required={true}
-                                  disableClock={true}
-                                  clearIcon={null}
-                                />
-                              </div>
-                            </Col>
-                          </Row>
-                        </FormGroup>
-                      </Form>
+                      <DateTime />
                     </Card.Body>
                   </Card>
                 </div>
@@ -159,14 +115,16 @@ export default class Espacios extends React.Component {
                             <div className="card-body">
                               <h5 className="card-title">{x.parqueadero}</h5>
                               <p className="card-text">{x.descripcion}</p>
-                              <a
-                                href="reservar"
+                              <button
                                 className="btn btn-primary"
                                 style={{ float: "right" }}
-                                onClick={this.handle_onPost(x._id, null)}
+                                onClick={() => {
+                                  this.setState({ _idEspacio: x._id });
+                                  this.handle_onPost()
+                                }}
                               >
                                 Reservar
-                          </a>
+                          </button>
                             </div>
                           </div>
                         </div>
