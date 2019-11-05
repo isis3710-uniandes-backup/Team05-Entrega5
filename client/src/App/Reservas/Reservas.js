@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Reserva from '../Reservas/Reserva';
-import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import Cookies from 'universal-cookie';
 const url_reservas = "http://localhost:5000/api/reservas";
@@ -29,7 +27,7 @@ class Reservas extends Component {
         const prom = await axios.get(url_reservas);
         if (prom.status < 300 && prom.status > 199) {
             this.setState({
-                reservas: prom.data.filter(d => d._idUsuario == this.state._idUsuario)
+                reservas: prom.data.filter(d => d._idUsuario === this.state._idUsuario)
             });
         } else {
             console.log(prom.status, "\n The response was not OK");

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import Pago from '../Pagos/Pago';
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'; 
 
 class ListarPagos extends Component {
     

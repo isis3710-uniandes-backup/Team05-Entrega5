@@ -18,7 +18,7 @@ class Perfil extends Component {
     }
 
     handleCerrarSesion(event) {
-        event.preventDefault();
+        event.preventDefault(); 
         this.props.removeUsuario();
         toast.success('¡Vuelve pronto 😊!');
     }
