@@ -1,10 +1,20 @@
-# Entrega 4 - Proyecto Programación Web
 
-https://parkin-web.herokuapp.com
+# ParkIN - Proyecto Programación Web
 
 <br/>
 
 [NodeJS](https://nodejs.org/en/) - [NPM](https://www.npmjs.com/get-npm) o [Yarn](https://yarnpkg.com/en/docs/install#mac-stable)
+
+<br/>
+Esta aplicación te permite encontrar espacios para parquear tu vehículo. Puedes registrarte, iniciar sesión, encontrar espacios disponibles y reservarlos en la fecha y la hora que indiques. Además, luego de reservar uno de los espacios puedes escoger con que pagar. Puedes revisar tu perfil, en el cual encontrarás los pagos que has hecho. También podrás revisar todas las reservas realizadas. Tu información es confidencial, ya que solo tu podrás acceder a tu información. El proposito es darte una plataforma que te permita encontrar parqueaderos baratos y a tu conveniencia. Por último, tenemos en cuenta que debe ser amigable, por lo que priorizamos la accesibilidad y la usabilidad, con el uso de paginas 404, contrastes de colores adecuados y un diseño amigable.
+
+
+
+
+> [Video](https://youtu.be/HX2d2zLJNWg)
+
+> [Sitio Web](https://parkin-web.herokuapp.com)
+
 
 ### Deployment
 
