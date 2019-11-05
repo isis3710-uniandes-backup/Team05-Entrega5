@@ -201,7 +201,7 @@ router.get("/:idUsuario/pagos", (req,res) => {
                   documents.forEach( item => {
                     respuesta.push(item.pagosReserva);
                   });
-                  res.status(200).json(documents);
+                  res.status(200).json(respuesta);
                 });
               })
           })
