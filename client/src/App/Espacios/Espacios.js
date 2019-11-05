@@ -99,8 +99,9 @@ export default class Espacios extends React.Component {
                     <Card.Title className="card-title">
                       Reserva parqueaderos de acuerdo con tus necesidades.
                       </Card.Title>
-                    <Card.Body>
-                      <DateTime onChange={this.state.handleDate} defaultValue={Date.now()} />
+                    <Card.Body className="d-flex justify-content-center w-100" style={{width: '100%'}}>
+                      <br/>
+                      <DateTime onChange={this.state.handleDate} defaultValue={Date.now()}/>
                     </Card.Body>
                   </Card>
                 </div>
