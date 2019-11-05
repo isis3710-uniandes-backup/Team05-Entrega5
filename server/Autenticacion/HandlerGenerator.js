@@ -20,9 +20,9 @@ class HandlerGenerator {
             seguridad.verificarUsuario(nombreUsuario, contrasenia)
                 .then(doc => {
                     if (!doc) {
-                        res.status(403).json({
+                        res.status(200).json({
                             success: false,
-                            message: 'Incorrect username or password'
+                            message: 'Nombre de usuario o contraseña incorrecta'
                         });
                     }
                     // Si los usuarios y las contraseñas coinciden, proceda con la generación del token
@@ -41,16 +41,16 @@ class HandlerGenerator {
                     }
                 })
                 .catch(err => {
-                    res.status(500).json({
+                    res.status(200).json({
                         success: false,
                         message: `Authentication failed! There was an error during the process: ${err}`
                     });
                 });
         } else {
             // El error 400 corresponde a Bad Request de acuerdo al estándar HTTP
-            res.status(400).json({
+            res.status(200).json({
                 success: false,
-                message: 'Authentication failed! Please check the request'
+                message: 'Por favor llena todos los campos'
             });
         }
     }
@@ -81,7 +81,7 @@ class HandlerGenerator {
                                 { nombreUsuario: nombreUsuario, contrasenia: contrasenia, rol: rol, nombre: nombre, correo: correo },
                                 (err, r) => {
                                     if (err) {
-                                        res.status(500).json({
+                                        res.status(200).json({
                                             success: false,
                                             message: `Error while inserting new user into the database: ${err}`
                                         });
@@ -101,23 +101,23 @@ class HandlerGenerator {
                         });
                     }
                     else {
-                        res.status(403).json({
+                        res.status(200).json({
                             success: false,
-                            message: 'User already registered, please log in!'
+                            message: 'El usuario ya existe en la base de datos ¡Inicia sesión!'
                         });
                     }
                 })
                 .catch(err => {
-                    res.status(500).json({
+                    res.status(200).json({
                         success: false,
                         message: `Authentication failed! There was an error during the process: ${err}`
                     });
                 });
         }
         else {
-            res.status(400).json({
+            res.status(200).json({
                 success: false,
-                message: 'Authentication failed! Please check the request'
+                message: 'Por favor llena todos los campos'
             });
         }
     }

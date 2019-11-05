@@ -143,9 +143,22 @@ export default class Registrar extends Component {
             {
                 headers: { 'Content-Type': 'application/json' }
             }
-        ).then(() => {
-            this.props.history.push('/login');
-            toast.success("¡Registro exitoso!");
+        ).then(response => {
+            if(response.data.success){
+                this.props.history.push('/login');
+                toast.success("¡Registro exitoso!");
+            }
+            else {
+                this.setState({
+                    username: this.state.username,
+                    nombre: this.state.nombre,
+                    correo: this.state.correo,
+                    contrasenha: this.state.contrasenha,
+                    error: true
+                });
+                toast.error("¡Hubo un error en el registro!");
+            }
+
         });
     }
 
@@ -155,7 +168,7 @@ export default class Registrar extends Component {
         if (!this.state.username === "" && !this.state.nombre === "" && !this.state.correo === "" && !this.state.contrasenha === "" && validateForm(this.state.errors)) {
             this.registrar(this.state.username, this.state.contrasenha, this.state.nombre, this.state.correo);
         }
-        else {
+        else{
             this.setState({
                 username: this.state.username,
                 nombre: this.state.nombre,
