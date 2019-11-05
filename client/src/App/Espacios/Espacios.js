@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css'
 import DateTimePicker from 'react-datetime-picker';
+import { Link } from 'react-router-dom';
 
 import "./Espacios.css";
 import axios from "axios";
@@ -18,7 +19,8 @@ export default class Espacios extends React.Component {
       fechaInicio: new Date(),
       fechaFin: null,
       _idUsuario: null,
-      _idEspacio: null
+      _idEspacio: null,
+      _idReserva: null
     };
     this.onChange = date => this.setState({ fechaInicio: date });
     this.get_espacios = this.get_espacios.bind(this);
@@ -58,6 +60,7 @@ export default class Espacios extends React.Component {
     console.log(reserva);
     let p = await axios.post('http://localhost:5000/api/reservas', reserva);
     console.log(p.data);
+    this.setState({_idReserva: p.data})
 
     /*
     fetch('http://localhost:5000/api/reservas', {
@@ -87,9 +90,9 @@ export default class Espacios extends React.Component {
                 <div className="card-container ReservaCard" style={{ padding: '1em' }}>
                   <Card>
                     <h5 style={{ padding: '1em' }} className="card-title">Reserva parqueaderos de acuerdo con tus necesidades.</h5>
-                    <Card.Body className="d-flex justify-content-center w-100" style={{width: '100%'}}>
-                      <br/>
-                      <DateTimePicker onChange={this.onChange} value={this.state.fechaInicio}/>
+                    <Card.Body className="d-flex justify-content-center w-100" style={{ width: '100%' }}>
+                      <br />
+                      <DateTimePicker onChange={this.onChange} value={this.state.fechaInicio} />
                     </Card.Body>
                   </Card>
                 </div>
@@ -110,15 +113,20 @@ export default class Espacios extends React.Component {
                             <div className="card-body">
                               <h5 className="card-title">{x.parqueadero}</h5>
                               <p className="card-text">{x.descripcion}</p>
-                              <button
-                                className="btn btn-primary"
-                                style={{ float: "right" }}
-                                onClick={() => {
-                                  this.setState({ _idEspacio: x._id }, this.handle_onPost);
-                                }}
-                              >
-                                Reservar
-                          </button>
+                              <Link to={{
+                                pathname: "/pagos", state: {
+                                  _idReserva: this.state._idReserva
+                                }
+                              }}>
+                                <button
+                                  className="btn btn-primary"
+                                  style={{ float: "right" }}
+                                  onClick={() => {
+                                    this.setState({ _idEspacio: x._id }, this.handle_onPost);
+                                  }}>
+                                  Reservar
+                              </button>
+                              </Link>
                             </div>
                           </div>
                         </div>

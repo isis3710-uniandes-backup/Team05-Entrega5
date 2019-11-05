@@ -33,8 +33,9 @@ class Reservas extends Component {
     }
 
     estaFinalizado(prop){
+        console.log(prop);
         if(prop.fechaFin == null){
-            return <button color="danger" onClick={this.updateFinalizado(prop._id)}>Finalizar Reserva</button>
+            return <button className="btn btn-danger" onClick={()=>{this.updateFinalizado(prop._id)}}>Finalizar Reserva</button>
         }
     }
 
