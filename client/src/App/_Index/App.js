@@ -20,6 +20,7 @@ import Reservas from '../Reservas/Reservas.js';
 import Menu from "../Menu/Menu";
 import Footer from '../Footer/Footer';
 import Perfil from "../Perfil/Perfil";
+import Pagar from "../Pagos/Pagar.js";
 import Cookies from 'universal-cookie';
 
 toast.configure()
@@ -63,6 +64,7 @@ export default class App extends React.Component {
             <Route exact path="/" component={(props) => <Home {...props} getUsuario={this.getUsuario}/>} />
             <Route exact path="/login" component={(props) => <Login {...props} setUsuario={this.setUsuario} />} />
             <Route exact path="/registrar" component={Registrar} />
+            <Route exact path="/pagar" componen={Pagar}/>
             <Route exact path="/espacios" component={ (props) => <Espacios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
             <Route exact path="/espacios/post" component={(props) => <PostEspacios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
             <PrivateRoute exact path="/reservas" component={(props) => <Reservas {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
