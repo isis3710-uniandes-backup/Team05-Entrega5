@@ -24,14 +24,30 @@ export default class Pagar extends Component {
             metodo: "Tarjeta de Credito",
         };
 
+
     }
 
     componentDidMount(){
         axios.get(`http://localhost:5000/api/espacios/${this.state.idEspacio}`)
         .then(x =>{
-            this.setState({costo : x.data[0]})
+            this.setState({costo : x.data[0].costo})
         })
         .catch(err => toast.error(`Hubo un error obteniendo el costo :( -> ${err}`));
+    }
+
+    handleSubmit(){
+        console.log(this.state);
+        const pago = {
+            cantidad : this.state.costo,
+            metodoPago : this.state.metodo,
+            _idReserva : this.state.idReserva
+        };
+        this.postPago(pago);
+    }
+    async postPago(pago) {
+        await axios.post('http://localhost:5000/api/pagos', pago).then((p) => {
+          this.props.history.push('perfil');
+        });
     }
 
     render(){
@@ -53,16 +69,27 @@ export default class Pagar extends Component {
                             <div className="pago-container">
                                 <Form className="text-left">
                                     <Form.Group>
-                                        <Form.Label>Escoje el metodo de pago:</Form.Label>
+                                        <Form.Label><h4 className="mt-3">Resumen:</h4></Form.Label>
+                                        <h5 className="mt-3">Costo: {this.state.costo}</h5>
+                                        <Form.Label><h4 className="mt-3">Escoje el método de pago:</h4></Form.Label>
                                         <ButtonToolbar aria-label="Opciones de Metodo de Pago">
                                             <ButtonGroup vertical  size="lg">
-                                                <Button>Tarjeta de Crédito</Button>
-                                                <Button>Efectivo</Button>
-                                                <Button>Cuenta</Button>
+                                                <Button variant="success" className="justify-content-between align-items-center" onClick={() => {this.setState({metodo: "Tarjeta de Credito" })}}>
+                                                <img className="rounded float-left" src="https://i.ibb.co/k55F3Hq/credit-card.png" alt="Icono método de pago" width="55" height="55"/>
+                                                    <h4>Tarjeta de Crédito</h4>
+                                                    </Button>
+                                                <Button variant="success" className="justify-content-between align-items-center" onClick={() => {this.setState({metodo: "Efectivo" })}}>
+                                                <img className="rounded float-left" src="https://i.ibb.co/DpfD4wP/money-1.png" alt="Icono método de pago" width="55" height="55"/>
+                                                    <h4>Efectivo</h4>
+                                                    </Button>
+                                                <Button variant="success" className=" justify-content-between align-items-center" onClick={() => {this.setState({metodo: "Otro" })}}>
+                                                <img className="rounded float-left" src="https://i.ibb.co/YkCHJmV/leather-wallet.png" alt="Icono método de pago" width="55" height="55"/>
+                                                    <h4>Cuenta</h4>
+                                                    </Button>
                                             </ButtonGroup>
                                         </ButtonToolbar>
                                     </Form.Group>
-                                    <Button variant="success" size="md" block onClick={this.handleSubmit}>Pagar</Button>
+                                    <Button variant="success" size="md" block onClick={() => {this.setState(this.handleSubmit)}}>Pagar</Button>
                                 </Form>
                             </div>
                         </Col>
