@@ -44,11 +44,6 @@ export default class Espacios extends React.Component {
     this.setState({ fechaInicio: DateTime(date._d) });
   };
 
-  handleDateChange(data) {
-    this.setState({ fechaInicio: data });
-    console.log(this.fechaInicio);
-  }
-
   handle_onPost() {
     const reserva = {
       fechaInicio: this.state.fechaInicio,
