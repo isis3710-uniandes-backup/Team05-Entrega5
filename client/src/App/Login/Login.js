@@ -85,7 +85,8 @@ export default class Login extends React.Component {
             }
         ).then(response => {
             if(response.data.success){
-                cookies.set('token', response.data.token);
+                // cookies.set('token', response.data.token);
+                this.props.setUsuario(response.data.token);
                 this.props.history.push('/');
                 toast.success(`Bienvenido ${jwt.decode(cookies.get('token')).nombre}`);
             }
@@ -96,6 +97,7 @@ export default class Login extends React.Component {
 
 
         }).catch(err => {
+            console.log(err)
             this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true, errMsg: "Campos vacíos o login o contraseña incorrectos" })
             toast.error("¡Hubo un error en el inicio de sesión!");
         })
