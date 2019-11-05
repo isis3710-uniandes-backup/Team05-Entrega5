@@ -59,7 +59,7 @@ router.get("/:id", (req, res) => {
 /**
  * UPDATE ONE
  */
-router.patch("/:id", (req,res) =>{
+router.put("/:id", (req,res) =>{
     let update = {};
     if(req.body.fechaInicio){
         update.fechaInicio = req.body.fechaInicio;
