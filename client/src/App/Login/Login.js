@@ -75,8 +75,7 @@ export default class Login extends React.Component {
     }
 
     async login(username, pass) {
-        let err = '';
-        const response = await axios.post(
+        await axios.post(
             'http://localhost:5000/api/usuarios/login',
             {
                 "nombreUsuario": username,
@@ -120,14 +119,12 @@ export default class Login extends React.Component {
     }
 
     handleSubmit(event) {
-        if (!this.state.username == "" && !this.state.password == "" && validateForm(this.state.errors)) {
+        if (!this.state.username === "" && !this.state.password === "" && validateForm(this.state.errors)) {
             this.login(this.state.username, this.state.password);
         }
     }
 
     render() {
-        const { errors } = this.state;
-
         let incorrectMessage;
 
         if (this.state.incorrectLogin) {
