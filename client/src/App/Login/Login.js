@@ -20,7 +20,6 @@ const validateForm = (errors) => {
     Object.values(errors).forEach(
         // if we have an error string set valid to false
         (val) => {
-            console.log(val.length);
             if (val.length > 0) {
                 valid = false
             }
@@ -75,8 +74,7 @@ export default class Login extends React.Component {
     }
 
     async login(username, pass) {
-        let err = '';
-        const response = await axios.post(
+        await axios.post(
             'http://localhost:5000/api/usuarios/login',
             {
                 "nombreUsuario": username,
@@ -120,14 +118,12 @@ export default class Login extends React.Component {
     }
 
     handleSubmit(event) {
-        if (!this.state.username == "" && !this.state.password == "" && validateForm(this.state.errors)) {
+        if (this.state.username !== "" && !this.state.password !== "" && validateForm(this.state.errors)) {
             this.login(this.state.username, this.state.password);
         }
     }
 
     render() {
-        const { errors } = this.state;
-
         let incorrectMessage;
 
         if (this.state.incorrectLogin) {
@@ -177,7 +173,7 @@ export default class Login extends React.Component {
                 <Container className="cuenta-inexistente">
                     <Row>
                         <Col>
-                            <Link href="/registrar">¿No tienes cuenta? Regístrate</Link>
+                            <Link to="/registrar">¿No tienes cuenta? Regístrate</Link>
                         </Col>
                     </Row>
                 </Container>
