@@ -23,7 +23,8 @@ export default class Login extends React.Component {
         this.state = {
             username: '',
             password: '',
-            incorrectLogin: false
+            incorrectLogin: false,
+            errMsg:''
         }
 
         this.handleUserChange = this.handleUserChange.bind(this);
@@ -33,7 +34,7 @@ export default class Login extends React.Component {
     }
 
     async login(username, pass) {
-        try {
+        let err = '';
             const response = await axios.post(
                 'http://localhost:5000/api/usuarios/login',
                 {
@@ -43,15 +44,14 @@ export default class Login extends React.Component {
                 {
                     headers: { 'Content-Type': 'application/json' }
                 }
-            )
-            cookies.set('token', response.data.token);
-            this.props.history.push('/');
-            toast.success(`Bienvenido ${jwt.decode(cookies.get('token')).nombre}`);
-
-        } catch (err) {
-            this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true })
-            toast.error("¡Hubo un error en el inicio de sesión!");
-        }
+            ).then(response => {
+                cookies.set('token', response.data.token);
+                this.props.history.push('/');
+                toast.success(`Bienvenido ${jwt.decode(cookies.get('token')).nombre}`);
+            }).catch(err => {
+                this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true, errMsg: "Campos vacíos o login o contraseña incorrectos" })
+                toast.error("¡Hubo un error en el inicio de sesión!");
+            })
     }
 
     handleUserChange(event) {
@@ -78,8 +78,8 @@ export default class Login extends React.Component {
 
         if (this.state.incorrectLogin) {
             incorrectMessage =
-                <Container className="error-container">
-                    Usuario o contraseña incorrectos
+                <Container className="error">
+                    {this.state.errMsg}
                 </Container>
         }
 
@@ -91,7 +91,7 @@ export default class Login extends React.Component {
                         <Col xs="12" sm="10" md="4" large="4" xl="4">
                             <h2 className="title font-weight-bold">
                                 Ingresar
-                        </h2>
+                            </h2>
                         </Col>
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
                     </Row>
