@@ -1,11 +1,12 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './Registrar.css';
-import Nav from 'react-bootstrap/Nav';
+
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -21,7 +22,7 @@ const validateForm = (errors) => {
     return valid;
 }
 
-export default class Registrar extends React.Component {
+export default class Registrar extends Component {
     constructor(props) {
         super(props);
 
@@ -131,7 +132,7 @@ export default class Registrar extends React.Component {
                 {
                     "nombreUsuario": username,
                     "contrasenia": password,
-                    "rol": "OFERTOR",
+                    "rol": "USUARIO",
                     "nombre": nombre,
                     "correo": correo
                 },
@@ -174,14 +175,14 @@ export default class Registrar extends React.Component {
         }
 
         return (
-            <div className="content-body">
+            <div className="content-body host">
                 <Container>
                     <Row className="justify-content-lg-center">
                         <Col xs="0" sm="0" md="3" large="3" xl="3"></Col>
                         <Col xs="12" sm="12" md="6" large="6" xl="6">
-                            <h1>
+                            <h2 className="title font-weight-bold">
                                 Registrarse
-                            </h1>
+                        </h2>
                         </Col>
                         <Col xs="0" sm="0" md="3" large="3" xl="3"></Col>
                     </Row>
@@ -226,7 +227,7 @@ export default class Registrar extends React.Component {
                     <Container className="cuenta-existente">
                         <Row>
                             <Col>
-                                ¿Ya tienes una cuenta? <Nav.Link href="/Login">Inicia sesión</Nav.Link>
+                                <Link href="/login">¿Ya tienes una cuenta? Inicia sesión</Link>
                             </Col>
                         </Row>
                     </Container>

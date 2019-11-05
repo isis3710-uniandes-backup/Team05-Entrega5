@@ -3,10 +3,6 @@
     height: 75%;
 }
 
-.titulo {
-    color: black;
-}
-
 .border-container{
     border: solid;
     border-width: 1px;
@@ -16,14 +12,6 @@
 
 .login-container {
     padding: 5%;
-}
-
-.registrar-container {
-    padding-top: 5%;
-    border: solid;
-    border-width: 1px;
-    border-radius: 5px;
-    border-color: lightgray;
 }
 
 .content-body {

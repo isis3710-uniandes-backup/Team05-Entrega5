@@ -4,10 +4,10 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Nav from 'react-bootstrap/Nav';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-import { ToastContainer, toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import "./Login.css";
 
@@ -84,14 +84,14 @@ export default class Login extends React.Component {
         }
 
         return (
-            <div className="content-body">
+            <div className="content-body host">
                 <Container>
                     <Row className="justify-content-lg-center">
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
                         <Col xs="12" sm="10" md="4" large="4" xl="4">
-                            <h1 className="titulo">
-                                Iniciar sesión
-                            </h1>
+                            <h2 className="title font-weight-bold">
+                                Ingresar
+                        </h2>
                         </Col>
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
                     </Row>
@@ -118,11 +118,12 @@ export default class Login extends React.Component {
                         </Col>
                         <Col xs="0" sm="1" md="3" large="4" xl="4"></Col>
                     </Row>
+
                 </Container>
                 <Container className="cuenta-inexistente">
                     <Row>
                         <Col>
-                            ¿No tienes cuenta? <Nav.Link href="/registrar">Regístrate</Nav.Link>
+                            <Link href="/registrar">¿No tienes cuenta? Regístrate</Link>
                         </Col>
                     </Row>
                 </Container>

@@ -19,15 +19,19 @@ import PostEspacios from "../Espacios/PostEspacios";
 import Login from "../Login/Login.js";
 import Registrar from '../Registrar/Registrar.js';
 import Reservas from '../Reservas/Reservas.js';
-import Navbar from "../Navbar/Navbar";
+import Menu from "../Menu/Menu";
+
+// NAVBAR
+import Footer from '../Footer/Footer';
 
 toast.configure()
 
 function App() {
   return (
     <div className="App">
-      <div>
-        <Navbar />
+
+      <div className="container-fluid">
+        <Menu />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/inicio" component={Home} />
@@ -40,6 +44,7 @@ function App() {
         </Switch>
       </div>
       <ToastContainer autoClose={5000} position={toast.POSITION.BOTTOM_RIGHT} bodyClassName="customBody" />
+      <Footer />
     </div>
   );
 }
