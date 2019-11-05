@@ -5,6 +5,7 @@ const { Connection } = require("../mongo_config/Connection");
 
 const db = "entrega4";
 const collection = "usuarios";
+const pagos_collection = "pagos";
 var HandlerGenerator = require("../Autenticacion/HandlerGenerator.js");
 
 HandlerGenerator = new HandlerGenerator();
@@ -82,8 +83,8 @@ router.patch("/:idUsuario", (req, res) => {
   if (req.body.contrasenia) {
     updating.contrasenia = req.body.contrasenia;
   }
-  if (req.body.tipo) {
-    updating.nombreUsuario = req.body.nombreUsuario;
+  if (req.body.rol) {
+    updating.rol = req.body.rol;
   }
 
   try {
@@ -138,171 +139,30 @@ router.delete("/:idUsuario", (req, res) => {
 });
 
 /**
- * MÉTODOS ÚTILES PARA ACCEDER A LOS PEDIDOS DE UN USUARIO
+ * MÉTODOS ÚTILES PARA ACCEDER A PAGOS DEL USUARIO
  */
 
  /**
- * GET all pedidos from usuario given an id
+ * GET all pagos from usuario given an id
  */
-router.get("/:idUsuario/pedidos", (req,res) => {
+router.get("/:idUsuario/pagos", (req,res) => {
   try {
       Connection.connectToMongo()
           .then(database => {
-              const client = database.db(db).collection(pedidosCollection);
-
+              const client = database.db(db).collection("reservas");
               client
                   .find({ _idUsuario: ObjectId(req.params.idUsuario) })
                   .toArray()
-                  .then(x => res.status(200).json(x))
+                  .then(x => {
+                      let respuesta = [];
+                      let client2 = database.db(db).collection(pagos_collection);
+                      x.forEach(r => {
+                        respuesta.concat(client2.find({ _idReserva: r._id }).toArray());
+                      });
+                      res.status(200).json(respuesta);
+                    }
+                  )
                   .catch(err => res.status(404).json({ message: err.message }));
-          })
-          .catch(err => {
-              res.status(500).json({ message: err.message });
-          });
-  } catch (err) {
-      res.status(500).json({ message: err.message });
-  }
-})
-
-// API DE METODOS DE PAGO
-
-/**
- * GET ALL METODOS
- */
-router.get("/:idUsuario/metodosDePago", (req, res) => {
-  try {
-      Connection.connectToMongo()
-          .then(async database => {
-              const client = database.db(db).collection(collectionMetodos);
-
-              await client
-                  .find({ _idUsuario: ObjectId(req.params.idUsuario) })
-                  .toArray()
-                  .then(x => res.status(200).json(x))
-                  .catch(err => res.status(500).json({ message: err.message }));
-          })
-          .catch(err => {
-              res.status(500).json({ message: err.message });
-          });
-  } catch (err) {
-      res.status(500).json({ message: err.message });
-  }
-});
-
-/**
-* GET ONE METODO
-*/
-router.get("/:idUsuario/metodosDePago/:id", (req, res) => {
-  try {
-      Connection.connectToMongo()
-          .then(database => {
-              const client = database.db(db).collection(collectionMetodos);
-
-              client
-                  .find({ $and: [{ _idUsuario: ObjectId(req.params.idUsuario) }, { _id: ObjectId(req.params.id) }] })
-                  .toArray()
-                  .then(x => res.status(200).json(x))
-                  .catch(err => res.status(404).json({ message: err.message }));
-          })
-          .catch(err => {
-              res.status(500).json({ message: err.message });
-          });
-  } catch (err) {
-      res.status(500).json({ message: err.message });
-  }
-});
-
-/**
-* POST METODO
-*/
-router.post("/:idUsuario/metodosDePago", (req, res) => {
-  const new_metodo = {
-      nombre: req.body.nombre,
-      tipo: req.body.tipo,
-      numero: req.body.numero,
-      _idUsuario: ObjectId(req.params.idUsuario)
-  };
-
-  try {
-      Connection.connectToMongo()
-          .then(database => {
-              const client = database.db(db).collection(collectionMetodos);
-
-              client.insertOne(new_metodo, (err, result) => {
-                  if (err) {
-                    res.status(400).json({ message: err.message });
-                    return;
-                  }
-                  res.status(201).send(result.ops);
-                });
-              })
-          .catch(err => {
-              res.status(500).json({ message: err.message });
-          });
-  } catch (err) {
-      res.status(500).json({ message: err.message });
-  }
-});
-
-/**
-* PATCH METODO
-*/
-router.patch("/:idUsuario/metodosDePago/:id", (req, res) => {
-  let updating = {};
-  if (req.body.nombre) {
-      updating.nombre = req.body.nombre;
-  }
-  if (req.body.tipo) {
-      updating.tipo = req.body.tipo;
-  }
-  if (req.body.numero) {
-      updating.numero = req.body.numero;
-  }
-
-  try {
-      Connection.connectToMongo()
-          .then(database => {
-              const client = database.db(db).collection(collectionMetodos);
-
-              client.findOneAndUpdate(
-                  { $and: [{ _idUsuario: ObjectId(req.params.idUsuario) }, { _id: ObjectId(req.params.id) }] },
-                  { $set: updating },
-                  { returnOriginal: false },
-                  (err, result) => {
-                      if (err) {
-                          res.status(400).json({ message: err.message });
-                          return;
-                      }
-                      res.status(200).json(result.value);
-                  }
-              );
-          })
-          .catch(err => {
-              res.status(500).json({ message: err.message });
-          });
-  } catch (err) {
-      res.status(500).json({ message: err.message });
-  }
-});
-
-/**
-* DELETE METODO
-*/
-router.delete("/:idUsuario/metodosDePago/:id", (req, res) => {
-  try {
-      Connection.connectToMongo()
-          .then(database => {
-              const client = database.db(db).collection(collectionMetodos);
-
-              client.findOneAndDelete(
-                  { $and: [{ _idUsuario: ObjectId(req.params.idUsuario) }, { _id: ObjectId(req.params.id) }] }, 
-                  (err, result) => {
-                  if (err) {
-                      res.status(404).json({ message: err.message });
-                      return;
-                  }
-                  res.status(200).send(result.value);
-              });
           })
           .catch(err => {
               res.status(500).json({ message: err.message });
