@@ -29,7 +29,7 @@ export default class PostEspacios extends React.Component {
   }
 
   async post_espacio(espacio) {
-    const prom = await axios.post(url_espacios, espacio)
+    await axios.post(url_espacios, espacio)
     this.props.history.push("/espacios");
   }
 
