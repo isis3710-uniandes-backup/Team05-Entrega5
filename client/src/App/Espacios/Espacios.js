@@ -11,7 +11,7 @@ import Col from 'react-bootstrap/Col';
 
 import "./Espacios.css";
 import axios from "axios";
-const url_espacios = "http://localhost:5000/api/espacios";
+const url_espacios = "/api/espacios";
 
 export default class Espacios extends React.Component {
   constructor(props) {
