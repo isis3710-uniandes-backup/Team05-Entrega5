@@ -66,7 +66,6 @@ export default class Espacios extends React.Component {
       this.setState({ _idReserva: p.data[0]._id });
       this.props.history.push('pagar/' + p.data[0]._id + '/' + reserva._idEspacio);
       console.log(this.props.history);
-      cookies.
     });
 
     /*
