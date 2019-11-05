@@ -10,6 +10,10 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
+
 import './Reservar.css'
 
 export default class Reservar extends React.Component {
@@ -115,7 +119,8 @@ export default class Reservar extends React.Component {
             method: "post",
             body: JSON.stringify(reserva),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "authorization" : cookies.get('token')
             }
         })
             .then(_ => {

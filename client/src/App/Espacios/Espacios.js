@@ -12,6 +12,11 @@ const url_espacios = "http://localhost:5000/api/espacios";
 
 const cookies = new Cookies();
 
+const headers = {
+  'Content-Type' : 'application/json',
+  'authorization' : cookies.get('token')
+}
+
 export default class Espacios extends React.Component {
   constructor(props) {
     super(props);
@@ -33,7 +38,7 @@ export default class Espacios extends React.Component {
   }
 
   async get_espacios() {
-    const prom = await axios.get(url_espacios);
+    const prom = await axios.get(url_espacios, {headers:headers});
     if (prom.status < 300 && prom.status > 199) {
       this.setState({
         espacios: prom.data
@@ -59,7 +64,7 @@ export default class Espacios extends React.Component {
   }
 
   async post_reserva(reserva) {
-    await axios.post('http://localhost:5000/api/reservas', reserva).then((p) => {
+    await axios.post('http://localhost:5000/api/reservas', reserva,{headers: headers}).then((p) => {
       this.setState({ _idReserva: p.data[0]._id });
       cookies.set('_idReserva', p.data[0]._id);
       cookies.set('_idEspacio', reserva._idEspacio);
