@@ -96,7 +96,7 @@ router.patch("/:id", (req,res) =>{
             res.status(500).json({message : err.message});
         });
     }catch(err){
-        res.status(500).json({ErrorConexion: err.message})
+        res.status(500).json({ErrorConexion: err.message});
     }
 });
 
@@ -105,8 +105,8 @@ router.patch("/:id", (req,res) =>{
  */
 router.post("/", (req, res)=>{
     const new_reserva = {
-      _idUsuario: req.body._idUsuario,
-      _idEspacio: req.body._idEspacio,
+      _idUsuario: ObjectId(req.body._idUsuario),
+      _idEspacio: ObjectId(req.body._idEspacio),
       fechaInicio: req.body.fechaInicio,
       fechaFin: req.body.fechaFin
     };
