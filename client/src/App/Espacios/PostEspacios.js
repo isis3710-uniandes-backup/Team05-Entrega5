@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 
 import axios from "axios";
-const url_espacios = "http://localhost:5000/api/espacios";
+const url_espacios = "/api/espacios";
 
 export default class PostEspacios extends React.Component {
   constructor(props) {

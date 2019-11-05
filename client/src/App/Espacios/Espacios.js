@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Espacios.css";
 import axios from "axios";
-const url_espacios = "http://localhost:5000/api/espacios";
+const url_espacios = "/api/espacios";
 
 export default class Espacios extends React.Component {
   constructor(props) {
@@ -53,7 +53,7 @@ export default class Espacios extends React.Component {
                           <a
                             href="#"
                             className="btn btn-primary"
-                            style={{ float: "right" }}
+                            style={{ float: "right", color: 'white' }}
                           >
                             Reservar
                           </a>
