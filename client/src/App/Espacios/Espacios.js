@@ -114,7 +114,7 @@ export default class Espacios extends React.Component {
                               <h5 className="card-title">{x.parqueadero}</h5>
                               <p className="card-text">{x.descripcion}</p>
                               <Link to={{
-                                pathname: "/pagos", state: {
+                                pathname: "/pagar", state: {
                                   _idReserva: this.state._idReserva
                                 }
                               }}>
