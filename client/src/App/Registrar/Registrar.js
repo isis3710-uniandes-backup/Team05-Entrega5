@@ -164,8 +164,6 @@ export default class Registrar extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state);
-        console.log(validateForm(this.state.errors))
         if (this.state.username !== "" && !this.state.nombre !== "" && !this.state.correo !== "" && !this.state.contrasenha !== "" && validateForm(this.state.errors)) {
             this.registrar(this.state.username, this.state.contrasenha, this.state.nombre, this.state.correo);
         }

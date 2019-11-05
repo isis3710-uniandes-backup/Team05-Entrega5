@@ -20,7 +20,6 @@ const validateForm = (errors) => {
     Object.values(errors).forEach(
         // if we have an error string set valid to false
         (val) => {
-            console.log(val.length);
             if (val.length > 0) {
                 valid = false
             }
@@ -119,7 +118,6 @@ export default class Login extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log(validateForm(this.state.errors))
         if (this.state.username !== "" && !this.state.password !== "" && validateForm(this.state.errors)) {
             this.login(this.state.username, this.state.password);
         }
@@ -175,7 +173,7 @@ export default class Login extends React.Component {
                 <Container className="cuenta-inexistente">
                     <Row>
                         <Col>
-                            <Link href="/registrar">¿No tienes cuenta? Regístrate</Link>
+                            <Link to="/registrar">¿No tienes cuenta? Regístrate</Link>
                         </Col>
                     </Row>
                 </Container>
