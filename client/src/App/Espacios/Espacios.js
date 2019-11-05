@@ -1,13 +1,8 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
-import Form from 'react-bootstrap/Form';
-import FormGroup from 'react-bootstrap/FormGroup'
 import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
-import { SingleDatePicker } from 'react-dates';
-import TimePicker from 'react-time-picker'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import 'react-dates/lib/css/_datepicker.css'
+import DateTimePicker from 'react-datetime-picker';
 
 import "./Espacios.css";
 import axios from "axios";
@@ -20,12 +15,12 @@ export default class Espacios extends React.Component {
 
     this.state = {
       espacios: [],
-      fechaInicio: Date.now(),
+      fechaInicio: new Date(),
       fechaFin: null,
       _idUsuario: null,
       _idEspacio: null
     };
-    this.handleDate = this.handleDate.bind(this);
+    this.onChange = date => this.setState({ fechaInicio: date });
     this.get_espacios = this.get_espacios.bind(this);
   }
 
@@ -101,7 +96,7 @@ export default class Espacios extends React.Component {
                       </Card.Title>
                     <Card.Body className="d-flex justify-content-center w-100" style={{width: '100%'}}>
                       <br/>
-                      <DateTime onChange={this.state.handleDate} defaultValue={Date.now()}/>
+                      <DateTimePicker onChange={this.onChange} value={this.state.fechaInicio}/>
                     </Card.Body>
                   </Card>
                 </div>
