@@ -74,7 +74,7 @@ export default class Login extends React.Component {
 
     async login(username, pass) {
         await axios.post(
-            'http://localhost:5000/api/usuarios/login',
+            '/api/usuarios/login',
             {
                 "nombreUsuario": username,
                 "contrasenia": pass

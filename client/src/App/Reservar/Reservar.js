@@ -115,7 +115,7 @@ export default class Reservar extends React.Component {
     }
 
     post_reserva(reserva) {
-        fetch('http://localhost:5000/api/reservas', {
+        fetch('/api/reservas', {
             method: "post",
             body: JSON.stringify(reserva),
             headers: {

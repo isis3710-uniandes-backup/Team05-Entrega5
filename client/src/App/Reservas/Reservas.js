@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import Cookies from 'universal-cookie';
-const url_reservas = "http://localhost:5000/api/reservas";
+const url_reservas = "/api/reservas";
 
 const cookies = new Cookies();
 
@@ -66,7 +66,7 @@ class Reservas extends Component {
                   >
                     <div className="card" style={{ textAlign: "left" }}>
                       <div className="card-body">
-                        <h2 className="card-title">Fecha </h2>
+                        <h1 className="card-title med">Fecha </h1>
                         <h5 className = "card-body">{x.fechaInicio}</h5>
                         {this.estaFinalizado(x)}
                       </div>

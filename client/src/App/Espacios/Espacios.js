@@ -8,7 +8,7 @@ import Cookies from 'universal-cookie';
 import "./Espacios.css";
 import axios from "axios";
 import DateTime from 'react-datetime';
-const url_espacios = "http://localhost:5000/api/espacios";
+const url_espacios = "/api/espacios";
 
 const cookies = new Cookies();
 
@@ -64,7 +64,7 @@ export default class Espacios extends React.Component {
   }
 
   async post_reserva(reserva) {
-    await axios.post('http://localhost:5000/api/reservas', reserva,{headers: headers}).then((p) => {
+    await axios.post('/api/reservas', reserva,{headers: headers}).then((p) => {
       this.setState({ _idReserva: p.data[0]._id });
       cookies.set('_idReserva', p.data[0]._id);
       cookies.set('_idEspacio', reserva._idEspacio);
@@ -72,7 +72,7 @@ export default class Espacios extends React.Component {
     });
 
     /*
-    fetch('http://localhost:5000/api/reservas', {
+    fetch('/api/reservas', {
       method: "post",
       body: JSON.stringify(reserva),
       headers: {

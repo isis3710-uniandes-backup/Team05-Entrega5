@@ -9,7 +9,7 @@ class NotFound extends Component {
             <div className="host d-flex flex-column align-items-center justify-content-center">
                 <img id="notfound" src={notfound} alt="Interrogación página no encontrada" />
                 <h1 className="blue font-weight-bold">404</h1>
-                <h2 className="font-weight-bold">Página no encontrada</h2>
+                <h1 className="font-weight-bold med">Página no encontrada</h1>
                 <div className="text-center my-2">
                     <p>
                         La página a la cual intentaste acceder no existe.

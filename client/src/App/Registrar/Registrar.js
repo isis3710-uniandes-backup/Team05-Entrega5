@@ -130,7 +130,7 @@ export default class Registrar extends Component {
 
     async registrar(username, password, nombre, correo) {
         await axios.post(
-            'http://localhost:5000/api/usuarios',
+            '/api/usuarios',
             {
                 "nombreUsuario": username,
                 "contrasenia": password,

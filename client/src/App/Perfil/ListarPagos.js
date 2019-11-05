@@ -23,7 +23,7 @@ class ListarPagos extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:5000/api/usuarios/${this.props.usuario._id}/pagos`,{headers:headers})
+        axios.get(`/api/usuarios/${this.props.usuario._id}/pagos`,{headers:headers})
             .then(x => {
                 this.setState({ pagos: x.data });
             })
