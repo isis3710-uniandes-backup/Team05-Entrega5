@@ -105,7 +105,7 @@ export default class Espacios extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col">
+            <div className="col-8">
               <div className="row" id="CardsContainer">
                 {this.state.espacios.length > 0 ? (
                   <React.Fragment>
