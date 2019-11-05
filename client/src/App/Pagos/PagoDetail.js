@@ -8,9 +8,10 @@ export default class PagoDetail extends Component {
             i : this.props.i,
             cantidad : this.props.pago.cantidad,
             metodoPago : this.props.pago.metodoPago,
-            fecha : Date(this.props.pago.fecha),
+            fecha : new Date(this.props.pago.fecha).toString(),
             imagen : this.props.pago.imagenMetodoPago,
         };
+
     }
     render() {
         return (
