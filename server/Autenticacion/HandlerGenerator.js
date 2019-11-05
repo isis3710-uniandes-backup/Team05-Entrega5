@@ -29,7 +29,7 @@ class HandlerGenerator {
                     else {
 
                         // Se genera un nuevo token para el nombre de usuario el cuál expira en 24 horas
-                        let token = jwt.sign({ nombreUsuario: doc.nombreUsuario, rol: doc.rol, nombre: doc.nombre, correo: doc.correo },
+                        let token = jwt.sign({ nombreUsuario: doc.nombreUsuario, rol: doc.rol, nombre: doc.nombre, correo: doc.correo, _id: doc._id },
                             config.secret, { expiresIn: '24h' });
 
                         // Retorna el token el cuál debe ser usado durante las siguientes solicitudes
