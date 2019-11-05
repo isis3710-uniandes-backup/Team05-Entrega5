@@ -13,7 +13,6 @@ export default class Pagar extends Component {
 
     constructor(props){
         super(props);
-        console.log(cookies.get('_idReserva'));
         this.state = {
             idReserva :cookies.get('_idReserva'),
             idEspacio : cookies.get('_idEspacio'),
@@ -28,7 +27,7 @@ export default class Pagar extends Component {
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
                         <Col xs="12" sm="10" md="4" large="4" xl="4">
                             <h2 className="title font-weight-bold">
-                                Pagar {this.state.idReserva} {this.state.idEspacio}
+                                Pagar
                             </h2>
                         </Col>
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
@@ -39,7 +38,7 @@ export default class Pagar extends Component {
                             <div className="pago-container">
                                 <Form className="text-left">
                                     <Form.Group>
-                                        <Form.Label></Form.Label>
+                                        <Form.Label>x</Form.Label>
                                     </Form.Group>
                                 </Form>
                             </div>

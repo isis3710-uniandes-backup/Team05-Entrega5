@@ -17,7 +17,6 @@ class ListarPagos extends Component {
     componentDidMount() {
         axios.get(`http://localhost:5000/api/usuarios/${this.props.usuario._id}/pagos`)
             .then(x => {
-                console.log(x.data);
                 this.setState({ pagos: x.data });
             })
             .catch(err => toast.error(`Hubo un error al traer los pagos :( -> ${err}`));
@@ -33,7 +32,7 @@ class ListarPagos extends Component {
                     {
                         (this.state.pagos.length === 0) ?
                         <p>Parece que aún no has realizado pagos.</p> :
-                        this.state.pagos.map((e, i) => <Pago i={i} pago={e} />)
+                        this.state.pagos.map((e, i) => <Pago i={i} pago={e} key = {i} />)
                     }
                 </ul>
             </div>

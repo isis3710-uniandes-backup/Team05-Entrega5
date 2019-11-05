@@ -50,7 +50,7 @@ router.post("/", (req,res)=>{
     const newPago = {
         cantidad : req.body.cantidad,
         metodoPago : req.body.metodoPago,
-        fecha : Date(req.body.fecha),
+        fecha : new Date(),
         _idReserva: ObjectId(req.body._idReserva),
         imagen : imagenMetodoPago,
     };
@@ -91,13 +91,13 @@ router.patch("/:id", (req, res) => {
         let imagenMetodoPago = "";
 
         if(req.body.metodoPago === "Tarjeta de Credito"){
-        imagenMetodoPago = "https://i.ibb.co/DpfD4wP/money-1.png";
+        imagenMetodoPago = "http://i.ibb.co/DpfD4wP/money-1.png";
 
         } else if(req.body.metodoPago === "Efectivo"){
-        imagenMetodoPago ="https://i.ibb.co/k55F3Hq/credit-card.png";
+        imagenMetodoPago ="http://i.ibb.co/k55F3Hq/credit-card.png";
 
         }else{
-        imagenMetodoPago ="https://i.ibb.co/YkCHJmV/leather-wallet.png";
+        imagenMetodoPago ="http://i.ibb.co/YkCHJmV/leather-wallet.png";
         }
 
         update.imagen = imagenMetodoPago;
