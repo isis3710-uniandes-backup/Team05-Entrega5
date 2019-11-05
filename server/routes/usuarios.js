@@ -145,28 +145,62 @@ router.delete("/:idUsuario", (req, res) => {
  /**
  * GET all pagos from usuario given an id
  */
+// router.get("/:idUsuario/pagos", (req,res) => {
+//   try {
+//       Connection.connectToMongo()
+//           .then(database => {
+//               const client = database.db(db).collection("reservas");
+//               client
+//                   .find({ _idUsuario: ObjectId(req.params.idUsuario) })
+//                   .toArray()
+//                   .then(x => {
+//                       let respuesta = [];
+//                       let client2 = database.db(db).collection(pagos_collection);
+//                       x.forEach(async r => {
+//                         await client2
+//                           .find({ _idReserva: ObjectId(r._id) })
+//                           .toArray()
+//                           .then(ans => respuesta.push(ans))
+//                           .catch(err => res.status(500).json({ message: err.message }));
+//                       });
+//                       res.status(200).json(respuesta);
+//                     }
+//                   )
+//                   .catch(err => res.status(404).json({ message: err.message }));
+//           })
+//           .catch(err => {
+//               res.status(500).json({ message: err.message });
+//           });
+//   } catch (err) {
+//       res.status(500).json({ message: err.message });
+//   }
+// });
 router.get("/:idUsuario/pagos", (req,res) => {
   try {
       Connection.connectToMongo()
           .then(database => {
               const client = database.db(db).collection("reservas");
-              client
-                  .find({ _idUsuario: ObjectId(req.params.idUsuario) })
-                  .toArray()
-                  .then(x => {
-                      let respuesta = [];
-                      let client2 = database.db(db).collection(pagos_collection);
-                      x.forEach(async r => {
-                        await client2
-                          .find({ _idReserva: ObjectId(r._id) })
-                          .toArray()
-                          .then(ans => respuesta.push(ans))
-                          .catch(err => res.status(500).json({ message: err.message }));
-                      });
-                      res.status(200).json(respuesta);
-                    }
-                  )
-                  .catch(err => res.status(404).json({ message: err.message }));
+              client.aggregate([
+                {$match: { _idUsuario: ObjectId(req.params.idUsuario) }},
+                {
+                  $lookup: {
+                    from: "pagos",
+                    localField: "_id",
+                    foreignField: "_idReserva",
+                    as: "pagosReserva"
+                  }
+                }
+              ],
+              (err, cursor) => {
+                if(err)
+                  res.status(500).json({ message: err.message });
+                cursor.toArray((err, documents) => {
+                  if(err)
+                    res.status(500).json({ message: err.message });
+
+                  res.status(200).json(documents);
+                });
+              })
           })
           .catch(err => {
               res.status(500).json({ message: err.message });
