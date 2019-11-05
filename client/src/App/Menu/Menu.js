@@ -26,7 +26,6 @@ export default class Navbar extends Component {
                 <ul className="navbar-nav ml-0 align-items-end">
                     <li className="nav-item mx-md-2"><Link to="/espacios" className="nav-link">Espacios</Link></li>
                     <li className="nav-item mx-md-2"><Link to="/reservas" className="nav-link">Mis Reservas</Link></li>
-                    <li className="nav-item mx-md-2"><Link to="/reservar" className="nav-link">Reservar</Link></li>
                     {this.revisarLogin()}
                 </ul>
             );
