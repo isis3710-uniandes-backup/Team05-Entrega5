@@ -156,7 +156,7 @@ router.get("/:idUsuario/pagos", (req,res) => {
                   .then(x => {
                       let respuesta = [];
                       let client2 = database.db(db).collection(pagos_collection);
-                      x.forEach(r => {
+                      x.forEach(async r => {
                         await client2
                           .find({ _idReserva: ObjectId(r._id) })
                           .toArray()
