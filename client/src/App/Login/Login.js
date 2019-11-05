@@ -119,7 +119,8 @@ export default class Login extends React.Component {
     }
 
     handleSubmit(event) {
-        if (!this.state.username === "" && !this.state.password === "" && validateForm(this.state.errors)) {
+        console.log(validateForm(this.state.errors))
+        if (this.state.username !== "" && !this.state.password !== "" && validateForm(this.state.errors)) {
             this.login(this.state.username, this.state.password);
         }
     }

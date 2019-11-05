@@ -35,4 +35,4 @@ Content-Type: application/json
 
 ### DELETE de un usuario
 
-DELETE http://localhost:5000/api/usuarios/5dc0a19da05e043c2853d56d
+DELETE http://localhost:5000/api/usuarios/5dc0ceb73033eb4ba182b139

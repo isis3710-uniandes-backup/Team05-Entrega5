@@ -18,7 +18,6 @@ const validateForm = (errors) => {
     Object.values(errors).forEach(
         // if we have an error string set valid to false
         (val) => {
-            console.log(val.length);
             if (val.length > 0) {
                 valid = false
             }
@@ -156,7 +155,7 @@ export default class Registrar extends Component {
                     contrasenha: this.state.contrasenha,
                     error: true
                 });
-                toast.error("¡Hubo un error en el registro!");
+                toast.error(response.data.message);
             }
 
         });
@@ -165,7 +164,9 @@ export default class Registrar extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        if (!this.state.username === "" && !this.state.nombre === "" && !this.state.correo === "" && !this.state.contrasenha === "" && validateForm(this.state.errors)) {
+        console.log(this.state);
+        console.log(validateForm(this.state.errors))
+        if (this.state.username !== "" && !this.state.nombre !== "" && !this.state.correo !== "" && !this.state.contrasenha !== "" && validateForm(this.state.errors)) {
             this.registrar(this.state.username, this.state.contrasenha, this.state.nombre, this.state.correo);
         }
         else{
@@ -245,7 +246,7 @@ export default class Registrar extends Component {
                     <Container className="cuenta-existente">
                         <Row>
                             <Col>
-                                <Link href="/login">¿Ya tienes una cuenta? Inicia sesión</Link>
+                                <Link to="/login">¿Ya tienes una cuenta? Inicia sesión</Link>
                             </Col>
                         </Row>
                     </Container>
