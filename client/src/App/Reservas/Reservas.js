@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import Cookies from 'universal-cookie';
 const url_reservas = "http://localhost:5000/api/reservas";
+
+const cookies = new Cookies();
+
+const headers = {
+    'Content-Type' : 'application/json',
+    'authorization' : cookies.get('token')
+  }
 
 class Reservas extends Component {
 
@@ -21,7 +29,7 @@ class Reservas extends Component {
     }
 
     async get_reservas() {
-        const prom = await axios.get(url_reservas);
+        const prom = await axios.get(url_reservas, {headers:headers});
         if (prom.status < 300 && prom.status > 199) {
             this.setState({
                 reservas: prom.data.filter(d => d._idUsuario === this.state._idUsuario)

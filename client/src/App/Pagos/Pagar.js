@@ -13,6 +13,11 @@ import axios from 'axios';
 
 const cookies = new Cookies();
 
+const headers = {
+    'Content-Type' : 'application/json',
+    'authorization' : cookies.get('token')
+  }
+
 export default class Pagar extends Component {
 
     constructor(props){
@@ -28,7 +33,7 @@ export default class Pagar extends Component {
     }
 
     componentDidMount(){
-        axios.get(`http://localhost:5000/api/espacios/${this.state.idEspacio}`)
+        axios.get(`http://localhost:5000/api/espacios/${this.state.idEspacio}`,{headers:headers})
         .then(x =>{
             this.setState({costo : x.data[0].costo})
         })
@@ -44,7 +49,7 @@ export default class Pagar extends Component {
         this.postPago(pago);
     }
     async postPago(pago) {
-        await axios.post('http://localhost:5000/api/pagos', pago).then((p) => {
+        await axios.post('http://localhost:5000/api/pagos', pago, {headers:headers}).then((p) => {
           this.props.history.push('perfil');
           toast.success(`Pagaste correctamente con : ${this.state.metodo}`)
         });

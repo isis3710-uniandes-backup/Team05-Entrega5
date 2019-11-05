@@ -3,9 +3,17 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import Cookies from 'universal-cookie';
 
 import axios from "axios";
 const url_espacios = "/api/espacios";
+
+const cookies = new Cookies();
+
+const headers = {
+  'Content-Type' : 'application/json',
+  'authorization' : cookies.get('token')
+}
 
 export default class PostEspacios extends React.Component {
   constructor(props) {
@@ -29,7 +37,7 @@ export default class PostEspacios extends React.Component {
   }
 
   async post_espacio(espacio) {
-    await axios.post(url_espacios, espacio)
+    await axios.post(url_espacios, espacio, {headers:headers})
     this.props.history.push("/espacios");
   }
 

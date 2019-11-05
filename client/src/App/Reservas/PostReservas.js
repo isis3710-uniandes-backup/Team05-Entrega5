@@ -2,6 +2,11 @@ import React from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
+
+
 
 export default class PostReservas extends React.Component {
   constructor(props) {
@@ -29,7 +34,8 @@ export default class PostReservas extends React.Component {
         method: "post",
         body: JSON.stringify(reserva),
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "authorization" : cookies.get('token')
         }
       })
       .then( _ => {

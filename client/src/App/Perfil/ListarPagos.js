@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 import Pago from '../Pagos/Pago';
 import { toast } from 'react-toastify'; 
+
+const cookies = new Cookies();
+
+const headers = {
+    'Content-Type' : 'application/json',
+    'authorization' : cookies.get('token')
+  }
 
 class ListarPagos extends Component {
     
@@ -15,7 +23,7 @@ class ListarPagos extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:5000/api/usuarios/${this.props.usuario._id}/pagos`)
+        axios.get(`http://localhost:5000/api/usuarios/${this.props.usuario._id}/pagos`,{headers:headers})
             .then(x => {
                 this.setState({ pagos: x.data });
             })
