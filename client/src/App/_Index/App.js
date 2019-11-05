@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
+import { PrivateRoute } from './SpecialRoutes.js';
 
 import "./normalize.css";
 import "./App.css";
@@ -62,10 +63,10 @@ export default class App extends React.Component {
             <Route exact path="/" component={(props) => <Home {...props} getUsuario={this.getUsuario}/>} />
             <Route exact path="/login" component={(props) => <Login {...props} setUsuario={this.setUsuario} />} />
             <Route exact path="/registrar" component={Registrar} />
-            <Route exact path="/espacios" component={ (props) => <Espacios {...props} getUsuario={this.getUsuario} />} />
-            <Route exact path="/espacios/post" component={(props) => <PostEspacios {...props} getUsuario={this.getUsuario} />} />
-            <Route exact path="/reservas" component={(props) => <Reservas {...props} getUsuario={this.getUsuario} />} />
-            <Route exact path="/perfil" component={(props) => <Perfil {...props} getUsuario={this.getUsuario} />} />
+            <Route exact path="/espacios" component={ (props) => <Espacios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
+            <Route exact path="/espacios/post" component={(props) => <PostEspacios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
+            <PrivateRoute exact path="/reservas" component={(props) => <Reservas {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
+            <PrivateRoute exact path="/perfil" component={(props) => <Perfil {...props} getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />} getUsuario={this.getUsuario} removeUsuario={this.removeUsuario} />
             <Route path="*" component={NotFound} />
           </Switch>
         </div>
