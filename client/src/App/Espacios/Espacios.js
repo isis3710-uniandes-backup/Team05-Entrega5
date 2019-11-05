@@ -62,9 +62,12 @@ export default class Espacios extends React.Component {
 
   async post_reserva(reserva) {
     console.log(reserva);
-    let p = await axios.post('http://localhost:5000/api/reservas', reserva);
-    console.log(p.data);
-    this.setState({ _idReserva: p.data })
+    let p = await axios.post('http://localhost:5000/api/reservas', reserva).then((p) => {
+      this.setState({ _idReserva: p.data[0]._id });
+      this.props.history.push('pagar/' + p.data[0]._id + '/' + reserva._idEspacio);
+      console.log(this.props.history);
+      cookies.
+    });
 
     /*
     fetch('http://localhost:5000/api/reservas', {
@@ -123,8 +126,8 @@ export default class Espacios extends React.Component {
                                 onClick={() => {
                                   this.setState({ _idEspacio: x._id }, this.handle_onPost);
                                 }}>
-                                
-                              <Link to={{
+
+                                <Link to={{
                                   pathname: "/pagos", state: {
                                     _idReserva: this.state._idReserva
                                   },
