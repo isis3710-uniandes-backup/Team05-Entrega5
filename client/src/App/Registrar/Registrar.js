@@ -70,7 +70,7 @@ export default class Registrar extends Component {
                         : 'El correo ingresado no es válido';
                 break;
             case 'password':
-                errors.password =
+                errors.contrasenha =
                     value.length < 8
                         ? 'La contraseña debe tener por lo menos 8 caracteres'
                         : '';
@@ -187,7 +187,7 @@ export default class Registrar extends Component {
         if (this.state.error) {
             incorrectMessage =
                 <Container className="error">
-                    Hay campos vacíos
+                    Hay campos vacíos o algún campo tiene errores
                 </Container>
         }
 
