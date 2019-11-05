@@ -88,11 +88,9 @@ export default class Espacios extends React.Component {
           <div className="row">
             <div className="col-4">
               <div>
-                <div className="card-container">
+                <div className="card-container ReservaCard" style={{ padding: '1em' }}>
                   <Card>
-                    <Card.Title className="card-title">
-                      Reserva parqueaderos de acuerdo con tus necesidades.
-                      </Card.Title>
+                    <h5 style={{ padding: '1em' }} className="card-title">Reserva parqueaderos de acuerdo con tus necesidades.</h5>
                     <Card.Body className="d-flex justify-content-center w-100" style={{width: '100%'}}>
                       <br/>
                       <DateTime />
