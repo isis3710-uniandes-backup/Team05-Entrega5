@@ -99,7 +99,7 @@ router.patch("/:id", (req,res) =>{
  */
 router.post("/", (req, res)=>{
     const new_reserva = {
-      _idUsuario: ObjectId(req.body._idUsuario),
+      _idUsuario: (req.body._idUsuario),
       _idEspacio: ObjectId(req.body._idEspacio),
       fechaInicio: req.body.fechaInicio,
       fechaFin: req.body.fechaFin
