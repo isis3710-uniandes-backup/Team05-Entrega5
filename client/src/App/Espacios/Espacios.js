@@ -42,7 +42,7 @@ export default class Espacios extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="host">
 
         <div style={{height: '10vh'}}>
           &nbsp;
