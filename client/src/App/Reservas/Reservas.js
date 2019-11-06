@@ -87,7 +87,7 @@ class Reservas extends Component {
             <div className="card" style={{ textAlign: "center" }}>
               <div className="card-body">
                 <p className="card-text">
-                  En este momento no hay espacios de parqueo disponibles
+                  Aún no tienes reservas
                 </p>
               </div>
             </div>
