@@ -22,3 +22,8 @@ yarn-error.log*
 
 
 *.env
+node_modules
+npm-debug.log
+
+
+yarn.lock

@@ -23,7 +23,7 @@ $ git clone repo
 $ nano repo/server/.env
 ``` 
 
-Llave de acceso a la base de datos MongoDB - Mlab. Debe estar en archivo **.env** preferible dentro del directorio **/server**
+**Importante** Llave de acceso a la base de datos MongoDB - Mlab. Debe estar en archivo **.env** en la **root** del proyecto
 > MLAB=mongodb://grupo5:grupo5@ds121406.mlab.com:21406/entrega4
 
 ```ssh
@@ -93,12 +93,17 @@ $ npm dev
 ├── .gitignore    # -> Specifies intentionally untracked files to ignore
 ├── Procfile      # -> Heroku commands that are executed by the app on startup
 │
+├── .env          # -> Es ignorado por git TOCA CREARLO 
+│
+├── ui
+│    └── test
+│         └── usabilidad
+│
 ├── server
 │   ├── server.js     # -> Backend entry point
 │   ├── test.js
 │   ├── package.json
 │   ├── .gitignore
-│   ├── .env
 │   ├── models        # -> MongoDB Models
 │   |   └── user.js
 │   |   └── ...
@@ -126,5 +131,6 @@ $ npm dev
     │       └── ...
     └── public
         └── index.html          # -> Frontend entry point
+
     
 ``` 
