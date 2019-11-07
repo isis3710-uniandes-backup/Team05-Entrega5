@@ -9,6 +9,7 @@
     "start": "node server/server.js",
     "test": "node server/test.js",
     "build": "cd client && npm run build",
+    "dev": "nodemon server/server.js",
     "heroku-postbuild": "cd client && npm run build"
   },
   "keywords": [

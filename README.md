@@ -17,20 +17,20 @@ Esta aplicación te permite encontrar espacios para parquear tu vehículo. Puede
 > [Sitio Web](https://parkin-web3.herokuapp.com)
 
 
-### Deployment
+### Local Deployment
 
 ```ssh
 $ git clone repo
-$ nano repo/server/.env
+$ cd repo
+$ npm install
+$ echo "MLAB=mongodb://grupo5:grupo5@ds121406.mlab.com:21406/entrega4" >> .env
+$ npm run build
+$ npm run start
 ``` 
 
 **Importante** Llave de acceso a la base de datos MongoDB - Mlab. Debe estar en archivo **.env** en la **root** del proyecto
 > MLAB=mongodb://grupo5:grupo5@ds121406.mlab.com:21406/entrega4
 
-```ssh
-$ cd repo/
-$ npm start
-``` 
 
 Error: posiblemente falta el archivo .env con la llave de acceso a Mlab. <br/>
 
@@ -54,8 +54,7 @@ $ show dbs
 
 
 ```ssh
-$ cd server/
-$ npm start
+$ npm run dev
 ``` 
 
 
@@ -67,23 +66,14 @@ $ npm start
 
 ```ssh
 $ cd client/
-$ npm start
+$ npm install --only=dev
+$ npm run start
 ``` 
 
 
 <hr/>
 
 
-### Deployment - Dev mode
-
-
-```ssh
-$ cd server/
-$ npm dev
-``` 
-
-
-<hr/>
 
 
 ### File directory
