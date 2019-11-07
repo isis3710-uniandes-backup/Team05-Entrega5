@@ -48,20 +48,17 @@ Permitir que el 90% o más pueda realizar una búsqueda con la finalidad de filt
 ## Preguntas y Tareas a Realizar
 
 **Objetivo 1**
-
-Reservar un espacio de parque para el 6 de noviembre a las 10pm por una duración de 8 horas. ¿Qué realizaría primero para esta tarea?
-Realizar una reserva con fechas consistentes, e.i., la fecha de terminación de la reserva no puede ser una fecha anterior a la fecha de inicio.
+1. Reservar un espacio de parque para el 6 de noviembre a las 10pm por una duración de 8 horas. ¿Qué realizaría primero para esta tarea?
+2. Realizar una reserva con fechas consistentes, e.i., la fecha de terminación de la reserva no puede ser una fecha anterior a la fecha de inicio.
 
 **Objetivo 2**
-
-Inscribir un espacio de parque dentro de la aplicación de forma que quede disponible para recibir reservas. ¿Los pasos a seguir fueron consistentes y lograron la efectiva realización de esta tarea?
+1. Inscribir un espacio de parque dentro de la aplicación de forma que quede disponible para recibir reservas. ¿Los pasos a seguir fueron consistentes y lograron la efectiva realización de esta tarea?
 
 **Objetivo 3**
-
-Buscar efectivamente los espacios de parqueo disponibles en la localidad de Santa Fé. ¿Fue sencillo para el usuario la realización del filtrado por localidades?
-Filtrar efectivamente los espacios basados en un rango de precio base por hora. ¿Fue sencillo para el usuario la utilización del filtro para realizar la búsqueda?
-Buscar y filtrar efectivamente espacios basado en un rango de precios y una localidad dada. ¿Fue sencillo para el usuario realizar la búsqueda basado en los parámetros especificados?
-Hacer uso de búsquedas de espacios basados en un filtro de fecha ¿Fue sencillo para el usuario usar los filtros?
+1. Buscar efectivamente los espacios de parqueo disponibles en la localidad de Santa Fé. ¿Fue sencillo para el usuario la realización del filtrado por localidades?
+2. Filtrar efectivamente los espacios basados en un rango de precio base por hora. ¿Fue sencillo para el usuario la utilización del filtro para realizar la búsqueda?
+3. Buscar y filtrar efectivamente espacios basado en un rango de precios y una localidad dada. ¿Fue sencillo para el usuario realizar la búsqueda basado en los parámetros especificados?
+4. Hacer uso de búsquedas de espacios basados en un filtro de fecha ¿Fue sencillo para el usuario usar los filtros?
 
 
 ## Script de la Entrevista
