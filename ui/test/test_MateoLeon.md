@@ -21,5 +21,5 @@
 
 ### Recomendaciones
 
-* Un diseño más consistente FALTA
+* Un diseño más consistente puesto a que la simplicidad con la que cuenta la página actual, hace dar cuenta de la falta de funcionalidades que podría tener. Además, le gustaria poder filtrar los espacios de reserva por costo, zona y popularidad. Al usuario le pareció que ingresar a la pagina era simple, sin embargo, hacer las prinipales tareas como reservar un espacio de parqueo, no era trivial. 
 
