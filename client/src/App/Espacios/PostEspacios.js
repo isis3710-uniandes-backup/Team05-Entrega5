@@ -81,7 +81,7 @@ export default class PostEspacios extends React.Component {
                   <Form.Control type="number" min="0" name="costo" />
                 </Form.Group>
 
-                <Button variant="success" size="md" block type="submit">
+                <Button variant="primary" size="md" block type="submit">
                   Publicar
                 </Button>
               </Form>
