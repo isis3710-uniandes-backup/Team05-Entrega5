@@ -209,31 +209,32 @@ export default class Registrar extends Component {
                             <div className="border-container">
                                 <Container className="registrar-container">
                                     <Form className="text-left">
+                                        <small className="text-muted">Todos los campos con (*) son obligatorios</small>
                                         <Form.Group>
                                             <Form.Label htmlFor="username">Nombre de usuario *</Form.Label>
-                                            <Form.Control type="text" autoComplete="new-password" name="username" placeholder="(Ejemplo: userio)" title="Nombre usuario" onChange={this.handleUsername}></Form.Control>
+                                            <Form.Control type="text" id="username" autoComplete="new-password" name="username" placeholder="(Ejemplo: userio)" title="Nombre usuario" onChange={this.handleUsername}></Form.Control>
                                             {errors.username.length > 0 &&
                                                 <span className='error'>{errors.username}</span>}
                                         </Form.Group>
                                         <Form.Group>
                                             <Form.Label htmlFor="nombre">Nombre completo *</Form.Label>
-                                            <Form.Control type="name" name="nombre" placeholder="(Ejemplo: Pepito Pérez)" title="Nombre" onChange={this.handleNombre}></Form.Control>
+                                            <Form.Control type="name" id="nombre" name="nombre" placeholder="(Ejemplo: Pepito Pérez)" title="Nombre" onChange={this.handleNombre}></Form.Control>
                                             {errors.nombre.length > 0 &&
                                                 <span className='error'>{errors.nombre}</span>}
                                         </Form.Group>
                                         <Form.Group>
                                             <Form.Label htmlFor="email">Correo *</Form.Label>
-                                            <Form.Control type="email" name="email" placeholder="(Ejemplo: correo@gmail.com)" title="Correo" onChange={this.handleCorreo}></Form.Control>
+                                            <Form.Control type="email" id="email" name="email" placeholder="(Ejemplo: correo@gmail.com)" title="Correo" onChange={this.handleCorreo}></Form.Control>
                                             {errors.email.length > 0 &&
                                                 <span className='error'>{errors.email}</span>}
                                         </Form.Group>
                                         <Form.Group>
                                             <Form.Label htmlFor="password">Contraseña *</Form.Label>
-                                            <Form.Control type="password" autoComplete="new-password" name="password" placeholder="(Ejemplo: contra$enia)" title="Contraseña" onChange={this.handleContrasenha}></Form.Control>
+                                            <Form.Control type="password" id="password" autoComplete="new-password" name="password" placeholder="(Ejemplo: contra$enia)" title="Contraseña" onChange={this.handleContrasenha}></Form.Control>
                                             {errors.contrasenha.length > 0 &&
                                                 <span className='error'>{errors.contrasenha}</span>}
                                         </Form.Group>
-                                        <div className="d-flex justify-content-center">
+                                        <div className="d-flex justify-content-center pt-3">
                                             <button type="button" className="but-solid" onClick={this.handleSubmit}>Registrarse</button>
                                         </div>
                                     </Form>
@@ -242,7 +243,7 @@ export default class Registrar extends Component {
                         </Col>
                         <Col xs="1" sm="1" md="3" large="4" xl="4"></Col>
                     </Row>
-                    <Container className="cuenta-existente">
+                    <Container className="cuenta-existente pb-4">
                         <Row>
                             <Col>
                                 <Link to="/login">¿Ya tienes una cuenta? Inicia sesión</Link>

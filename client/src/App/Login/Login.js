@@ -157,11 +157,11 @@ export default class Login extends React.Component {
                                     <Form className="text-left">
                                         <Form.Group>
                                             <Form.Label htmlFor="nombreUsuario">Nombre de usuario</Form.Label>
-                                            <Form.Control name="nombreUsuario" required type="text" placeholder="Ingresa tu nombre de usuario" title="Ingresa tu nombre de usuario" onChange={this.handleUserChange}></Form.Control>
+                                            <Form.Control name="nombreUsuario" id="nombreUsuario" required type="text" placeholder="Ingresa tu nombre de usuario" title="Ingresa tu nombre de usuario" onChange={this.handleUserChange}></Form.Control>
                                         </Form.Group>
                                         <Form.Group>
                                             <Form.Label htmlFor="contrasenia">Contraseña</Form.Label>
-                                            <Form.Control name="contrasenia" type="password" placeholder="Ingresa tu contraseña" title="Ingresa tu contraseña" onChange={this.handlePassChange}></Form.Control>
+                                            <Form.Control name="contrasenia" id="contrasenia" type="password" placeholder="Ingresa tu contraseña" title="Ingresa tu contraseña" onChange={this.handlePassChange}></Form.Control>
                                         </Form.Group>
                                         <div className="d-flex justify-content-center">
                                             <button type="button" className="but-solid" onClick={this.handleSubmit}>Ingresar</button>
