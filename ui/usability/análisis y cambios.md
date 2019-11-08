@@ -13,4 +13,4 @@
 ## Cambios que se deberían hacer a la Página Web.
 
 <p>Agregar filtros que de manera intuitiva muestren los espacios que tengan determinadas características, como disponibilidad, precios, fecha. Además agregar busqueda de espacios por nombres para encontrar más facilmente el espacio requerido. </p><br>
-<p>Hacer más chequeos de errores posibles del usuario. Mejorar el flujo de la página. Agregar instrucciones claras del proceso de reserva y págo ya que hubo mucha confusión en el proceso.</p>
+<p>Hacer más chequeos de errores posibles del usuario. Mejorar el flujo de la página. Agregar instrucciones claras del proceso de reserva y pago ya que hubo mucha confusión en el proceso.</p>
