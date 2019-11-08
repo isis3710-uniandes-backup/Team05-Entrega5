@@ -62,8 +62,8 @@ export default class App extends React.Component {
           <Menu getUsuario={this.getUsuario} removeUsuario={this.removeUsuario}  />
           <Switch>
             <Route exact path="/" component={(props) => <Home {...props} getUsuario={this.getUsuario}/>} />
-            <Route exact path="/login" component={(props) => <Login {...props} setUsuario={this.setUsuario} />} />
-            <Route exact path="/registrar" component={Registrar} />
+            <Route exact path="/login" component={(props) => <Login {...props} setUsuario={this.setUsuario} getUsuario={this.getUsuario} />} />
+            <Route exact path="/registrar" component={(props) => <Registrar {...props} getUsuario={this.getUsuario} />} />
             <PrivateRoute exact path="/pagar" component={Pagar} getUsuario={this.getUsuario} />
             <PrivateRoute exact path="/espacios" component={ (props) => <Espacios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />
             <PrivateRoute exact path="/espacios/post" component={(props) => <PostEspacios {...props} getUsuario={this.getUsuario} />} getUsuario={this.getUsuario} />

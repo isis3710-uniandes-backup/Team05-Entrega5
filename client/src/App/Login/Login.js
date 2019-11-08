@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
+import Cookies from 'universal-cookie';
+import { Link, Redirect } from 'react-router-dom';
+
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form';
-import axios from 'axios';
-import Cookies from 'universal-cookie';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 import "./Login.css";
@@ -27,7 +28,7 @@ const validateForm = (errors) => {
     return valid;
 }
 
-export default class Login extends React.Component {
+export default class Login extends Component {
     constructor(props) {
         super(props);
 
@@ -126,6 +127,12 @@ export default class Login extends React.Component {
         }
     }
 
+    renderRedirect() {
+        if (this.props.getUsuario()) {
+            return <Redirect to='/perfil' />
+        }
+    }
+
     render() {
         let incorrectMessage;
 
@@ -138,6 +145,7 @@ export default class Login extends React.Component {
 
         return (
             <div className="content-body host">
+                <div>{this.renderRedirect()}</div>
                 <Container>
                     <Row className="justify-content-lg-center">
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
@@ -164,7 +172,7 @@ export default class Login extends React.Component {
                                             <Form.Control name="contrasenia" id="contrasenia" type="password" placeholder="Ingresa tu contraseña" title="Ingresa tu contraseña" onChange={this.handlePassChange}></Form.Control>
                                         </Form.Group>
                                         <div className="d-flex justify-content-center">
-                                            <button type="button" className="but-solid" onClick={this.handleSubmit}>Ingresar</button>
+                                            <button type="submit" className="but-solid" onClick={this.handleSubmit}>Ingresar</button>
                                         </div>
                                     </Form>
                                 </div>

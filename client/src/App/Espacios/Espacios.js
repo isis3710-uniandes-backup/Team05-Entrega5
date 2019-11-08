@@ -1,15 +1,17 @@
-import React from "react";
-import Card from "react-bootstrap/Card";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Cookies from "universal-cookie";
+import axios from "axios";
+
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
-import DateTimePicker from "react-datetime-picker";
-import Cookies from "universal-cookie";
 
 import "./Espacios.css";
-import axios from "axios";
+import DateTimePicker from "react-datetime-picker";
 import DateTime from "react-datetime";
+import Card from "react-bootstrap/Card";
+import { toast } from "react-toastify";
 
-import { Link } from "react-router-dom";
 
 const url_espacios = "/api/espacios";
 
@@ -20,7 +22,7 @@ const headers = {
   authorization: cookies.get("token")
 };
 
-export default class Espacios extends React.Component {
+export default class Espacios extends Component {
   constructor(props) {
     super(props);
 
@@ -47,6 +49,7 @@ export default class Espacios extends React.Component {
         espacios: prom.data
       });
     } else {
+      toast.error("Hubo un error al consultar los espacios disponibles. Por favor, inténtalo de nuevo.");
       console.log(prom.status, "\n The response was not OK");
     }
   }
@@ -95,7 +98,7 @@ export default class Espacios extends React.Component {
     return (
       <div>
         <div className="host">
-          <h1>Espacios disponibles</h1>
+          <h1 className="display-3 font-weight-bold">Espacios disponibles</h1>
           <div className="row">
             <div className="col-4 col-12-md col-12-sd" textalign="center">
               <div className="d-flex align-items-stretch align-center">
@@ -104,9 +107,9 @@ export default class Espacios extends React.Component {
                   style={{ padding: "1em" }}
                 >
                   <Card className="d-flex align-items-stretch">
-                    <h3 style={{ padding: "1em" }} className="card-title">
+                    <h2 style={{ padding: "1em" }} className="card-title">
                       Fecha y Hora
-                    </h3>
+                    </h2>
                     <Card.Body
                       className="d-flex justify-content-center w-100"
                       style={{ width: "100%" }}
@@ -122,7 +125,7 @@ export default class Espacios extends React.Component {
             </div>
             <div className="col-8 col-12-md col-12-sd">
               <Link to="/espacios/post">
-                <button className="btn btn-primary">Agregar una oferta</button>
+                <button className="but-solid">Agregar Oferta</button>
               </Link>
               <div className="row" id="CardsContainer">
                 {this.state.espacios.length > 0 ? (
@@ -139,7 +142,7 @@ export default class Espacios extends React.Component {
                               <h5 className="card-title">{x.parqueadero}</h5>
                               <p className="card-text">{x.descripcion}</p>
                               <button
-                                className="btn btn-primary"
+                                className="but-outline"
                                 style={{ float: "right" }}
                                 onClick={() => {
                                   this.setState(

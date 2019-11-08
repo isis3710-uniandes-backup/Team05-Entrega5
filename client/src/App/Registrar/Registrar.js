@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import './Registrar.css';
 
@@ -8,7 +9,6 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { toast } from 'react-toastify';
 
 const validEmailRegex = RegExp(/^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
@@ -178,6 +178,12 @@ export default class Registrar extends Component {
         }
     }
 
+    renderRedirect() {
+        if (this.props.getUsuario()) {
+            return <Redirect to='/perfil' />
+        }
+    }
+
     render() {
         const { errors } = this.state;
 
@@ -192,6 +198,7 @@ export default class Registrar extends Component {
 
         return (
             <div className="content-body host">
+                <div>{this.renderRedirect()}</div>
                 <Container>
                     <Row className="justify-content-lg-center">
                         <Col xs="0" sm="0" md="3" large="3" xl="3"></Col>
@@ -235,7 +242,7 @@ export default class Registrar extends Component {
                                                 <span className='error'>{errors.contrasenha}</span>}
                                         </Form.Group>
                                         <div className="d-flex justify-content-center pt-3">
-                                            <button type="button" className="but-solid" onClick={this.handleSubmit}>Registrarse</button>
+                                            <button type="submit" className="but-solid" onClick={this.handleSubmit}>Registrarse</button>
                                         </div>
                                     </Form>
                                 </Container>

@@ -84,6 +84,3 @@ a {
 a:focus, a:hover {
   color: #00A8E8 !important;
 }
-a .nav-link {
-  font-weight: bold;
-}

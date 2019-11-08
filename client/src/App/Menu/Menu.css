@@ -1,6 +1,9 @@
 nav {
     font-weight: 500;
 }
+.nav-item {
+    font-weight: bold !important;
+}
 nav.navbar-toggler, .navbar-toggler-icon {
     color: #6E7271 !important;
     border-color: #6E7271 !important;
@@ -30,7 +33,6 @@ span.prefix {
 .profilePic:hover, .profilePic:focus {
     border: 4px solid #00A8E8 !important;
 }
-
 div.sticky {
     position: sticky;
     top: 100px;

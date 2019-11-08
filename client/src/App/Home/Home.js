@@ -1,21 +1,10 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-import Cookies from 'universal-cookie';
-
 
 import "./Home.css";
 import parking from '../../assets/parking.png';
 
-let jwt = require('jsonwebtoken');
-const cookies = new Cookies();
-
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      token: jwt.decode(cookies.get('token'))
-    };
-  }
 
   /**
    * Revisa si el usuario está registrado para llevarlo a calcular la huella o a loguearse
@@ -23,7 +12,7 @@ class Home extends Component {
   revisarUsuario() {
     // La dirección a donde lo manda dependiendo de si está logueado o no 
     // Se mira si está logueado y se cambia la dirección a donde lo manda
-    let direccion = this.token? '/reservar' : '/login';
+    let direccion = this.props.getUsuario() ? '/espacios' : '/login';
 
     return (
         <Link to={direccion}>
