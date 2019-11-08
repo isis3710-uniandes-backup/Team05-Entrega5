@@ -1,6 +1,6 @@
 # Test de Usabilidad: Claudia Luna
 
-[Video](https://youtu.be/AaaZAYblcJA)
+[Video](https://www.youtube.com/watch?v=q38UBbIQCsA)
 
 
 ## Preguntas y Tareas a Realizar
