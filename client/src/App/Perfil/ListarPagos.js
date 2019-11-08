@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 
-import Pago from '../Pagos/Pago';
+import Pagos from '../Pagos/Pagos';
 import { toast } from 'react-toastify'; 
 
 const cookies = new Cookies();
@@ -40,7 +40,7 @@ class ListarPagos extends Component {
                     {
                         (this.state.pagos.length === 0) ?
                         <p>Parece que aún no has realizado pagos.</p> :
-                        <Pago pagos={this.state.pagos} />
+                        <Pagos pagos={this.state.pagos} />
                     }
                 </div>
             </div>

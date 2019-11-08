@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PagoDetail from "./PagoDetail.js";
 
-export default class Pago extends Component {
+export default class Pagos extends Component {
 
     // constructor(props) {
     //     super(props);
     // }
 
     render() {
+        console.log(this.props.pagos);
         return (
             <ul className="list-group list-group-flush mb-5">
                 {
