@@ -40,7 +40,7 @@ class ListarPagos extends Component {
                     {
                         (this.state.pagos.length === 0) ?
                         <p>Parece que aún no has realizado pagos.</p> :
-                        <Pago pago={this.state.pagos} />
+                        <Pago pagos={this.state.pagos} />
                     }
                 </div>
             </div>
