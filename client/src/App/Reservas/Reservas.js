@@ -42,7 +42,7 @@ class Reservas extends Component {
     if (prop.fechaFin != null) {
       return (
         <button
-          className="btn btn-danger"
+          className="but-solid"
           onClick={() => {
             this.updateFinalizado(prop._id);
           }}
@@ -63,6 +63,7 @@ class Reservas extends Component {
   render() {
     return (
       <div className="host">
+        <h1 className="med font-weight-bold title pt-4">Mis Reservas</h1>
         {this.state.reservas.length > 0 ? (
           <React.Fragment>
             {this.state.reservas.map((x, i) => {

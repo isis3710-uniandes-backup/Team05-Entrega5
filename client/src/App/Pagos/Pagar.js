@@ -74,23 +74,23 @@ export default class Pagar extends Component {
                             <div className="pago-container">
                                 <Form className="text-left">
                                     <Form.Group>
-                                        <Form.Label><h4 className="mt-3">Resumen:</h4></Form.Label>
-                                        <h5 className="mt-3">Costo: {this.state.costo}</h5>
-                                        <Form.Label><h4 className="mt-3">Escoje el método de pago:</h4></Form.Label>
-                                        <ButtonToolbar aria-label="Opciones de Metodo de Pago">
-                                            <ButtonGroup vertical  size="lg">
-                                                <Button variant="success" className="justify-content-between align-items-center" onClick={() => {this.setState({metodo: "Tarjeta de Credito" })}}>
-                                                <img className="rounded float-left" src="https://i.ibb.co/k55F3Hq/credit-card.png" alt="Icono método de pago" width="55" height="55"/>
-                                                    <h4>Tarjeta de Crédito</h4>
-                                                    </Button>
-                                                <Button variant="success" className="justify-content-between align-items-center" onClick={() => {this.setState({metodo: "Efectivo" })}}>
-                                                <img className="rounded float-left" src="https://i.ibb.co/DpfD4wP/money-1.png" alt="Icono método de pago" width="55" height="55"/>
-                                                    <h4>Efectivo</h4>
-                                                    </Button>
-                                                <Button variant="success" className=" justify-content-between align-items-center" onClick={() => {this.setState({metodo: "Transacción Bancaria" })}}>
-                                                <img className="rounded float-left" src="https://i.ibb.co/YkCHJmV/leather-wallet.png" alt="Icono método de pago" width="55" height="55"/>
-                                                    <h4>Cuenta</h4>
-                                                    </Button>
+                                        <Form.Label><h2 className="mt-3">Resumen</h2></Form.Label>
+                                        <strong className="mt-3">Costo: {this.state.costo}</strong>
+                                        <Form.Label><h3 className="mt-3">Escoje el método de pago:</h3></Form.Label>
+                                        <ButtonToolbar aria-label="Opciones de Método de Pago">
+                                            <ButtonGroup vertical className="d-flex justify-content-center" size="lg">
+                                                <button variant="success" className="justify-content-between align-items-center" onClick={() => {this.setState({metodo: "Tarjeta de Credito" })}}>
+                                                    <img className="float-left" src="https://i.ibb.co/k55F3Hq/credit-card.png" alt="Icono tarjeta" width="55" height="55"/>
+                                                    <strong> Tarjeta de Crédito</strong>
+                                                </button>
+                                                <button variant="success" className="justify-content-between align-items-center" onClick={() => {this.setState({metodo: "Efectivo" })}}>
+                                                    <img className="float-left" src="https://i.ibb.co/DpfD4wP/money-1.png" alt="Icono efectivo" width="55" height="55"/>
+                                                    <strong> Efectivo</strong>
+                                                </button>
+                                                <button variant="success" className=" justify-content-between align-items-center" onClick={() => {this.setState({metodo: "Transacción Bancaria" })}}>
+                                                    <img className="float-left" src="https://i.ibb.co/YkCHJmV/leather-wallet.png" alt="Icono transacción bancaria" width="55" height="55"/>
+                                                    <strong> Cuenta</strong>
+                                                </button>
                                             </ButtonGroup>
                                         </ButtonToolbar>
                                     </Form.Group>

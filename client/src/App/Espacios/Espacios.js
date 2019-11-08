@@ -139,7 +139,7 @@ export default class Espacios extends Component {
                         >
                           <div className="card" style={{ textAlign: "left" }}>
                             <div className="card-body">
-                              <h5 className="card-title">{x.parqueadero}</h5>
+                              <h3 className="card-title">{x.parqueadero}</h3>
                               <p className="card-text">{x.descripcion}</p>
                               <button
                                 className="but-outline"
