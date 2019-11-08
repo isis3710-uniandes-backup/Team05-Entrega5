@@ -122,6 +122,7 @@ export default class Login extends Component {
     }
 
     handleSubmit(event) {
+        event.preventDefault();
         if (this.state.username !== "" && !this.state.password !== "" && validateForm(this.state.errors)) {
             this.login(this.state.username, this.state.password);
         }

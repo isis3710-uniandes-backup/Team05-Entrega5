@@ -9,7 +9,7 @@
 
 Esta aplicación te permite encontrar espacios para parquear tu vehículo. Puedes registrarte, iniciar sesión, encontrar espacios disponibles y reservarlos en la fecha y la hora que indiques. Además, luego de reservar uno de los espacios puedes escoger con que pagar. Puedes revisar tu perfil, en el cual encontrarás los pagos que has hecho. También podrás revisar todas las reservas realizadas. Tu información es confidencial, ya que solo tu podrás acceder a tu información. El proposito es darte una plataforma que te permita encontrar parqueaderos baratos y a tu conveniencia. Por último, tenemos en cuenta que debe ser amigable, por lo que priorizamos la accesibilidad y la usabilidad, con el uso de paginas 404, contrastes de colores adecuados y un diseño amigable.
 
-**NOTA:** En la página de espacios existen 9 issues en axe que no pudieron ser corregidas. Esto se debe a que las issues salen por una librería DateTimePicker. Por ende, no es posible corregirlos.
+**NOTA:** En la página de espacios existen 7 issues en axe que no pudieron ser corregidas. Esto se debe a que las issues salen por una librería DateTimePicker. Por ende, no es posible corregirlos.
 
 <br/>
 

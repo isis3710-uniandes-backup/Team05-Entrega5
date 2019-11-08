@@ -42,7 +42,7 @@ export default class Navbar extends Component {
         if(this.props.getUsuario()) {
             return (
                 <li className="nav-item dropdown ml-5">
-                    <div id="drop" role="button" tabIndex="5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div id="drop" role="button" tabIndex="0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img className="rounded-circle profilePic" src={imagen} width="45" height="45" alt="Imagen del perfil" />
                     </div>
                     <div className="dropdown-menu dropdown-menu-sm-right" aria-labelledby="drop">

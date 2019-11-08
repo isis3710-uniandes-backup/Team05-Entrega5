@@ -26,9 +26,9 @@ class Home extends Component {
       <div className="container host d-flex align-items-center">
         <div className="row align-items-center justify-content-center">
             <div className="col-12 col-md-6 text-left my-5 my-md-0">
-              <h1 className="font-weight-bold display-4">¡Reserva un parqueadero fácil y rápido!</h1>
+              <h1 className="font-weight-bold display-4">¡Reserva u oferta un parqueadero fácil y rápido!</h1>
               <p className="py-4 text-muted">
-                La mejor forma de encontrar el espacio perfecto para parquear tu vehículo desde donde quieras.
+                La mejor forma de encontrar u ofertar el espacio perfecto para parquear vehículos, desde donde quieras.
               </p>
               <div className="d-flex justify-content-end">
                 {this.revisarUsuario()}
