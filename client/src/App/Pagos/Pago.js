@@ -3,9 +3,9 @@ import PagoDetail from "./PagoDetail.js";
 
 export default class Pago extends Component {
 
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     render() {
         return (
