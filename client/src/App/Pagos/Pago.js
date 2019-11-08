@@ -15,7 +15,7 @@ export default class Pago extends Component {
                  {
                         (this.state.pagos.length === 0) ?
                         <p>Parece que aún no has realizado pagos.</p> :
-                        this.state.pagos.map((e, i) => <PagoDetail i={i} pago={e} key = {i} />)
+                        this.state.pagos.map((e, i) => <PagoDetail i={i} pago={e} />)
                     }
             </ul>
         );
