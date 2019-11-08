@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-
-import Pagos from '../Pagos/Pagos';
 import { toast } from 'react-toastify'; 
 
-const cookies = new Cookies();
+import PagoDetail from '../Pagos/PagoDetail';
 
-const headers = {
-    'Content-Type' : 'application/json',
-    'authorization' : cookies.get('token')
-  }
+const cookies = new Cookies();
 
 class ListarPagos extends Component {
     
@@ -18,12 +13,15 @@ class ListarPagos extends Component {
         super(props);
 
         this.state = {
-            pagos: []
+            pagos: [],
+            authorization: {
+               'authorization' : cookies.get('token') 
+            }
         };
     }
 
     componentDidMount() {
-        axios.get(`/api/usuarios/${this.props.usuario._id}/pagos`,{headers:headers})
+        axios.get(`/api/usuarios/${this.props.usuario._id}/pagos`, { headers: this.state.authorization })
             .then(x => {
                 this.setState({ pagos: x.data });
             })
@@ -36,13 +34,13 @@ class ListarPagos extends Component {
                 <div className="row my-4">
                     <h2 className="font-weight-bold ml-3">Mis Pagos</h2>
                 </div>
-                <div className="cont">
+                <ul className="list-group list-group-flush mb-5">
                     {
-                        (this.state.pagos.length === 0) ?
-                        <p>Parece que aún no has realizado pagos.</p> :
-                        <Pagos pagos={this.state.pagos} />
+                        (!this.state.pagos || this.state.pagos.length === 0) ?
+                        <li><p>Parece que aún no has realizado pagos.</p></li> :
+                        this.state.pagos.map((e, i) => <PagoDetail i={i} pago={e} />)
                     }
-                </div>
+                </ul>
             </div>
         );
     }
