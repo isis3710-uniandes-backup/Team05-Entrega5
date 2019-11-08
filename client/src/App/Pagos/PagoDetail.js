@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class PagoDetail extends Component {
 
     render() {
-        const fecha = this.props.pago.fecha;
+        const fecha = new Date(this.props.pago.fecha);
         let dia = fecha.getDate();
         let mes = fecha.getMonth();
         let anio = fecha.getFullYear();
