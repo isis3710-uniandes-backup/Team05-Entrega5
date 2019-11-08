@@ -11,7 +11,7 @@ export default class Pago extends Component {
     }
     render() {
         return (
-            <ul className="list-group list-group-flush">
+            <ul className="list-group list-group-flush mb-5">
                  {
                         (this.state.pagos.length === 0) ?
                         <p>Parece que aún no has realizado pagos.</p> :

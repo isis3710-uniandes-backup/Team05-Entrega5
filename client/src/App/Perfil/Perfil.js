@@ -25,9 +25,9 @@ class Perfil extends Component {
                 <div className="row">
                     <div className="col-12 col-md-4 text-center d-flex flex-column justify-content-center align-items-center fijo">
                         <img className="rounded-circle img-perfil" alt="Imagen del usuario" src={imagen} />
-                        <p className="perf">
+                        <h1 className="perf title font-weight-bold med">
                             {this.props.getUsuario().nombre}
-                        </p>
+                        </h1>
                         <p className="perf text-muted">
                             @{this.props.getUsuario().nombreUsuario}
                         </p>

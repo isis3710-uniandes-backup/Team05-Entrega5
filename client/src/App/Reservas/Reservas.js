@@ -71,8 +71,8 @@ class Reservas extends Component {
                 <div key={i} className="col" style={{ marginTop: "2em" }}>
                   <div className="card" style={{ textAlign: "left" }}>
                     <div className="card-body">
-                      <h1 className="card-title med">Fecha </h1>
-                      <h5 className="card-body">{x.fechaInicio}</h5>
+                      <h2 className="card-title med">Fecha </h2>
+                      <strong className="card-body">{x.fechaInicio}</strong>
                       {this.estaFinalizado(x)}
                     </div>
                   </div>

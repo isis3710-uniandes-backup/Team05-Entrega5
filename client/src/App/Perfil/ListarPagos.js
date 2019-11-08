@@ -34,15 +34,15 @@ class ListarPagos extends Component {
         return ( 
             <div className="p-md-3">
                 <div className="row my-4">
-                    <h3 className="font-weight-bold ml-3">Mis Pagos</h3>
+                    <h2 className="font-weight-bold ml-3">Mis Pagos</h2>
                 </div>
-                <ul className="list-group list-group-flush mb-5">
+                <div className="cont">
                     {
                         (this.state.pagos.length === 0) ?
                         <p>Parece que aún no has realizado pagos.</p> :
-                        this.state.pagos.map((e, i) => <Pago i={i} pago={e} key = {i} />)
+                        <Pago pago={this.state.pagos} />
                     }
-                </ul>
+                </div>
             </div>
         );
     }
