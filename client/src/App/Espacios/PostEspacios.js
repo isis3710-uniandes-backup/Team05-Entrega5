@@ -74,7 +74,7 @@ export default class PostEspacios extends Component {
   }
 
   validate() {
-    return 
+    return this.state.parqueadero.length > 0 && this.state.direccion.length > 0 && this.state.descripcion.length > 0;
   }
 
   render() {
@@ -84,6 +84,7 @@ export default class PostEspacios extends Component {
           <h1 className="title med font-weight-bold pt-4" >Nueva oferta</h1>
           <div className="border-container">
             <Container className="registrar-container">
+              <small className="text-muted">Es necesario llenar todos los campos</small>
               <Form className="text-left" onSubmit={this.handle_onPost}>
                 <Form.Group>
                   <Form.Label htmlFor="parqueadero">Nombre del parqueadero</Form.Label>
@@ -125,7 +126,7 @@ export default class PostEspacios extends Component {
                 </Form.Group>
 
                 <Form.Group>
-                  <Form.Label htmlFor="costo">Costo por minuto</Form.Label>
+                  <Form.Label htmlFor="costo">Costo (en pesos) por minuto</Form.Label>
                   <Form.Control id="costo" type="number" min="1" name="costo" value={this.state.costo} onChange={this.changeCosto} />
                 </Form.Group>
 
