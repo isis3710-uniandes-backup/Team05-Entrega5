@@ -8,7 +8,6 @@ export default class Pagos extends Component {
     // }
 
     render() {
-        console.log(this.props.pagos);
         return (
             <ul className="list-group list-group-flush mb-5">
                 {

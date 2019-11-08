@@ -200,7 +200,7 @@ router.get("/:idUsuario/pagos", middleware.checkToken, (req,res) => {
                     res.status(500).json({ message: err.message });
                   let respuesta = [];
                   documents.forEach( item => {
-                    respuesta.push(item.pagosReserva);
+                    respuesta = respuesta.concat(item.pagosReserva);
                   });
                   res.status(200).json(respuesta);
                 });

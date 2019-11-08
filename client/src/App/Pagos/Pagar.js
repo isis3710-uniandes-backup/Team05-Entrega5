@@ -75,7 +75,7 @@ export default class Pagar extends Component {
                                 <Form className="text-left">
                                     <Form.Group>
                                         <Form.Label><h2 className="mt-3">Resumen</h2></Form.Label>
-                                        <strong className="mt-3">Costo: {this.state.costo}</strong>
+                                        <div><strong className="mt-3">Costo: {this.state.costo}</strong></div>
                                         <Form.Label><h3 className="mt-3">Escoje el método de pago:</h3></Form.Label>
                                         <ButtonToolbar aria-label="Opciones de Método de Pago">
                                             <ButtonGroup vertical className="d-flex flex-column justify-content-center" size="lg">
