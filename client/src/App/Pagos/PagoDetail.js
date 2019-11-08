@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 
 export default class PagoDetail extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    // }
-
     render() {
         const fecha = this.props.pago.fecha;
         let dia = fecha.getDate();

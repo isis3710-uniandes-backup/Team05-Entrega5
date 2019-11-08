@@ -3,10 +3,6 @@ import PagoDetail from "./PagoDetail.js";
 
 export default class Pagos extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    // }
-
     render() {
         return (
             <ul className="list-group list-group-flush mb-5">
