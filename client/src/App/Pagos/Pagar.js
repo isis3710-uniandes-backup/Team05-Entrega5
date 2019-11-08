@@ -94,7 +94,7 @@ export default class Pagar extends Component {
                                             </ButtonGroup>
                                         </ButtonToolbar>
                                     </Form.Group>
-                                    <button variant="success" size="md" block onClick={() => {this.setState(this.handleSubmit)}}>Pagar</Button>
+                                    <button className="but-solid" size="md" block onClick={() => {this.setState(this.handleSubmit)}}>Pagar</button>
                                 </Form>
                             </div>
                         </Col>
