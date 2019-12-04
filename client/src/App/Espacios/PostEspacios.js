@@ -6,6 +6,9 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Cookies from 'universal-cookie';
 
+import { FormattedMessage } from "react-intl";
+
+
 const url_espacios = "/api/espacios";
 
 const cookies = new Cookies();
@@ -81,13 +84,19 @@ export default class PostEspacios extends Component {
     return (
       <div className="host">
         <Container className="prueba" style={{minWidth: '500px'}}>
-          <h1 className="title med font-weight-bold pt-4" >Nueva oferta</h1>
+          <h1 className="title med font-weight-bold pt-4" >
+            <FormattedMessage id="NuevaOferta" />
+          </h1>
           <div className="border-container">
             <Container className="registrar-container">
-              <small className="text-muted">Es necesario llenar todos los campos</small>
+              <small className="text-muted">
+                <FormattedMessage id="CamposOferta" />
+              </small>
               <Form className="text-left" onSubmit={this.handle_onPost}>
                 <Form.Group>
-                  <Form.Label htmlFor="parqueadero">Nombre del parqueadero</Form.Label>
+                  <Form.Label htmlFor="parqueadero">
+                    <FormattedMessage id="NombreOferta" />
+                  </Form.Label>
                   <Form.Control
                     id="parqueadero"
                     type="text"
@@ -100,7 +109,9 @@ export default class PostEspacios extends Component {
                 </Form.Group>
 
                 <Form.Group>
-                  <Form.Label htmlFor="direccion">Dirección del parqueadero</Form.Label>
+                  <Form.Label htmlFor="direccion">
+                    <FormattedMessage id="DirOferta" />
+                  </Form.Label>
                   <Form.Control
                     id="direccion"
                     type="text"
@@ -113,7 +124,9 @@ export default class PostEspacios extends Component {
                 </Form.Group>
 
                 <Form.Group>
-                  <Form.Label htmlFor="descripcion">Descripción de la oferta</Form.Label>
+                  <Form.Label htmlFor="descripcion">
+                    <FormattedMessage id="DescOferta" />
+                  </Form.Label>
                   <Form.Control
                     id="descripcion"
                     type="text"
@@ -126,12 +139,16 @@ export default class PostEspacios extends Component {
                 </Form.Group>
 
                 <Form.Group>
-                  <Form.Label htmlFor="costo">Costo (en pesos) por minuto</Form.Label>
+                  <Form.Label htmlFor="costo">
+                    <FormattedMessage id="CostoOferta" />
+                  </Form.Label>
                   <Form.Control id="costo" type="number" min="1" name="costo" value={this.state.costo} onChange={this.changeCosto} />
                 </Form.Group>
 
                 <div className="d-flex justify-content-center">
-                  <button type="submit" className="but-solid" disabled={!this.validate()}>Publicar</button>
+                  <button type="submit" className="but-solid" disabled={!this.validate()}>
+                    <FormattedMessage id="PublicarOferta" />
+                  </button>
                 </div>
               </Form>
             </Container>

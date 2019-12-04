@@ -6,6 +6,8 @@ import './Menu.css'
 import logo from '../../assets/logo.svg';
 import imagen from '../../assets/user.png';
 
+import { FormattedMessage } from "react-intl";
+
 
 export default class Navbar extends Component {
     constructor(props) {
@@ -23,8 +25,15 @@ export default class Navbar extends Component {
         if(this.props.getUsuario()) {
             return (
                 <ul className="navbar-nav ml-0 align-items-end">
-                    <li className="nav-item mx-md-2"><Link to="/espacios" className="nav-link">Espacios</Link></li>
-                    <li className="nav-item mx-md-2"><Link to="/reservas" className="nav-link">Mis Reservas</Link></li>
+                    <li className="nav-item mx-md-2">
+                        <Link to="/espacios" className="nav-link">
+                            <FormattedMessage id="EspaciosMenu" />
+                        </Link></li>
+                    <li className="nav-item mx-md-2">
+                        <Link to="/reservas" className="nav-link">
+                            <FormattedMessage id="ReservasMenu" />
+                        </Link>
+                        </li>
                     {this.revisarLogin()}
                 </ul>
             );

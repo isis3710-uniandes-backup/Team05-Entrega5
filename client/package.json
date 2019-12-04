@@ -44,7 +44,8 @@
     "react-time-picker": "^3.7.2",
     "react-toastify": "^5.4.0",
     "reactstrap": "^8.1.1",
-    "universal-cookie": "^4.0.2"
+    "universal-cookie": "^4.0.2",
+    "react-intl": "^3.9.1"
   },
   "dependencies": {
     "react-intl": "^3.9.1"
