@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { FormattedMessage } from 'react-intl';
 
 import './Menu.css'
 import logo from '../../assets/logo.svg';
@@ -16,15 +17,15 @@ export default class Navbar extends Component {
 
     logout(){
         this.props.removeUsuario();
-        toast.success('¡Vuelve pronto 😊!');
+        toast.success(<FormattedMessage id="toast.mensajeAdios" />);
     }
 
     listarEnlaces() {
         if(this.props.getUsuario()) {
             return (
                 <ul className="navbar-nav ml-0 align-items-end">
-                    <li className="nav-item mx-md-2"><Link to="/espacios" className="nav-link">Espacios</Link></li>
-                    <li className="nav-item mx-md-2"><Link to="/reservas" className="nav-link">Mis Reservas</Link></li>
+                    <li className="nav-item mx-md-2"><Link to="/espacios" className="nav-link"><FormattedMessage id="link.spaces" /></Link></li>
+                    <li className="nav-item mx-md-2"><Link to="/reservas" className="nav-link"><FormattedMessage id="link.reservations" /></Link></li>
                     {this.revisarLogin()}
                 </ul>
             );

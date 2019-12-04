@@ -1,16 +1,29 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { IntlProvider } from "react-intl";
+
 import "./index.css";
 import App from "./App/_Index/App";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter as Router } from "react-router-dom";
+import localeEsMessages from "./locales/es";
+import localeEnMessages from "./locales/en";
 
-
+let getlocales = () => {
+	let navLanguage = navigator.language || navigator.userLanguage;
+	let locales = localeEnMessages;
+	if(navLanguage.includes('es')) {
+		locales = localeEsMessages;
+	}
+	return locales;
+};
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <IntlProvider locale={navigator.language} messages={getlocales()}>
+    <Router>
+      <App />
+    </Router>
+  </IntlProvider>, 
   document.getElementById("root")
 );
 
