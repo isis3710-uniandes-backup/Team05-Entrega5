@@ -31,7 +31,7 @@ class Reservas extends Component {
     const prom = await axios.get(url_reservas, { headers: headers });
     if (prom.status < 300 && prom.status > 199) {
       this.setState({
-        reservas: prom.data.filter(d => d._idUsuario === this.state._idUsuario)
+        reservas: (prom.data) ? prom.data.filter(d => d._idUsuario === this.state._idUsuario) : []
       });
     } else {
       console.log(prom.status, "\n The response was not OK");

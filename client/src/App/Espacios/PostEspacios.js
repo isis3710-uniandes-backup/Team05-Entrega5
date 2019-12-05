@@ -73,7 +73,7 @@ export default class PostEspacios extends Component {
   async post_espacio(espacio) {
     await axios.post(url_espacios, espacio, {headers:headers})
       .then(() => this.props.history.push("/espacios"))
-      .catch((err) => toast.error("Ocurrió un error al crear el espacio. Por favor inténtalo de nuevo."));
+      .catch((err) => toast.error(<FormattedMessage id="toast.errorCrearEspacio"/>));
   }
 
   validate() {
@@ -100,8 +100,6 @@ export default class PostEspacios extends Component {
                   <Form.Control
                     id="parqueadero"
                     type="text"
-                    placeholder="Ingrese el Nombre"
-                    title="Nombre del parqueadero"
                     name="parqueadero"
                     value={this.state.parqueadero}
                     onChange={this.changeParqueadero}
@@ -115,8 +113,6 @@ export default class PostEspacios extends Component {
                   <Form.Control
                     id="direccion"
                     type="text"
-                    placeholder="Ingrese la dirección"
-                    title="Dirección del parqueadero"
                     name="direccion"
                     value={this.state.direccion}
                     onChange={this.changeDireccion}
@@ -130,8 +126,6 @@ export default class PostEspacios extends Component {
                   <Form.Control
                     id="descripcion"
                     type="text"
-                    placeholder="Ingrese la descripción"
-                    title="Descripción del parqueadero"
                     name="descripcion"
                     value={this.state.descripcion}
                     onChange={this.changeDescripcion}

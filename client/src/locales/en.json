@@ -5,6 +5,7 @@
     "toast.exitoRegistro": "Successfully Registered! Now log in",
     "toast.errorRegistro": "There was an error during the registration! Please try again.",
     "toast.errorEspacios": "There was an error fetching the parking spaces available. Please try again.",
+    "toast.errorCrearEspacio": "There was an error while creating the parking space. Please try again.",
 
     "menu.espacios": "Spaces",
     "menu.reservas": "My Bookings",
