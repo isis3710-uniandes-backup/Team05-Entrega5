@@ -10,6 +10,7 @@ import Form from 'react-bootstrap/Form';
 import { toast } from 'react-toastify';
 
 import "./Login.css";
+import { FormattedMessage } from 'react-intl';
 
 const cookies = new Cookies();
 
@@ -60,13 +61,13 @@ export default class Login extends Component {
             case 'nombreUsuario':
                 errors.nombreUsuario =
                     value.length < 5
-                        ? 'El nombre de usuario debe tener por lo menos 5 caracteres'
+                        ? <FormattedMessage id="login.errorNombreUsuario" />
                         : '';
                 break;
             case 'contrasenia':
                 errors.contrasenia =
                     value.length < 5
-                        ? 'La contraseña debe tener por lo menos 5 caracteres'
+                        ? <FormattedMessage id="login.errorContrasenia" />
                         : '';
                 break;
             default:
@@ -90,7 +91,7 @@ export default class Login extends Component {
                 // cookies.set('token', response.data.token);
                 this.props.setUsuario(response.data.token);
                 this.props.history.push('/');
-                toast.success(`Bienvenido ${jwt.decode(cookies.get('token')).nombre}`);
+                toast.success(<FormattedMessage id="toast.exitoLogin"/> + jwt.decode(cookies.get('token')).nombre);
             }
             else{
                 this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true, errMsg: response.data.message })
@@ -100,8 +101,8 @@ export default class Login extends Component {
 
         }).catch(err => {
             console.log(err)
-            this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true, errMsg: "Campos vacíos o login o contraseña incorrectos" })
-            toast.error("¡Hubo un error en el inicio de sesión!");
+            this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true, errMsg: <FormattedMessage id="login.errorLogin" /> })
+            toast.error(<FormattedMessage id="toast.errorLogin"/>);
         })
     }
 
@@ -140,7 +141,7 @@ export default class Login extends Component {
         if (this.state.incorrectLogin) {
             incorrectMessage =
                 <Container className="error">
-                    Hay campos vacíos o login o contraseña incorrectos
+                    <FormattedMessage id="login.errorLogin" />
                 </Container>
         }
 
@@ -152,7 +153,7 @@ export default class Login extends Component {
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
                         <Col xs="12" sm="10" md="4" large="4" xl="4">
                             <h1 className="title font-weight-bold med">
-                                Ingresar
+                                <FormattedMessage id="login.tituloIngresar"/>
                             </h1>
                         </Col>
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
@@ -165,15 +166,15 @@ export default class Login extends Component {
                                 <div className="login-container">
                                     <Form className="text-left">
                                         <Form.Group>
-                                            <Form.Label htmlFor="nombreUsuario">Nombre de usuario</Form.Label>
-                                            <Form.Control name="nombreUsuario" id="nombreUsuario" required type="text" placeholder="Ingresa tu nombre de usuario" title="Ingresa tu nombre de usuario" onChange={this.handleUserChange}></Form.Control>
+                                            <Form.Label htmlFor="nombreUsuario"><FormattedMessage id="login.nombreUsuario" /></Form.Label>
+                                            <Form.Control name="nombreUsuario" id="nombreUsuario" required type="text" onChange={this.handleUserChange}></Form.Control>
                                         </Form.Group>
                                         <Form.Group>
-                                            <Form.Label htmlFor="contrasenia">Contraseña</Form.Label>
-                                            <Form.Control name="contrasenia" id="contrasenia" type="password" placeholder="Ingresa tu contraseña" title="Ingresa tu contraseña" onChange={this.handlePassChange}></Form.Control>
+                                            <Form.Label htmlFor="contrasenia"><FormattedMessage id="login.contrasenia" /></Form.Label>
+                                            <Form.Control name="contrasenia" id="contrasenia" type="password" onChange={this.handlePassChange}></Form.Control>
                                         </Form.Group>
                                         <div className="d-flex justify-content-center">
-                                            <button type="submit" className="but-solid" onClick={this.handleSubmit}>Ingresar</button>
+                                            <button type="submit" className="but-solid" onClick={this.handleSubmit}><FormattedMessage id="login.botonIngresar" /></button>
                                         </div>
                                     </Form>
                                 </div>
@@ -187,7 +188,7 @@ export default class Login extends Component {
                 <Container className="cuenta-inexistente">
                     <Row>
                         <Col>
-                            <Link to="/registrar">¿No tienes cuenta? Regístrate</Link>
+                            <Link to="/registrar"><FormattedMessage id="login.mensajeRegistrarse" /></Link>
                         </Col>
                     </Row>
                 </Container>

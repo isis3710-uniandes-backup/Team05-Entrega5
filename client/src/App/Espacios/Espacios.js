@@ -13,7 +13,6 @@ import Card from "react-bootstrap/Card";
 import { toast } from "react-toastify";
 
 import { FormattedMessage } from "react-intl";
-import { injectIntl } from "react-intl";
 
 const url_espacios = "/api/espacios";
 
@@ -213,4 +212,4 @@ class Espacios extends Component {
   }
 }
 
-export default injectIntl(Espacios);
+export default Espacios;

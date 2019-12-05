@@ -1,5 +1,8 @@
 {
     "toast.mensajeAdios": "¡Vuelve pronto 😊!",
+    "toast.errorLogin": "Hubo un error al iniciar sesión. Inténtelo nuevamente.",
+    "toast.exitoLogin": "¡Bienvenido!",
+
     "menu.espacios": "Espacios",
     "menu.reservas": "Mis Reservas",
     "menu.miPerfil": "Mi Perfil",
@@ -7,8 +10,27 @@
     "menu.entrar": "Entrar",
     "menu.ingresar": "Ingresar",
     "menu.registrarse": "Registrarse",
+
     "footer.inicio": "© 2019 - Elaborado con",
     "footer.fin": "por Team5, para la entrega 4 de Web",
+
+    "home.iniciaAhora": "Inicia Ahora",
+    "home.titulo": "¡Reserva u oferta un parqueadero fácil y rápido!",
+    "home.descripcion": "La mejor forma de encontrar u ofertar el espacio perfecto para parquear vehículos, desde donde quieras.",
+
+    "notFound.titulo": "Página no encontrada",
+    "notFound.descripcionInicial": "La página a la cual intentaste acceder no existe.",
+    "notFound.descripcionFinal": "¿Quizá escribiste mal la dirección? ",
+
+    "login.errorLogin": "Campos vacíos o login o contraseña incorrectos",
+    "login.errorNombreUsuario": "El nombre de usuario debe tener por lo menos 5 caracteres",
+    "login.errorContrasenia": "La contraseña debe tener por lo menos 5 caracteres",
+    "login.tituloIngresar": "Ingresar",
+    "login.nombreUsuario": "Nombre de usuario",
+    "login.contrasenia": "Contraseña",
+    "login.botonIngresar": "Ingresar",
+    "login.mensajeRegistrarse": "¿No tienes cuenta? Regístrate",
+
     "Espacios": "Espacios Disponibles",
     "Oferta": "Agregar Oferta",
     "Reservar": "Reservar",

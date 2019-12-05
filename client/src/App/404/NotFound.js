@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './NotFound.css';
 import notfound from '../../assets/notfound.png';
+import { FormattedMessage } from 'react-intl';
 
 class NotFound extends Component {
 
@@ -9,12 +10,13 @@ class NotFound extends Component {
             <div className="host d-flex flex-column align-items-center justify-content-center">
                 <img id="notfound" src={notfound} alt="Interrogación página no encontrada" />
                 <h1 className="blue font-weight-bold">404</h1>
-                <h1 className="font-weight-bold med">Página no encontrada</h1>
+                <h1 className="font-weight-bold med"><FormattedMessage id="notFound.titulo" /></h1>
                 <div className="text-center my-2">
                     <p>
-                        La página a la cual intentaste acceder no existe.
+                        <FormattedMessage id="notFound.descripcionInicial"/>
                         <br/>
-                        ¿Quizá escribiste mal la dirección? 
+                        <FormattedMessage id="notFound.descripcionFinal"/>
+                        
                     </p>
                 </div>
             </div>

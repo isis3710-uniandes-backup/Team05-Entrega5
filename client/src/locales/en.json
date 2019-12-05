@@ -1,14 +1,36 @@
 {
     "toast.mensajeAdios": "¡See you soon 😊!",
+    "toast.errorLogin": "There was an error logging in. Please try again.",
+    "toast.exitoLogin": "Welcome back!",
+
     "menu.espacios": "Spaces",
     "menu.reservas": "My Bookings",
     "menu.miPerfil": "My Profile",
     "menu.cerrarSesion": "Log Out",
     "menu.entrar": "Access",
-    "menu.ingresar": "Sign in",
-    "menu.registrarse": "Sign up",
+    "menu.ingresar": "Log In",
+    "menu.registrarse": "Sign Up",
+
     "footer.inicio": "© 2019 - Made with",
     "footer.fin": "by Team5, for the 5th assignment of the Web course",
+
+    "home.iniciaAhora": "Start Now",
+    "home.titulo": "Book or offer parking lots fast and easy!",
+    "home.descripcion": "The best way to find or offer the perfect space for parking vehicles, wherever you want.",
+
+    "notFound.titulo": "Page not Found",
+    "notFound.descripcionInicial": "The page you were trying to access does not exist.",
+    "notFound.descripcionFinal": "Did you write the direction correctly?",
+
+    "login.errorLogin": "There are empty fields or the username or password may not be correct",
+    "login.errorNombreUsuario": "The username has to have at least 5 characters length",
+    "login.errorContrasenia": "The username has to have at least 5 characters length",
+    "login.tituloIngresar": "Log In",
+    "login.nombreUsuario": "Username",
+    "login.contrasenia": "Password",
+    "login.botonIngresar": "Log in",
+    "login.mensajeRegistrarse": "Don't have an account yet? Sign up",
+
     "Espacios": "Available Spaces",
     "Oferta": "Add Offer",
     "Reservar": "Book",

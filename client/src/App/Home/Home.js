@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import "./Home.css";
 import parking from '../../assets/parking.png';
+import { FormattedMessage } from "react-intl";
 
 class Home extends Component {
 
@@ -16,7 +17,7 @@ class Home extends Component {
 
     return (
         <Link to={direccion}>
-            <button className="but-outline">Inicia Ahora</button>
+            <button className="but-outline"><FormattedMessage id="home.iniciaAhora"/></button>
         </Link>
     );
   }
@@ -26,9 +27,9 @@ class Home extends Component {
       <div className="container host d-flex align-items-center">
         <div className="row align-items-center justify-content-center">
             <div className="col-12 col-md-6 text-left my-5 my-md-0">
-              <h1 className="font-weight-bold display-4">¡Reserva u oferta un parqueadero fácil y rápido!</h1>
+              <h1 className="font-weight-bold display-4"><FormattedMessage id="home.titulo"/></h1>
               <p className="py-4 text-muted">
-                La mejor forma de encontrar u ofertar el espacio perfecto para parquear vehículos, desde donde quieras.
+                <FormattedMessage id="home.descripcion" />
               </p>
               <div className="d-flex justify-content-end">
                 {this.revisarUsuario()}
