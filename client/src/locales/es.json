@@ -2,6 +2,8 @@
     "toast.mensajeAdios": "¡Vuelve pronto 😊!",
     "toast.errorLogin": "Hubo un error al iniciar sesión. Inténtelo nuevamente.",
     "toast.exitoLogin": "¡Bienvenido!",
+    "toast.exitoRegistro": "¡Registro exitoso! Ahora inicia sesión",
+    "toast.errorRegistro": "¡Hubo un error en el registro! Inténtelo nuevamente.",
 
     "menu.espacios": "Espacios",
     "menu.reservas": "Mis Reservas",
@@ -30,6 +32,19 @@
     "login.contrasenia": "Contraseña",
     "login.botonIngresar": "Ingresar",
     "login.mensajeRegistrarse": "¿No tienes cuenta? Regístrate",
+
+    "registrarse.errorCorreo": "El correo ingresado no es válido",
+    "registrarse.errorContrasenia": "La contraseña debe tener por lo menos 8 caracteres",
+    "registrarse.errorNombre": "El nombre debe tener más de 5 caracteres",
+    "registrarse.errorCamposVacios": "Hay campos vacíos o algún campo tiene errores",
+    "registrarse.tituloRegistrarse": "Registrarse",
+    "registrarse.info": "Todos los campos con (*) son obligatorios",
+    "registrarse.campoNombreUsuario": "Nombre de usuario",
+    "registrarse.campoNombre": "Nombre completo",
+    "registrarse.campoCorreo": "Correo",
+    "registrarse.campoContrasenia": "Contraseña",
+    "registrarse.botonRegistrarse": "Registrarse",
+    "registrarse.mensajeIngresar": "¿Ya tienes una cuenta? Inicia sesión",
 
     "Espacios": "Espacios Disponibles",
     "Oferta": "Agregar Oferta",
