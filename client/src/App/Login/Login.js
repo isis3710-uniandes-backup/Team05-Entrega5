@@ -91,7 +91,7 @@ export default class Login extends Component {
                 // cookies.set('token', response.data.token);
                 this.props.setUsuario(response.data.token);
                 this.props.history.push('/');
-                toast.success(<FormattedMessage id="toast.exitoLogin"/> + jwt.decode(cookies.get('token')).nombre);
+                toast.success(<FormattedMessage id="toast.exitoLogin"/>);
             }
             else{
                 this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true, errMsg: response.data.message })
