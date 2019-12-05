@@ -94,8 +94,8 @@ export default class Login extends Component {
                 toast.success(<FormattedMessage id="toast.exitoLogin"/>);
             }
             else{
-                this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true, errMsg: response.data.message })
-                toast.error(response.data.message);
+                this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true, errMsg: <FormattedMessage id="toast.errorllenarTodos"/> })
+                toast.error(<FormattedMessage id="toast.errorllenarTodos"/>);
             }
 
 

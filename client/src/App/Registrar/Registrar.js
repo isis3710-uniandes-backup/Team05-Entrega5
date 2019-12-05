@@ -155,7 +155,7 @@ export default class Registrar extends Component {
                     contrasenha: this.state.contrasenha,
                     error: true
                 });
-                toast.error(response.data.message);
+                toast.error(<FormattedMessage id="toast.errorllenarTodos"/>);
             }
 
         });

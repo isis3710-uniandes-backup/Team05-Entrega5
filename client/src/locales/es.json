@@ -6,6 +6,7 @@
     "toast.errorRegistro": "¡Hubo un error en el registro! Inténtelo nuevamente.",
     "toast.errorEspacios": "Hubo un error al consultar los espacios disponibles. Por favor, inténtalo de nuevo.",
     "toast.errorCrearEspacio": "Ocurrió un error al crear el espacio. Por favor inténtelo de nuevo.",
+    "toast.errorllenarTodos": "Por favor llene todos los campos",
 
     "menu.espacios": "Espacios",
     "menu.reservas": "Mis Reservas",
