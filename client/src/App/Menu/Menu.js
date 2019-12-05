@@ -7,7 +7,6 @@ import './Menu.css'
 import logo from '../../assets/logo.svg';
 import imagen from '../../assets/user.png';
 
-
 export default class Navbar extends Component {
     constructor(props) {
         super(props);
@@ -24,8 +23,16 @@ export default class Navbar extends Component {
         if(this.props.getUsuario()) {
             return (
                 <ul className="navbar-nav ml-0 align-items-end">
-                    <li className="nav-item mx-md-2"><Link to="/espacios" className="nav-link"><FormattedMessage id="link.spaces" /></Link></li>
-                    <li className="nav-item mx-md-2"><Link to="/reservas" className="nav-link"><FormattedMessage id="link.reservations" /></Link></li>
+                    <li className="nav-item mx-md-2">
+                        <Link to="/espacios" className="nav-link">
+                            <FormattedMessage id="menu.espacios" />
+                        </Link>
+                    </li>
+                    <li className="nav-item mx-md-2">
+                        <Link to="/reservas" className="nav-link">
+                            <FormattedMessage id="menu.reservas" />
+                        </Link>
+                    </li>
                     {this.revisarLogin()}
                 </ul>
             );
@@ -47,8 +54,8 @@ export default class Navbar extends Component {
                         <img className="rounded-circle profilePic" src={imagen} width="45" height="45" alt="Imagen del perfil" />
                     </div>
                     <div className="dropdown-menu dropdown-menu-sm-right" aria-labelledby="drop">
-                        <Link className="dropdown-item" to="/perfil">Mi Perfil</Link>
-                        <Link className="dropdown-item" to="/" onClick={this.logout}>Cerrar Sesión</Link>
+                        <Link className="dropdown-item" to="/perfil"><FormattedMessage id="menu.miPerfil"/></Link>
+                        <Link className="dropdown-item" to="/" onClick={this.logout}><FormattedMessage id="menu.cerrarSesion"/></Link>
                     </div>
                 </li>
             );
@@ -57,11 +64,11 @@ export default class Navbar extends Component {
             return (
                 <li className="nav-item dropdown ml-5">
                     <div className="but-solid" id="drop" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Entrar
+                        <FormattedMessage id="menu.entrar" />
                     </div>
                     <div className="dropdown-menu dropdown-menu-sm-right" aria-labelledby="drop">
-                        <Link className="dropdown-item" to="/login">Ingresar</Link>
-                        <Link className="dropdown-item" to="/registrar">Registrarse</Link>
+                        <Link className="dropdown-item" to="/login"><FormattedMessage id="menu.ingresar" /></Link>
+                        <Link className="dropdown-item" to="/registrar"><FormattedMessage id="menu.registrarse" /></Link>
                     </div>
                 </li>
             );

@@ -12,6 +12,8 @@ import DateTime from "react-datetime";
 import Card from "react-bootstrap/Card";
 import { toast } from "react-toastify";
 
+import { FormattedMessage } from "react-intl";
+import { injectIntl } from "react-intl";
 
 const url_espacios = "/api/espacios";
 
@@ -22,7 +24,7 @@ const headers = {
   authorization: cookies.get("token")
 };
 
-export default class Espacios extends Component {
+class Espacios extends Component {
   constructor(props) {
     super(props);
 
@@ -39,19 +41,44 @@ export default class Espacios extends Component {
   }
 
   componentDidMount() {
+    if (!navigator.onLine) {
+      this.setState(_ => {
+        return {
+          espacios: JSON.parse(localStorage.getItem("espacios")) || []
+        };
+      });
+    }
+
     this.get_espacios();
   }
 
-  async get_espacios() {
-    const prom = await axios.get(url_espacios, { headers: headers });
-    if (prom.status < 300 && prom.status > 199) {
-      this.setState({
-        espacios: prom.data
+  get_espacios() {
+    axios
+      .get(url_espacios, { headers: headers })
+      .then(response => {
+        this.setState(
+          _ => {
+            return { espacios: response.data };
+          },
+          _ => {
+            localStorage.setItem(
+              "espacios",
+              JSON.stringify(this.state.espacios)
+            );
+          }
+        );
+      })
+      .catch(err => {
+        this.setState(_ => {
+          return {
+            espacios: JSON.parse(localStorage.getItem("espacios")) || []
+          };
+        });
+        console.log("*--> Error Get Espacios", err);
+        toast.error(
+          "Hubo un error al consultar los espacios disponibles. Por favor, inténtalo de nuevo."
+        );
       });
-    } else {
-      toast.error("Hubo un error al consultar los espacios disponibles. Por favor, inténtalo de nuevo.");
-      console.log(prom.status, "\n The response was not OK");
-    }
   }
 
   handleDate(date) {
@@ -98,7 +125,9 @@ export default class Espacios extends Component {
     return (
       <div>
         <div className="host">
-          <h1 className="display-3 font-weight-bold">Espacios disponibles</h1>
+          <h1 className="display-3 font-weight-bold">
+            <FormattedMessage id="Espacios" />
+          </h1>
           <div className="row">
             <div className="col-4 col-12-md col-12-sd" textalign="center">
               <div className="d-flex align-items-stretch align-center">
@@ -108,7 +137,7 @@ export default class Espacios extends Component {
                 >
                   <Card className="d-flex align-items-stretch">
                     <h2 style={{ padding: "1em" }} className="card-title">
-                      Fecha y Hora
+                      <FormattedMessage id="FechaHora" />
                     </h2>
                     <Card.Body
                       className="d-flex justify-content-center w-100"
@@ -125,7 +154,9 @@ export default class Espacios extends Component {
             </div>
             <div className="col-8 col-12-md col-12-sd">
               <Link to="/espacios/post">
-                <button className="but-solid">Agregar Oferta</button>
+                <button className="but-solid">
+                  <FormattedMessage id="Oferta" />
+                </button>
               </Link>
               <div className="row" id="CardsContainer">
                 {this.state.espacios.length > 0 ? (
@@ -151,7 +182,7 @@ export default class Espacios extends Component {
                                   );
                                 }}
                               >
-                                Reservar
+                                <FormattedMessage id="Reservar" />
                               </button>
                             </div>
                           </div>
@@ -167,7 +198,7 @@ export default class Espacios extends Component {
                     <div className="card" style={{ textAlign: "center" }}>
                       <div className="card-body">
                         <p className="card-text">
-                          En este momento no hay espacios de parqueo disponibles
+                          <FormattedMessage id="MsEspacios" />
                         </p>
                       </div>
                     </div>
@@ -181,3 +212,5 @@ export default class Espacios extends Component {
     );
   }
 }
+
+export default injectIntl(Espacios);

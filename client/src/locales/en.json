@@ -1,5 +1,24 @@
 {
     "toast.mensajeAdios": "¡See you soon 😊!",
-    "link.spaces": "Lots",
-    "link.reservations": "My Reservations"
+    "menu.espacios": "Spaces",
+    "menu.reservas": "My Bookings",
+    "menu.miPerfil": "My Profile",
+    "menu.cerrarSesion": "Log Out",
+    "menu.entrar": "Access",
+    "menu.ingresar": "Sign in",
+    "menu.registrarse": "Sign up",
+    "footer.inicio": "© 2019 - Made with",
+    "footer.fin": "by Team5, for the 5th assignment of the Web course",
+    "Espacios": "Available Spaces",
+    "Oferta": "Add Offer",
+    "Reservar": "Book",
+    "MsEspacios": "There are currently no parking spaces available",
+    "FechaHora": "Date and Time",
+    "NuevaOferta": "New Offer",
+    "CamposOferta": "All fields are required",
+    "NombreOferta": "Paking Name",
+    "DirOferta": "Paking Address",
+    "DescOferta": "Offer description",
+    "CostoOferta": "Charge per minute (in pesos)",
+    "PublicarOferta": "Submit"
 }
