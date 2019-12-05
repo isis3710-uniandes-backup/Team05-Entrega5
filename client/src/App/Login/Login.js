@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
+// import Cookies from 'universal-cookie';
 import { Link, Redirect } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container'
@@ -12,9 +12,9 @@ import { toast } from 'react-toastify';
 import "./Login.css";
 import { FormattedMessage } from 'react-intl';
 
-const cookies = new Cookies();
+// const cookies = new Cookies();
 
-let jwt = require('jsonwebtoken');
+// let jwt = require('jsonwebtoken');
 
 const validateForm = (errors) => {
     let valid = true;

@@ -4,6 +4,7 @@
     "toast.exitoLogin": "¡Bienvenido!",
     "toast.exitoRegistro": "¡Registro exitoso! Ahora inicia sesión",
     "toast.errorRegistro": "¡Hubo un error en el registro! Inténtelo nuevamente.",
+    "toast.errorEspacios": "Hubo un error al consultar los espacios disponibles. Por favor, inténtalo de nuevo.",
 
     "menu.espacios": "Espacios",
     "menu.reservas": "Mis Reservas",
@@ -45,6 +46,33 @@
     "registrarse.campoContrasenia": "Contraseña",
     "registrarse.botonRegistrarse": "Registrarse",
     "registrarse.mensajeIngresar": "¿Ya tienes una cuenta? Inicia sesión",
+
+    "reservas.botonFinalizar": "Finalizar Reserva",
+    "reservas.tituloMisReservas": "Mis Reservas",
+    "reservas.tituloFecha": "Fecha",
+    "reservas.mensajeNoHay": "Aún no tienes reservas",
+
+    "reservar.tituloFiltro": "Reserva parqueaderos de acuerdo con tus necesidades.",
+    "reservar.campoSector": "¿En qué sector te gustaría?",
+    "reservar.campoFecha": "¿Para qué fecha?",
+    "reservar.campoHora": "¿Para qué hora?",
+    "reservar.botonBuscar": "Buscar",
+
+    "listarPagos.titulo": "Mis Pagos",
+    "listarPagos.mensajeNoPagos": "Parece que aún no has realizado pagos.",
+
+    "pagoDetail.campoValor": "Valor",
+
+    "pagar.errorCosto": "Hubo un error obteniendo el costo :(",
+    "pagar.exitoPago": "¡Pagaste correctamente!",
+    "pagar.titulo": "Pagar",
+    "pagar.tituloResumen": "Resumen",
+    "pagar.campoCosto": "Costo",
+    "pagar.campoEscoger": "Escoje el método de pago",
+    "pagar.tarjeta": "Tarjeta de Crédito",
+    "pagar.efectivo": "Efectivo",
+    "pagar.cuenta": "Cuenta Bancaria",
+    "pagar.botonPagar": "Pagar",
 
     "Espacios": "Espacios Disponibles",
     "Oferta": "Agregar Oferta",

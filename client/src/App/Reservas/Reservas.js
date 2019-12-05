@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { FormattedMessage } from "react-intl";
 const url_reservas = "/api/reservas";
 
 const cookies = new Cookies();
@@ -47,7 +48,7 @@ class Reservas extends Component {
             this.updateFinalizado(prop._id);
           }}
         >
-          Finalizar Reserva
+          <FormattedMessage id="reservas.botonFinalizar" />
         </button>
       );
     }
@@ -63,7 +64,7 @@ class Reservas extends Component {
   render() {
     return (
       <div className="host">
-        <h1 className="med font-weight-bold title pt-4">Mis Reservas</h1>
+        <h1 className="med font-weight-bold title pt-4"><FormattedMessage id="reservas.tituloMisReservas"/></h1>
         {this.state.reservas.length > 0 ? (
           <React.Fragment>
             {this.state.reservas.map((x, i) => {
@@ -71,7 +72,7 @@ class Reservas extends Component {
                 <div key={i} className="col" style={{ marginTop: "2em" }}>
                   <div className="card" style={{ textAlign: "left" }}>
                     <div className="card-body">
-                      <h2 className="card-title med">Fecha </h2>
+                      <h2 className="card-title med"><FormattedMessage id="reservas.tituloFecha"/></h2>
                       <strong className="card-body">{x.fechaInicio}</strong>
                       {this.estaFinalizado(x)}
                     </div>
@@ -88,7 +89,7 @@ class Reservas extends Component {
             <div className="card" style={{ textAlign: "center" }}>
               <div className="card-body">
                 <p className="card-text">
-                  Aún no tienes reservas
+                  <FormattedMessage id="reservas.mensajeNoHay" />
                 </p>
               </div>
             </div>

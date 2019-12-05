@@ -4,6 +4,7 @@
     "toast.exitoLogin": "Welcome back!",
     "toast.exitoRegistro": "Successfully Registered! Now log in",
     "toast.errorRegistro": "There was an error during the registration! Please try again.",
+    "toast.errorEspacios": "There was an error fetching the parking spaces available. Please try again.",
 
     "menu.espacios": "Spaces",
     "menu.reservas": "My Bookings",
@@ -45,6 +46,33 @@
     "registrarse.campoContrasenia": "Password",
     "registrarse.botonRegistrarse": "Sign up",
     "registrarse.mensajeIngresar": "Already have an account? Log in",
+
+    "reservas.botonFinalizar": "End Booking",
+    "reservas.tituloMisReservas": "My Bookings",
+    "reservas.tituloFecha": "Date",
+    "reservas.mensajeNoHay": "You don't have bookings yet",
+
+    "reservar.tituloFiltro": "Book parking spaces according to your needs.",
+    "reservar.campoSector": "What zone would you like?",
+    "reservar.campoFecha": "For what date?",
+    "reservar.campoHora": "For what time?",
+    "reservar.botonBuscar": "Search",
+
+    "listarPagos.titulo": "My Payments",
+    "listarPagos.mensajeNoPagos": "It seems that you don't have payments yet.",
+
+    "pagoDetail.campoValor": "Value",
+
+    "pagar.errorCosto": "Something went wrong while obtaining the cost :(",
+    "pagar.exitoPago": "The payment was successfully accepted!",
+    "pagar.titulo": "Payment",
+    "pagar.tituloResumen": "Summary",
+    "pagar.campoCosto": "Cost",
+    "pagar.campoEscoger": "Choose a payment method",
+    "pagar.tarjeta": "Credit Card",
+    "pagar.efectivo": "Cash",
+    "pagar.cuenta": "Bank Account",
+    "pagar.botonPagar": "Pay",
 
     "Espacios": "Available Spaces",
     "Oferta": "Add Offer",

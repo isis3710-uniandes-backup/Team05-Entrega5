@@ -4,6 +4,7 @@ import Cookies from 'universal-cookie';
 import { toast } from 'react-toastify'; 
 
 import PagoDetail from '../Pagos/PagoDetail';
+import { FormattedMessage } from 'react-intl';
 
 const cookies = new Cookies();
 
@@ -32,12 +33,12 @@ class ListarPagos extends Component {
         return ( 
             <div className="p-md-3">
                 <div className="row my-4">
-                    <h2 className="font-weight-bold ml-3">Mis Pagos</h2>
+                    <h2 className="font-weight-bold ml-3"><FormattedMessage id="listarPagos.titulo"/></h2>
                 </div>
                 <ul className="list-group list-group-flush mb-5">
                     {
                         (!this.state.pagos || this.state.pagos.length === 0) ?
-                        <li><p>Parece que aún no has realizado pagos.</p></li> :
+                        <li><p><FormattedMessage id="listarPagos.mensajeNoPagos"/></p></li> :
                         this.state.pagos.map((e, i) => <PagoDetail i={i} pago={e} />)
                     }
                 </ul>

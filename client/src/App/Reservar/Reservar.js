@@ -15,6 +15,7 @@ import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
 import './Reservar.css'
+import { FormattedMessage } from 'react-intl';
 
 export default class Reservar extends React.Component {
     constructor(props) {
@@ -34,20 +35,20 @@ export default class Reservar extends React.Component {
                     <Card>
                         <Card.Body>
                             <Card.Title className="card-title">
-                                Reserva parqueaderos de acuerdo con tus necesidades.
+                                <FormattedMessage id="reservar.tituloFiltro" />
                             </Card.Title>
                             <Form className="card-label">
                                 <Form.Group controlId="sectorForm">
-                                    <Form.Label>¿En qué sector te gustaría?</Form.Label>
+                                    <Form.Label><FormattedMessage id="reservar.campoSector"/></Form.Label>
                                     <Form.Control type="text" placeholder="Empieza a escribir algún sector"></Form.Control>
                                 </Form.Group>
                                 <FormGroup>
                                     <Row>
                                         <Col>
-                                            <Form.Label>¿Para qué fecha?</Form.Label>
+                                            <Form.Label><FormattedMessage id="reservar.campoFecha"/></Form.Label>
                                         </Col>
                                         <Col>
-                                            <Form.Label>¿Para qué hora?</Form.Label>
+                                            <Form.Label><FormattedMessage id="reservar.campoHora"/></Form.Label>
                                         </Col>
                                     </Row>
                                     <Row>
@@ -88,7 +89,7 @@ export default class Reservar extends React.Component {
                                     </Row>
                                 </FormGroup>
                                 <div className="search-button">
-                                    <Button variant="danger" onSubmit={this.handle_post}>Buscar</Button>
+                                    <Button variant="danger" onSubmit={this.handle_post}><FormattedMessage id="reservar.botonBuscar" /></Button>
                                 </div>
                             </Form>
                         </Card.Body>

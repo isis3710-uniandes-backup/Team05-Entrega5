@@ -5,6 +5,7 @@ import imagen from '../../assets/user.png';
 
 import ListarPagos from './ListarPagos';
 import { toast } from 'react-toastify';
+import { FormattedMessage } from 'react-intl';
 
 class Perfil extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Perfil extends Component {
     handleCerrarSesion(event) {
         event.preventDefault(); 
         this.props.removeUsuario();
-        toast.success('¡Vuelve pronto 😊!');
+        toast.success(<FormattedMessage id="toast.mensajeAdios"/>);
     }
 
     render() { 
@@ -34,7 +35,7 @@ class Perfil extends Component {
                         <p className="perf">
                             {this.props.getUsuario().correo}
                         </p>
-                        <button onClick={this.handleCerrarSesion} type="button" className="btn btn-danger btn-block my-3">Cerrar sesión</button>
+                        <button onClick={this.handleCerrarSesion} type="button" className="btn btn-danger btn-block my-3"><FormattedMessage id="menu.cerrarSesion"/></button>
                     </div>
                     <div className="col-12 col-md-8 offset-md-4">
                         <div className="row flex-column justify-content-between align-items-center">

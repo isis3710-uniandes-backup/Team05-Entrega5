@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import Cookies from 'universal-cookie';
 import "./Pagar.css";
 import axios from 'axios';
+import { FormattedMessage, FormattedNumber } from 'react-intl';
 
 const cookies = new Cookies();
 
@@ -37,7 +38,7 @@ export default class Pagar extends Component {
         .then(x =>{
             this.setState({costo : x.data[0].costo})
         })
-        .catch(err => toast.error(`Hubo un error obteniendo el costo :( -> ${err}`));
+        .catch(err => toast.error(<FormattedMessage id="pagar.errorCosto"/>));
     }
 
     handleSubmit(){
@@ -51,7 +52,7 @@ export default class Pagar extends Component {
     async postPago(pago) {
         await axios.post('/api/pagos', pago, {headers:headers}).then((p) => {
           this.props.history.push('perfil');
-          toast.success(`Pagaste correctamente con : ${this.state.metodo}`)
+          toast.success(<FormattedMessage id="pagar.exitoPago"/>)
         });
     }
 
@@ -63,7 +64,7 @@ export default class Pagar extends Component {
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
                         <Col xs="12" sm="10" md="4" large="4" xl="4">
                             <h1 className="title font-weight-bold med">
-                                Pagar
+                                <FormattedMessage id="pagar.titulo" />
                             </h1>
                         </Col>
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
@@ -74,28 +75,28 @@ export default class Pagar extends Component {
                             <div className="pago-container">
                                 <Form className="text-left">
                                     <Form.Group>
-                                        <Form.Label><h2 className="mt-3">Resumen</h2></Form.Label>
-                                        <div><strong className="mt-3">Costo: {this.state.costo}</strong></div>
-                                        <Form.Label><h3 className="mt-3">Escoje el método de pago:</h3></Form.Label>
+                                        <Form.Label><h2 className="mt-3"><FormattedMessage id="pagar.tituloResumen" /></h2></Form.Label>
+                                        <div><strong className="mt-3"><FormattedMessage id="pagar.campoCosto"/>: $<FormattedNumber value={this.state.costo} /></strong></div>
+                                        <Form.Label><h3 className="mt-3"><FormattedMessage id="pagar.campoEscoger"/>:</h3></Form.Label>
                                         <ButtonToolbar aria-label="Opciones de Método de Pago">
                                             <ButtonGroup vertical className="d-flex flex-column justify-content-center" size="lg">
                                                 <Button className="color justify-content-between align-items-center" variant="success" onClick={(e) => {e.preventDefault(); this.setState({metodo: "Tarjeta de Credito" })}}>
                                                     <img className="float-left" src="https://i.ibb.co/k55F3Hq/credit-card.png" alt="Icono tarjeta" width="55" height="55"/>
-                                                    <strong> Tarjeta de Crédito</strong>
+                                                    <strong> <FormattedMessage id="pagar.tarjeta"/></strong>
                                                 </Button>
                                                 <Button className="color justify-content-between align-items-center" variant="success" onClick={(e) => {e.preventDefault(); this.setState({metodo: "Efectivo" })}}>
                                                     <img className="float-left" src="https://i.ibb.co/DpfD4wP/money-1.png" alt="Icono efectivo" width="55" height="55"/>
-                                                    <strong> Efectivo</strong>
+                                                    <strong> <FormattedMessage id="pagar.efectivo"/></strong>
                                                 </Button>
                                                 <Button className="color justify-content-between align-items-center" variant="success" onClick={(e) => {e.preventDefault(); this.setState({metodo: "Transacción Bancaria" })}}>
                                                     <img className="float-left" src="https://i.ibb.co/YkCHJmV/leather-wallet.png" alt="Icono transacción bancaria" width="55" height="55"/>
-                                                    <strong> Cuenta</strong>
+                                                    <strong> <FormattedMessage id="pagar.cuenta"/></strong>
                                                 </Button>
                                             </ButtonGroup>
                                         </ButtonToolbar>
                                     </Form.Group>
                                     <div className="d-flex justify-content-center">
-                                        <button className="but-solid" size="md" block onClick={(e) => {e.preventDefault(); this.setState(this.handleSubmit)}}>Pagar</button>
+                                        <button className="but-solid" size="md" block onClick={(e) => {e.preventDefault(); this.setState(this.handleSubmit)}}><FormattedMessage id="pagar.botonPagar"/></button>
                                     </div>
                                 </Form>
                             </div>

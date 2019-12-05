@@ -75,7 +75,7 @@ class Espacios extends Component {
         });
         console.log("*--> Error Get Espacios", err);
         toast.error(
-          "Hubo un error al consultar los espacios disponibles. Por favor, inténtalo de nuevo."
+          <FormattedMessage id="toast.errorEspacios"/>
         );
       });
   }
