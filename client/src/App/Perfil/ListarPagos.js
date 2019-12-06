@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { toast } from 'react-toastify'; 
+import { FormattedMessage } from 'react-intl';
 
 import PagoDetail from '../Pagos/PagoDetail';
-import { FormattedMessage } from 'react-intl';
+import Grafica from './Grafica';
 
 const cookies = new Cookies();
 
@@ -47,7 +48,12 @@ class ListarPagos extends Component {
     render() { 
         return ( 
             <div className="p-md-3">
-                <div className="row my-4">
+                {
+                    (!this.state.pagos || this.state.pagos.length === 0) ?
+                    <div><p><FormattedMessage id="listarPagos.noGrafica"/></p></div> :
+                    <Grafica data={this.state.pagos} />
+                }
+                <div className="d-flex align-items-start my-3">
                     <h2 className="font-weight-bold ml-3"><FormattedMessage id="listarPagos.titulo"/></h2>
                 </div>
                 <ul className="list-group list-group-flush mb-5">
@@ -57,11 +63,6 @@ class ListarPagos extends Component {
                         this.state.pagos.map((e, i) => <PagoDetail i={i} pago={e} />)
                     }
                 </ul>
-                {
-                    (this.state.pagos && this.state.pagos.length > 0)?
-                    <Grafica data={this.state.pagos} /> :
-                    <div><FormattedMessage id="listarPagos.noGrafica"/></div>
-                }
             </div>
         );
     }

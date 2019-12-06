@@ -78,6 +78,10 @@
     "pagar.efectivo": "Cash",
     "pagar.cuenta": "Bank Account",
     "pagar.botonPagar": "Pay",
+    
+    "grafica.tarjeta": "Credit card 💳",
+    "grafica.efectivo": "Cash 💵",
+    "grafica.cuenta": "Bank account 👝🏦",
 
     "Espacios": "Available Spaces",
     "Oferta": "Add Offer",
