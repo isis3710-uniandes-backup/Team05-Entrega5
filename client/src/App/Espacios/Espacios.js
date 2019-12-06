@@ -18,16 +18,15 @@ const url_espacios = "/api/espacios";
 
 const cookies = new Cookies();
 
-const headers = {
-  "Content-Type": "application/json",
-  authorization: cookies.get("token")
-};
-
 class Espacios extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      headers: {
+        "Content-Type": "application/json",
+        "authorization": cookies.get("token")
+      },
       espacios: [],
       fechaInicio: new Date(),
       fechaFin: null,
@@ -53,7 +52,7 @@ class Espacios extends Component {
 
   get_espacios() {
     axios
-      .get(url_espacios, { headers: headers })
+      .get(url_espacios, { headers: this.state.headers })
       .then(response => {
         this.setState(
           _ => {
@@ -96,7 +95,7 @@ class Espacios extends Component {
   }
 
   async post_reserva(reserva) {
-    await axios.post("/api/reservas", reserva, { headers: headers }).then(p => {
+    await axios.post("/api/reservas", reserva, { headers: this.state.headers }).then(p => {
       this.setState({ _idReserva: p.data[0]._id });
       cookies.set("_idReserva", p.data[0]._id);
       cookies.set("_idEspacio", reserva._idEspacio);

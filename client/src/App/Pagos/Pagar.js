@@ -14,16 +14,15 @@ import { FormattedMessage, FormattedNumber } from 'react-intl';
 
 const cookies = new Cookies();
 
-const headers = {
-    'Content-Type' : 'application/json',
-    'authorization' : cookies.get('token')
-  }
-
 export default class Pagar extends Component {
 
     constructor(props){
         super(props);
         this.state = {
+            headers: {
+                'Content-Type' : 'application/json',
+                'authorization' : cookies.get('token')
+            },
             idReserva :cookies.get('_idReserva'),
             idEspacio : cookies.get('_idEspacio'),
             costo : 0,
@@ -34,7 +33,7 @@ export default class Pagar extends Component {
     }
 
     componentDidMount(){
-        axios.get(`/api/espacios/${this.state.idEspacio}`,{headers:headers})
+        axios.get(`/api/espacios/${this.state.idEspacio}`,{headers: this.state.headers})
         .then(x =>{
             this.setState({costo : x.data[0].costo})
         })
@@ -50,7 +49,7 @@ export default class Pagar extends Component {
         this.postPago(pago);
     }
     async postPago(pago) {
-        await axios.post('/api/pagos', pago, {headers:headers}).then((p) => {
+        await axios.post('/api/pagos', pago, {headers: this.state.headers}).then((p) => {
           this.props.history.push('perfil');
           toast.success(<FormattedMessage id="pagar.exitoPago"/>)
         });

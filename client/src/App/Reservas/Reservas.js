@@ -6,16 +6,15 @@ const url_reservas = "/api/reservas";
 
 const cookies = new Cookies();
 
-const headers = {
-  "Content-Type": "application/json",
-  authorization: cookies.get("token")
-};
-
 class Reservas extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      headers: {
+        "Content-Type": "application/json",
+        "authorization": cookies.get("token")
+      },
       reservas: [],
       _idUsuario: this.props.getUsuario()._id
     };
@@ -28,7 +27,7 @@ class Reservas extends Component {
   }
 
   async get_reservas() {
-    const prom = await axios.get(url_reservas, { headers: headers });
+    const prom = await axios.get(url_reservas, { headers: this.state.headers });
     if (prom.status < 300 && prom.status > 199) {
       this.setState({
         reservas: (prom.data) ? prom.data.filter(d => d._idUsuario === this.state._idUsuario) : []

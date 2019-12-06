@@ -8,21 +8,19 @@ import Cookies from 'universal-cookie';
 
 import { FormattedMessage } from "react-intl";
 
-
 const url_espacios = "/api/espacios";
 
 const cookies = new Cookies();
-
-const headers = {
-  'Content-Type' : 'application/json',
-  'authorization' : cookies.get('token')
-}
 
 export default class PostEspacios extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      headers: {
+        'Content-Type' : 'application/json',
+        'authorization' : cookies.get('token')
+      },
       parqueadero: "",
       direccion: "",
       descripcion: "",
@@ -71,7 +69,7 @@ export default class PostEspacios extends Component {
   }
 
   async post_espacio(espacio) {
-    await axios.post(url_espacios, espacio, {headers:headers})
+    await axios.post(url_espacios, espacio, {headers: this.state.headers})
       .then(() => this.props.history.push("/espacios"))
       .catch((err) => toast.error(<FormattedMessage id="toast.errorCrearEspacio"/>));
   }

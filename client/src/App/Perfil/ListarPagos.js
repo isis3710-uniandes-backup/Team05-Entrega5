@@ -15,14 +15,14 @@ class ListarPagos extends Component {
 
         this.state = {
             pagos: [],
-            authorization: {
+            headers: {
                'authorization' : cookies.get('token') 
             }
         };
     }
 
     componentDidMount() {
-        axios.get(`/api/usuarios/${this.props.usuario._id}/pagos`, { headers: this.state.authorization })
+        axios.get(`/api/usuarios/${this.props.usuario._id}/pagos`, { headers: this.state.headers })
             .then(x => {
                 this.setState({ pagos: x.data });
             })
