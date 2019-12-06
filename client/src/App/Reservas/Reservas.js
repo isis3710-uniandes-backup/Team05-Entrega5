@@ -72,7 +72,15 @@ class Reservas extends Component {
                   <div className="card" style={{ textAlign: "left" }}>
                     <div className="card-body">
                       <h2 className="card-title med"><FormattedMessage id="reservas.tituloFecha"/></h2>
-                      <strong className="card-body">{x.fechaInicio}</strong>
+                      <strong className="card-body">
+                        <FormattedDate
+                        value={new Date(x.fechaInicio)}
+                        year='numeric'
+                        month='long'
+                        day='numeric'
+                        weekday='long'
+                        />
+                      </strong>
                       {this.estaFinalizado(x)}
                     </div>
                   </div>
