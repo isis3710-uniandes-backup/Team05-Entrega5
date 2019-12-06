@@ -45,9 +45,11 @@ class Espacios extends Component {
           espacios: JSON.parse(localStorage.getItem("espacios")) || []
         };
       });
+    } else{
+      this.get_espacios();
     }
 
-    this.get_espacios();
+   
   }
 
   get_espacios() {
