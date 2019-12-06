@@ -6,6 +6,7 @@
     "toast.errorRegistro": "There was an error during the registration! Please try again.",
     "toast.errorEspacios": "There was an error fetching the parking spaces available. Please try again.",
     "toast.errorCrearEspacio": "There was an error while creating the parking space. Please try again.",
+    "toast.errorPagos": "There was an error while fetching your payments :( A previous version was loaded instead",
     "toast.errorllenarTodos": "There are empty fields. Please fill them all.",
 
     "menu.espacios": "Spaces",
@@ -62,6 +63,8 @@
 
     "listarPagos.titulo": "My Payments",
     "listarPagos.mensajeNoPagos": "It seems that you don't have payments yet.",
+    "listarPagos.tituloGrafica": "Percentage of payment methods used",
+    "lsitarPagos.noGrafica": "There are no payments to show on the pie chart.",
 
     "pagoDetail.campoValor": "Value",
 

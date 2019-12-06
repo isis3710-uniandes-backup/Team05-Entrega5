@@ -6,6 +6,7 @@
     "toast.errorRegistro": "¡Hubo un error en el registro! Inténtelo nuevamente.",
     "toast.errorEspacios": "Hubo un error al consultar los espacios disponibles. Por favor, inténtalo de nuevo.",
     "toast.errorCrearEspacio": "Ocurrió un error al crear el espacio. Por favor inténtelo de nuevo.",
+    "toast.errorPagos": "Hubo un error al traer los pagos :( Se cargó una versión anterior",
     "toast.errorllenarTodos": "Por favor llene todos los campos",
 
     "menu.espacios": "Espacios",
@@ -62,6 +63,8 @@
 
     "listarPagos.titulo": "Mis Pagos",
     "listarPagos.mensajeNoPagos": "Parece que aún no has realizado pagos.",
+    "listarPagos.tituloGrafica": "Porcentaje de metodos de pago usados",
+    "listarPagos.noGrafica": "No hay pagos para mostrar en la gráfica.",
 
     "pagoDetail.campoValor": "Valor",
 

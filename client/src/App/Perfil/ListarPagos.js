@@ -22,11 +22,26 @@ class ListarPagos extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/api/usuarios/${this.props.usuario._id}/pagos`, { headers: this.state.headers })
-            .then(x => {
-                this.setState({ pagos: x.data });
-            })
-            .catch(err => toast.error(`Hubo un error al traer los pagos :( -> ${err}`));
+        if(!navigator.onLine) {
+            let p = localStorage.getItem('pagos');
+            if (p) {
+                this.setState({ pagos: JSON.parse(p) });
+            }
+        }
+        else {
+            axios.get(`/api/usuarios/${this.props.usuario._id}/pagos`, { headers: this.state.headers })
+                .then(x => {
+                    this.setState({ pagos: x.data });
+                    localStorage.setItem('pagos', JSON.stringify(x.data));
+                })
+                .catch(err => {
+                    let pa = localStorage.getItem('pagos');
+                    if (pa) {
+                        this.setState({ pagos: JSON.parse(pa) });
+                    }
+                    toast.error(<FormattedMessage id="toast.errorPagos" />)
+                });
+        }
     }
 
     render() { 
@@ -42,6 +57,11 @@ class ListarPagos extends Component {
                         this.state.pagos.map((e, i) => <PagoDetail i={i} pago={e} />)
                     }
                 </ul>
+                {
+                    (this.state.pagos && this.state.pagos.length > 0)?
+                    <Grafica data={this.state.pagos} /> :
+                    <div><FormattedMessage id="listarPagos.noGrafica"/></div>
+                }
             </div>
         );
     }
