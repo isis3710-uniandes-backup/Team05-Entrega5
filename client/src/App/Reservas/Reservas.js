@@ -23,7 +23,16 @@ class Reservas extends Component {
   }
 
   componentDidMount() {
-    this.get_reservas();
+    if(!navigator.onLine){
+      let r = localStorage.getItem('reservas');
+      console.log(r);
+      console.log(JSON.parse(r));
+
+      this.setState({reservas: JSON.parse(localStorage.getItem('reservas')) || []})
+    }
+    else{
+      this.get_reservas();
+    }
   }
 
   async get_reservas() {
@@ -32,13 +41,14 @@ class Reservas extends Component {
       this.setState({
         reservas: (prom.data) ? prom.data.filter(d => d._idUsuario === this.state._idUsuario) : []
       });
+      localStorage.setItem('reservas', JSON.stringify((prom.data) ? prom.data.filter(d => d._idUsuario === this.state._idUsuario) : []));
+
     } else {
       console.log(prom.status, "\n The response was not OK");
     }
   }
 
   estaFinalizado(prop) {
-    console.log(prop);
     if (prop.fechaFin != null) {
       return (
         <button
@@ -64,7 +74,9 @@ class Reservas extends Component {
     return (
       <div className="host">
         <h1 className="med font-weight-bold title pt-4"><FormattedMessage id="reservas.tituloMisReservas"/></h1>
-        {this.state.reservas.length > 0 ? (
+        {
+        console.log(this.state),
+        this.state.reservas.length > 0 ? (
           <React.Fragment>
             {this.state.reservas.map((x, i) => {
               return (
