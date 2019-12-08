@@ -94,5 +94,7 @@
     "DirOferta": "Paking Address",
     "DescOferta": "Offer description",
     "CostoOferta": "Charge per minute (in pesos)",
-    "PublicarOferta": "Submit"
+    "PublicarOferta": "Submit",
+
+    "NoConnection": "There's no internet connection available, please reconnect and try again"
 }

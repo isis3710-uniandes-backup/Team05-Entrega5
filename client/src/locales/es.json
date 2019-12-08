@@ -94,5 +94,7 @@
     "DirOferta": "Dirección del parqueadero",
     "DescOferta": "Descripción de la oferta",
     "CostoOferta": "Costo (en pesos) por minuto",
-    "PublicarOferta": "Publicar"
+    "PublicarOferta": "Publicar",
+
+    "NoConnection": "No hay conexión a internet, reconéctate e intenta de nuevo"
 }

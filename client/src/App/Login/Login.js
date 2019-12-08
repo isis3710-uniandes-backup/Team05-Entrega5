@@ -52,6 +52,24 @@ export default class Login extends Component {
         this.login = this.login.bind(this);
     }
 
+    onlineCheck() {
+        let xhr = new XMLHttpRequest();
+        return new Promise((resolve, reject) => {
+            xhr.onload = () => {
+                // Set online status
+                this.isOnline = true;
+                resolve(true);
+            };
+            xhr.onerror = () => {
+                // Set online status
+                this.isOnline = false;
+                reject(false);
+            };
+            xhr.open('GET', this.baseUrl, true);
+            xhr.send();
+        });
+    }
+
     handleChange = (event) => {
         event.preventDefault();
         const { name, value } = event.target;
@@ -82,27 +100,27 @@ export default class Login extends Component {
                 "contrasenia": pass
             },
             {
-                headers: { 
+                headers: {
                     'Content-Type': 'application/json'
                 }
             }
         ).then(response => {
-            if(response.data.success){
+            if (response.data.success) {
                 // cookies.set('token', response.data.token);
                 this.props.setUsuario(response.data.token);
                 this.props.history.push('/');
-                toast.success(<FormattedMessage id="toast.exitoLogin"/>);
+                toast.success(<FormattedMessage id="toast.exitoLogin" />);
             }
-            else{
-                this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true, errMsg: <FormattedMessage id="toast.errorllenarTodos"/> })
-                toast.error(<FormattedMessage id="toast.errorllenarTodos"/>);
+            else {
+                this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true, errMsg: <FormattedMessage id="toast.errorllenarTodos" /> })
+                toast.error(<FormattedMessage id="toast.errorllenarTodos" />);
             }
 
 
         }).catch(err => {
             console.log(err)
             this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true, errMsg: <FormattedMessage id="login.errorLogin" /> })
-            toast.error(<FormattedMessage id="toast.errorLogin"/>);
+            toast.error(<FormattedMessage id="toast.errorLogin" />);
         })
     }
 
@@ -123,9 +141,23 @@ export default class Login extends Component {
     }
 
     handleSubmit(event) {
-        event.preventDefault();
-        if (this.state.username !== "" && !this.state.password !== "" && validateForm(this.state.errors)) {
-            this.login(this.state.username, this.state.password);
+        // event.preventDefault();
+        // this.onlineCheck().then(() => {
+        //     if (this.state.username !== "" && !this.state.password !== "" && validateForm(this.state.errors)) {
+        //         this.login(this.state.username, this.state.password);
+        //     }
+        // }).catch(() => {
+        //     toast.error(<FormattedMessage id="noConnection"/>);
+        // })
+        if (!navigator.onLine) {
+            toast.error(<FormattedMessage id="NoConnection" />);
+        } else {
+            if (this.state.username !== "" && !this.state.password !== "" && validateForm(this.state.errors)) {
+                this.login(this.state.username, this.state.password);
+            } else if (this.state.username !== "" || !this.state.password !== "") {
+                toast.error(<FormattedMessage id="toast.errorLogin" />);
+            }
+
         }
     }
 
@@ -153,7 +185,7 @@ export default class Login extends Component {
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>
                         <Col xs="12" sm="10" md="4" large="4" xl="4">
                             <h1 className="title font-weight-bold med">
-                                <FormattedMessage id="login.tituloIngresar"/>
+                                <FormattedMessage id="login.tituloIngresar" />
                             </h1>
                         </Col>
                         <Col xs="0" sm="1" md="4" large="4" xl="4"></Col>

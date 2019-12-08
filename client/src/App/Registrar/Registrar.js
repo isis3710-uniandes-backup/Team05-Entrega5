@@ -164,18 +164,22 @@ export default class Registrar extends Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        if (this.state.username !== "" && !this.state.nombre !== "" && !this.state.correo !== "" && !this.state.contrasenha !== "" && validateForm(this.state.errors)) {
-            this.registrar(this.state.username, this.state.contrasenha, this.state.nombre, this.state.correo);
-        }
-        else {
-            this.setState({
-                username: this.state.username,
-                nombre: this.state.nombre,
-                correo: this.state.correo,
-                contrasenha: this.state.contrasenha,
-                error: true
-            });
-            toast.error(<FormattedMessage id="toast.errorRegistro" />);
+        if (!navigator.onLine) {
+            toast.error(<FormattedMessage id="NoConnection" />);
+        } else {
+            if (this.state.username !== "" && !this.state.nombre !== "" && !this.state.correo !== "" && !this.state.contrasenha !== "" && validateForm(this.state.errors)) {
+                this.registrar(this.state.username, this.state.contrasenha, this.state.nombre, this.state.correo);
+            }
+            else {
+                this.setState({
+                    username: this.state.username,
+                    nombre: this.state.nombre,
+                    correo: this.state.correo,
+                    contrasenha: this.state.contrasenha,
+                    error: true
+                });
+                toast.error(<FormattedMessage id="toast.errorRegistro" />);
+            }
         }
     }
 
@@ -187,7 +191,7 @@ export default class Registrar extends Component {
 
     userPlaceHolder() {
         let user = ""
-        if(navigator.language === "en-US") {
+        if (navigator.language === "en-US") {
             user = "(e.g: user)"
         } else {
             user = "(e.g: usuario)"
@@ -197,7 +201,7 @@ export default class Registrar extends Component {
 
     passPlaceHolder() {
         let pass = ""
-        if(navigator.language === "en-US") {
+        if (navigator.language === "en-US") {
             pass = "(e.g: password)"
         } else {
             pass = "(e.g: constraseña)"
