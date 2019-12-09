@@ -14,7 +14,7 @@ Esta aplicación te permite encontrar espacios para parquear tu vehículo. Puede
 <br/>
 
 
-> [Video](https://youtu.be/HX2d2zLJNWg)
+> [Video](https://www.youtube.com/watch?v=3XbI7IjTIS8&feature=youtu.be)
 
 > [Sitio Web](https://parkin-web.herokuapp.com)
 
