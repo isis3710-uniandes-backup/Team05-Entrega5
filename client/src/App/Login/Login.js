@@ -113,7 +113,7 @@ export default class Login extends Component {
             }
             else {
                 this.setState({ username: this.state.username, password: this.state.password, incorrectLogin: true, errMsg: <FormattedMessage id="toast.errorllenarTodos" /> })
-                toast.error(<FormattedMessage id="toast.errorllenarTodos" />);
+                toast.error(<FormattedMessage id="toast.errorLogin" />);
             }
 
 
@@ -141,7 +141,7 @@ export default class Login extends Component {
     }
 
     handleSubmit(event) {
-        // event.preventDefault();
+        event.preventDefault();
         // this.onlineCheck().then(() => {
         //     if (this.state.username !== "" && !this.state.password !== "" && validateForm(this.state.errors)) {
         //         this.login(this.state.username, this.state.password);
@@ -154,7 +154,7 @@ export default class Login extends Component {
         } else {
             if (this.state.username !== "" && !this.state.password !== "" && validateForm(this.state.errors)) {
                 this.login(this.state.username, this.state.password);
-            } else if (this.state.username !== "" || !this.state.password !== "") {
+            } else if (this.state.username == "" || !this.state.password == "") {
                 toast.error(<FormattedMessage id="toast.errorLogin" />);
             }
 
