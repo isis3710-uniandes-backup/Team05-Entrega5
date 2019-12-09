@@ -63,7 +63,7 @@
 
     "listarPagos.titulo": "Mis Pagos",
     "listarPagos.mensajeNoPagos": "Parece que aún no has realizado pagos.",
-    "listarPagos.tituloGrafica": "Porcentaje de metodos de pago usados",
+    "listarPagos.tituloGrafica": "Porcentaje de métodos de pago usados",
     "listarPagos.noGrafica": "No hay pagos para mostrar en la gráfica.",
 
     "pagoDetail.campoValor": "Valor",

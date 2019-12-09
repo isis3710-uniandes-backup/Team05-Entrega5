@@ -33,9 +33,10 @@ class Grafica extends Component {
                 values[2] += 1;
         });
         values = values.map( i => i / total );
-        return labels.map((e, i) => {
-            return { label: e, value: values[i], }
+        labels = labels.map((e, i) => {
+            return { label: e, value: values[i] }
         });
+        return labels.filter( item => item.value !== 0);
     }
 
     getLocales() {
@@ -73,7 +74,7 @@ class Grafica extends Component {
             .range(["#FFE900", "#7CEA9C", "#2E5EAA"]);
         
         let finalData = pie(this.setData(color, data));
-        console.log(finalData);
+        
         svg.selectAll('allSlices')
             .data(finalData)
             .enter()
@@ -120,7 +121,6 @@ class Grafica extends Component {
     render() { 
         return ( 
             <div className="mt-2 d-flex flex-column justify-content-center align-items-center">
-                <h2 className="font-weight-bold ml-3"><FormattedMessage id="listarPagos.tituloGrafica" /></h2>
                 <div ref="canvas"></div>
             </div>
         );

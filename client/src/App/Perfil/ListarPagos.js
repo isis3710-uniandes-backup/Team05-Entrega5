@@ -48,6 +48,9 @@ class ListarPagos extends Component {
     render() { 
         return ( 
             <div className="p-md-3">
+                <div className="d-flex align-items-start my-3">
+                    <h2 className="font-weight-bold ml-3"><FormattedMessage id="listarPagos.tituloGrafica" /></h2>
+                </div>
                 {
                     (!this.state.pagos || this.state.pagos.length === 0) ?
                     <div><p><FormattedMessage id="listarPagos.noGrafica"/></p></div> :
@@ -59,7 +62,7 @@ class ListarPagos extends Component {
                 <ul className="list-group list-group-flush mb-5">
                     {
                         (!this.state.pagos || this.state.pagos.length === 0) ?
-                        <li><p><FormattedMessage id="listarPagos.mensajeNoPagos"/></p></li> :
+                        <p><FormattedMessage id="listarPagos.mensajeNoPagos"/></p> :
                         this.state.pagos.map((e, i) => <PagoDetail i={i} pago={e} />)
                     }
                 </ul>
